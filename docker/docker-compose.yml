@@ -1,0 +1,9 @@
+velotur:
+  image: velotur/lamp
+  ports:
+    - "8080:80"
+  environment:
+   - DB_NAME=activeinfo_newvt
+   - DB_USER=velotur
+   - DB_PASS=vt123
+
