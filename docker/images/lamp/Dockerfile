@@ -9,8 +9,8 @@ RUN a2enmod rewrite
 
 RUN cd /var/www && git clone https://github.com/alex-k/velotur.git /var/www/velotur.ru/
 
-RUN mysql < /var/www/velotur.ru/mysql/mysql.sql
-RUN mysql < /var/www/velotur.ru/mysql/activeinfo_newvt.sql
+#RUN mysql < /var/www/velotur.ru/mysql/mysql.sql
+#RUN mysql < /var/www/velotur.ru/mysql/activeinfo_newvt.sql
 
 # Configure apache
 RUN chown -R www-data:www-data /var/www

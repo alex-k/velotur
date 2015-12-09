@@ -6,8 +6,7 @@ velotur:
     - ../mysql:/tmp/mysql
     - ../www:/var/www/velotur.ru/www
 #    - ../var/lib/mysql:/var/lib/mysql
-  environment:
-   - STARTUP_SQL="/tmp/mysql/velotur.sql"
-   - ON_CREATE_DB="activeinfo_newvt"
-   - MYSQL_USER="velotur"
-   - MYSQL_PASS="vt123"
+  volumes_from: 
+    - mariadb-dc
+mariadb-dc:
+  image: mariadb
