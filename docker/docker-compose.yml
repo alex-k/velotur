@@ -1,4 +1,4 @@
-velotur:
+velotur-www-dev:
   image: velotur/lamp
   ports:
     - "8080:80"
@@ -7,6 +7,8 @@ velotur:
     - ../www:/var/www/velotur.ru/www
 #    - ../var/lib/mysql:/var/lib/mysql
   volumes_from: 
-    - mariadb-dc
-mariadb-dc:
-  image: mariadb
+    - velotur-dc-dev
+velotur-dc-dev:
+  image: tutum/ubuntu
+  volumes:
+    - /var/lib/mysql
