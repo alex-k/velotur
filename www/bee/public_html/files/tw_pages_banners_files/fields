@@ -1,1 +1,0 @@
-a:3:{s:2:"id";s:35:"`id` INT AUTO_INCREMENT PRIMARY KEY";s:6:"_ctime";s:17:"`_ctime` DATETIME";s:6:"_mtime";s:17:"`_mtime` DATETIME";}
