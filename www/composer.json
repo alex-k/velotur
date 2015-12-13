@@ -8,5 +8,20 @@
       "name": "Alexei Kochetov",
       "email": "admin@velopiter.spb.ru"
     }
-  ]
+  ],
+  "repositories": [
+    {
+      "url": "https://github.com/phpbee/phpbee.git",
+      "type": "git"
+    }
+  ],
+  "require": {
+    "phpbee/phpbee": "dev-develop"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php scripts/install.php",
+      "chmod -R a+w var"
+    ]
+  }
 }

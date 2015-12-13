@@ -1,0 +1,42 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "2af4a978ff1726f6569f0d99ddbddbdd",
+    "content-hash": "4c0525de78b446078f9a30648be966b6",
+    "packages": [
+        {
+            "name": "phpbee/phpbee",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpbee/phpbee.git",
+                "reference": "c2dab96ac849b1d761fdbb4e0dff99e0801ef601"
+            },
+            "type": "library",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "PhpBee Studio",
+                    "email": "info@phpbee.org"
+                }
+            ],
+            "description": "PhpBee framework",
+            "time": "2015-12-13 20:34:07"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "phpbee/phpbee": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
