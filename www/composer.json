@@ -1,0 +1,12 @@
+{
+  "name": "alex-k/velotur",
+  "description": "velotur.ru web site",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Alexei Kochetov",
+      "email": "admin@velopiter.spb.ru"
+    }
+  ]
+}
