@@ -137,7 +137,7 @@ $init->init(LOAD_CORE | LOAD_STORAGE | LOAD_TEMPLATES);
 $init->load_modules();
 */
 
-require_once(dirname(__FILE__).'/../bee/libs/config.lib.php');
+require_once(dirname(__DIR__).'/vendor/phpbee/phpbee/libs/config.lib.php');
 $cfg=gs_config::get_instance();
 $init=new gs_init('auto');
 cfg_set('tpl_data_dir',array(

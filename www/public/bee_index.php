@@ -37,6 +37,9 @@ if(isset($_SESSION['user'])) {
 	$smarty->assign('User',$myuser);
 }
 
+$tpl=gs_tpl::get_instance();
+$tpl->addTemplateDir(realpath(getcwd().'/html/'));
+
 
 $o_h=new gs_parser($init->data);
 $o_h->process();
