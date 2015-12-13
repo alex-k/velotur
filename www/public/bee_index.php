@@ -11,8 +11,7 @@ if (strpos($_SERVER['REQUEST_URI'],'/superadmin')===0) $init=new gs_init('supera
 
 cfg_set('tpl_data_dir',array(
 	cfg('tpl_data_dir'),
-	realpath(cfg('root_dir').'../HTML'),
-	realpath(cfg('root_dir').'html'),
+	realpath(cfg('root_dir').'../html'),
 	));
 
 //$init->init(LOAD_CORE | LOAD_STORAGE | LOAD_TEMPLATES | LOAD_EXTRAS);
