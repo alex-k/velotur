@@ -1,0 +1,32 @@
+    <form enctype="multipart/form-data"
+    action="" name="edit" method="post" class="content form"
+	id="form_payments"
+	>
+        <input type=hidden name="gspgid_form" value="{$gspgid_form}">
+
+
+{controller _class=tw_promotions _assign=promotionss}
+<select onChange="apply_promotions(this);">
+<option>---выберите---</option>
+{foreach from=$promotionss item=d}
+<option value="{$d->get_id()}">{$d.Type} {$d.Title} {if $d.Amount}{$d.Amount} {$d.AmountType}{/if}</option>
+{/foreach}
+</select>
+
+
+    {$formfields}
+        <input type="submit" style="width: 15em;" class="important" value="Добавить" name="tw_Support_submit"></div></dd>
+    </form>
+    <ins class="bl sprite32bit"></ins><ins class="br sprite32bit"></ins>
+    <script>
+    {literal}
+    $(document).ready(function(){
+    $(".fDateTime").datepicker();
+    $(".fWysiwyg").rte({
+		controls_rte: rte_toolbar,
+		controls_html: html_toolbar
+
+		});
+	});
+    {/literal}
+    </script>

@@ -1,0 +1,4 @@
+[06-Dec-2015 09:40:05 America/New_York] PHP Fatal error:  Cannot re-assign auto-global variable _POST in /home/activeinfo/velotur.ru/classes/class_dblevel.php on line 585
+[06-Dec-2015 09:40:07 America/New_York] PHP Fatal error:  Cannot re-assign auto-global variable _POST in /home/activeinfo/velotur.ru/classes/class_dblevel.php on line 585
+[06-Dec-2015 09:40:07 America/New_York] PHP Fatal error:  Cannot re-assign auto-global variable _POST in /home/activeinfo/velotur.ru/classes/class_dblevel.php on line 585
+[06-Dec-2015 09:40:08 America/New_York] PHP Fatal error:  Cannot re-assign auto-global variable _POST in /home/activeinfo/velotur.ru/classes/class_dblevel.php on line 585

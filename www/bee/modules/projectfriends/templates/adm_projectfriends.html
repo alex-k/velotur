@@ -1,0 +1,52 @@
+{include file="inc_menu.html"}
+
+
+{block name="main"}
+
+
+	<h4>Друзья проекта</h4>
+
+
+
+	
+		{handler gspgid="/filter/" class="limit" name="limit" urltype=session values='20,50,100,500' default_value=20}
+		{handler gspgid="/filter/" class="offset"  name="offset" urltype=get limit='limit'}
+
+
+
+		{controller _class="projectfriends" _assign="projectfriends" _filters="limit,offset,"}
+
+
+	<table class="main">
+	<thead>
+	<tr>
+			<th class="ttitle">User</th>
+			<th class="ttitle"></th>
+	</tr>
+	</thead>
+	
+	{foreach from=$projectfriends item="e"}
+	<tr class="tbody">
+									<td><a href="/admin/user_edit.php?_id={$e->User_id}">{$e->User->first()}</a></td>
+									<td class="cnt"><a href="{gl rec_delete=$e}" onclick="return confirm('Вы точно хотите удалить запись из списка друзей ?');"><img src="/i/admin/ico_delete.png" alt="Удалить" title="Удалить"></a></td>
+	</tr>
+	{/foreach}
+	</table>
+
+		{handler gspgid="/filter/show" name="offset" tpl="offset_pages.html" page_title='Page' page_prev='previous' page_next='next' page_between='from' pages_count=21 recordset=$projectfriends}
+
+{if $Guide.guideLogin=='ilia'}
+
+	<a href="{gl rec_create=0}">добавить</a>
+	{if $_gsdata.gspgid_va.0=='modify'}
+	<hr><br>
+		{$default_value=""}
+		{handler gspgid="/admin/form/projectfriends/edit/`$_gsdata.gspgid_va.1`" _default=trim($default_value,',') }
+	{/if}
+
+{/if}
+
+<p>
+</p>
+
+{/block}

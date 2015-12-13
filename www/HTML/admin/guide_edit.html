@@ -1,0 +1,65 @@
+{include file="inc_menu.html"}
+
+<p>
+Гид - редактирование
+</p>
+
+<table class=main>
+
+
+<form action="guide_edit.php" method=post name=form1>
+<input type=hidden name=_classname value="Guides">
+<input type=hidden name=_action value="{if $guideID>0}actionsUpdate{else}actionsAdd{/if}">
+<input type=hidden name=_id value="{$guideID}">
+<input type=hidden name=_backurl value="guide.php">
+
+<tr class=tbody> <td>Login</td><td><input class=input name=guideLogin value="{$guideLogin}"> {validate field=guideLogin criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Password</td><td><input class=input name=guidePassword value="{$guidePassword}"> {validate field=guidePassword criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Type</td><td>
+<select name=guideType>
+<option value="guide" {if $guideType=='guide'}SELECTED{/if}>guide</option>
+<option value="admin" {if $guideType=='admin'}SELECTED{/if}>admin</option>
+</select>{validate field=guideType criteria=notEmpty message="*"}
+</td> </tr>
+<tr class=tbody> <td>Имя</td><td><input class=input name=guideName value="{$guideName}"> {validate field=guideName criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Телефон</td><td><input class=input name=guidePhone value="{$guidePhone}"></td> </tr>
+<tr class=tbody> <td>Email 1</td><td><input class=input name=guideEmail1 value="{$guideEmail1}"> {validate field=guideEmail1 criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Email 2</td><td><input class=input name=guideEmail2 value="{$guideEmail2}"></td> </tr>
+<tr class=tbody> <td colspan=2 align=center>Данные гида для анкет и списков</td> </tr>
+
+<tr valign=top class=tbody><td align=right> Фамилия (русскими буквами)</td><td><input  size=40 class=input name=userRussianName1 value="{$userRussianName1}"></td></tr>
+<tr valign=top class=tbody><td align=right> Имя (русскими буквами)</td><td><input  size=40 class=input name=userRussianName2 value="{$userRussianName2}"></td></tr>
+<tr valign=top class=tbody><td align=right> Отчество (русскими буквами)</td><td><input  size=40 class=input name=userRussianName3 value="{$userRussianName3}"></td></tr>
+
+<tr valign=top class=tbody><td align=right> Фамилия латиницей (как в загранпаспорте)</td><td><input  size=40 class=input name=userLatinName1 value="{$userLatinName1}"></td></tr>
+<tr valign=top class=tbody><td align=right> Имя латиницей </td><td><input  size=40 class=input name=userLatinName2 value="{$userLatinName2}"></td></tr>
+<tr valign=top class=tbody><td align=right> Отчество латиницей </td><td><input  size=40 class=input name=userLatinName3 value="{$userLatinName3}"></td></tr>
+
+<tr valign=top class=tbody><td align=right> Дата рождения (ДД-ММ-ГГГГ)</td><td><input  size=40 class=input name=userBirthDay value="{$userBirthDay}"></td></tr>
+<tr valign=top class=tbody><td align=right> Гражданство   </td><td><input  size=40 class=input name=userCitizenship value="{$userCitizenship}"></td></tr>
+
+<tr valign=top class=tbody><td align=right> Пол   </td><td> 
+<select size="1" name="userSex" class=select>
+<option value="">--</option>
+{html_options options=$d_userSex selected=$userSex}
+</select> </td></tr>
+
+<tr valign=top class=tbody><td align=right> Страна </td><td><input  size=40 class=input name=userCountry value="{$userCountry}"></td></tr>
+<tr valign=top class=tbody><td align=right> Город   </td><td><input  size=40 class=input name=userCity value="{$userCity}"></td></tr>
+{*
+<tr valign=top class=tbody><td align=right> Домашний адрес   </td><td><textarea style="width:100%;height:20px;" class=input name=userAddress>{$userAddress}</textarea></td></tr>
+*}
+<tr valign=top class=tbody><td align=right> Паспортные данные (номер загранпаспорта)   </td><td><textarea style="width:100%;height:20px;" class=input name=userPassport>{$userPassport}</textarea></td></tr>
+<tr valign=top class=tbody><td align=right> Паспортные данные (когда и кем выдан)   </td>
+<td>
+  кем:<textarea style="width:100%;height:20px;" class=input name=userPassportIssuedBy>{$userPassportIssuedBy}</textarea>{validate field=userPassportIssuedBy criteria=notEmpty message="<span class=error>*</span>"}<br>
+  когда:<input  size=40 class=input name=userPassportIssuedDate  value="{$userPassportIssuedDate}">{validate field=userPassportIssuedDate criteria=isRegExp expression="/[0-3]\d-[01]\d-[12]\d\d\d/" message="<span class=error>*</span>"}
+</td></tr>
+<tr valign=top class=tbody><td align=right> Паспортные данные (действителен до)   </td><td><textarea style="width:100%;height:20px;" rows=1 class=input name=userPassportValidThrow>{$userPassportValidThrow}</textarea></td></tr>
+<tr valign=top class=tbody><td align=right> Контактный телефон   </td><td><input  size=40 class=input name=userPhone value="{$userPhone}"></td></tr>
+
+</table>
+<input class=input type=submit name=formSubmit id=formSubmit value="Сохранить"><br><br>
+{if $guideID>0}<input type=button class="input" value="Удалить" onClick="if (confirm('Delete guide {$guideName}?')){literal}{document.form1._action.value='actionsDelete'; document.form1.formSubmit.click();}{/literal}">{/if}
+
+</form>

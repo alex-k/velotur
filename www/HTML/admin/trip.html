@@ -1,0 +1,45 @@
+{include file="inc_menu.html"}
+
+<p>
+Маршруты - просмотр
+</p>
+
+
+
+
+<table class="sortElements" width=1100 class=main>
+<thead class="sortElements">
+<tr>
+<th class=ttitle>ID</th>
+<th class=ttitle>Название</th>
+<th class=ttitle>Lang</th>
+<th class=ttitle>Нитка</th>
+<th class=ttitle>История</th>
+<th class=ttitle>Ссылка</th>
+<th class=ttitle>Отчеты</th>
+</tr>
+</thead>
+
+{foreach from=$Trips item=g}
+{assign var=tw_trip value=record_by_id($g.tripID,'tw_trip')}
+<tr class=tbody>
+<td width=150>{$g.tripID} | <a href="tour_edit.php?tripID={$g.tripID}">создать поход</a></td>
+<td width=300><a href="trip_edit.php?_id={$g.tripID}">{$g.tripTitle}</a></td>
+<td>{if $g.langEN}EN{/if}</td>
+<td width=300>{$g.tripRoute}</td>
+<td>
+	<a href="calendar.php?tripID={$g.tripID}">Походы ({$tw_trip->Tours->count()})</a>
+</td>
+<td>
+	<a href="{$g.tripDescriptionURL}">Описание</a>
+</td>
+<td>
+	<a href="/reports/{$g.tripID}">Отчеты ({$tw_trip->Reports->count()})</a>
+</td>
+
+</tr>
+{/foreach}
+
+</table>
+<a href=trip_edit.php>Добавить</a>
+

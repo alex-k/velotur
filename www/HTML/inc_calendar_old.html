@@ -1,0 +1,55 @@
+			<div class="content content_blue">
+			<div class="title2"><h3>Календарь велопоходов - {$year}</h3></div>
+			<table cellspacing="0" class="tblist">
+				<thead>
+				<tr>
+				<th class="tbf">Направление</th>
+				<th>Уровень<br>сложности</th>
+				<th>Даты</th>
+				<th>Цена<br>вопроса</th>
+				<th>Осталось<br>мест</th>
+				<th>Статус</th>
+				</tr>
+				</thead>
+				<tbody>
+				{foreach from=$Tours item=t}
+				{assign var=diff value=$t.tourDifficulty}{assign var=comf value=$t.tourComfort}
+				<tr>
+					<td class="tbf"><a href="{$t.tourDescriptionURL}">{$t.tourTitle|wordwrap:30:'<br>'}</a></td>
+					<td>
+						<a href="/content/comfort.html">{$d_tourdifficulty.$diff|replace:" ":"&nbsp;"}</a><br>
+						<a href="/content/comfort.html">{$d_tourcomfort.$comf|replace:" ":"&nbsp;"}</a>
+					</td>
+					<td>{$t.tourStartDate|date_format:"%d.%m.%Y"}<br>
+						{$t.tourEndDate|date_format:"%d.%m.%Y"}
+					</td>
+					<td><span>
+					{if $t.tourPrice1} <b>{$t.tourPrice1}</b> {$t.tourPriceTitle1}<br>{/if} {if $t.tourPrice2} <b>{$t.tourPrice2}</b> {$t.tourPriceTitle2}<br>{/if}
+					{if $t.tourPrice3} <b>{$t.tourPrice3}</b> {$t.tourPriceTitle3}<br>{/if} 
+					</span></td>
+					<td><span>
+					{if $t.tourStatus!='waitinglist'}
+						{if $t.tourShowAvPlaces || $_CONF.minimum_avaible_places>$t.tourAvPlaces} {$t.tourAvPlaces}<br> 
+						{elseif $t.tourAllowApply}есть
+						{/if}
+					{/if}
+					</span></td>
+					<td class="tbl">
+
+{if $t.tourAllowApply}<b><a class=red href="/apply.php?tourID={$t.tourID}&type=apply"><img src="/i/bt_go2.gif"></a></b><br>
+{elseif $t.tourAllowWL}
+	{if $t.tourAppStartDate>$smarty.now|date_format:'%Y-%m-%d'}Запись после {$t.tourAppStartDate|date_format:"%d.%m.%Y"}<br>{/if}
+	{if $t.tourAllowPreApply}
+	<b><a class=red href="/apply.php?tourID={$t.tourID}&type=WL">оставить предварительную заявку</a></b><br>
+	{else}
+	<b><a class=red href="/apply.php?tourID={$t.tourID}&type=WL"><img src="/i/bt_wait.gif"></a></b><br>
+	{/if}
+{/if}
+
+</td>
+				</tr>
+				{/foreach}
+				</tbody>
+			</table>
+			</div>
+

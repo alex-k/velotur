@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>alexk</Author>
+  <LastAuthor>alexk</LastAuthor>
+  <Created>2009-11-27T11:32:20Z</Created>
+  <Version>12.0</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>19260</WindowHeight>
+  <WindowWidth>29600</WindowWidth>
+  <WindowTopX>-20</WindowTopX>
+  <WindowTopY>-20</WindowTopY>
+  <Date1904/>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Verdana"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+{assign var=cols value=$fields_Names|@count}
+{assign var=rows value=$Users|@count}
+  <Table ss:ExpandedColumnCount="{$cols+1}" ss:ExpandedRowCount="{$rows+3}" x:FullColumns="1"
+   x:FullRows="1">
+   <Column ss:AutoFitWidth="0" ss:Width="27.0"/>
+   <Column ss:AutoFitWidth="0" ss:Width="138.0"/>
+{*
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="122.0"/>
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="236.0"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90.0"/>
+*}
+
+   <Row>
+	    <Cell><Data ss:Type="String">#</Data></Cell>
+	{foreach from=$fields_Names item=n}
+	    <Cell><Data ss:Type="String">{$n}</Data></Cell>
+	{/foreach}
+   </Row>
+{foreach from=$Users item=u key=k}
+{if $u.tourUserType=='apply' || $u.guideID}
+{assign var=i value=$i+1}
+   <Row {if $i==1}ss:Index="3"{/if}>
+	    <Cell><Data ss:Type="Number">{$i}</Data></Cell>
+	{foreach from=$fields_Values key=k item=n}
+		{eval var=$n|replace:'<':' ' assign=v}
+	    <Cell><Data ss:Type="{if is_numeric($v)}Number{else}String{/if}">{$v}</Data></Cell>
+	{/foreach}
+   </Row>
+{/if}
+{/foreach}
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>0</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <ShowPageLayoutZoom/>
+   <PageLayoutZoom>100</PageLayoutZoom>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

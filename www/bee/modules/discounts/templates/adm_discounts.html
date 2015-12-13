@@ -1,0 +1,76 @@
+{include file="inc_menu.html"}
+
+
+
+
+<h3>Шаблоны платежей</h3>
+
+{controller _class=tw_discount _assign=discount _paging="pagenums:100" _orderby="ShowInList desc, ListOrder, Type"}
+<table class="main">
+<tbody>
+<tr><th class="ttitle">ID</th>
+<th class="ttitle">Название</th>
+<th class="ttitle">Цена</th>
+<th class="ttitle">тип</th>
+<th class="ttitle"></th>
+</tr>
+{foreach from=$discount item=n}
+<tr class="tbody">
+<td>{$n.id}</td>
+<td>{$n.Type} {$n.Title} </td>
+<td>{$n.Amount} {$n.AmountType}</td>
+<td>	
+	{$n.AutoKey}
+	{if $n.Hidden}скрытая{/if}
+</td>
+<td>
+<a href="/admin/discounts/discount/{$n->get_id()}">Редактировать</a>
+<a href="/admin/discounts/delete/{$n->get_id()}">Удалить</a>
+</td>
+</tr>
+{/foreach}
+</tbody>
+</table>
+<div class="pages">{$discount_paging}</div>
+
+	<a href="/admin/discounts/discount/0">Add new</a>
+	{if $_gsdata.gspgid_va.0=='discount'}
+		{handler gspgid="/admin/form/tw_discount/`$_gsdata.gspgid_v`"}
+	{/if}
+
+
+
+<h3>Специальные предложения</h3>
+
+{controller _class=tw_promotions _assign=discount _paging="pagenums:100"}
+<table class="main">
+<tbody>
+<tr><th class="ttitle">ID</th>
+<th class="ttitle">Название</th>
+<th class="ttitle">Цена</th>
+<th class="ttitle">тип</th>
+<th class="ttitle">дата окончания</th>
+</tr>
+{foreach from=$discount item=n}
+<tr class="tbody">
+<td>{$n.id}</td>
+<td>{$n.Type} {$n.Title} </td>
+<td>{$n.Amount} {$n.AmountType}</td>
+<td>	
+	{$n.EndDate}
+</td>
+<td>
+<a href="/admin/discounts/promo/{$n->get_id()}">Редактировать</a>
+<a href="/admin/promotions/delete/{$n->get_id()}">Удалить</a>
+</td>
+</tr>
+{/foreach}
+</tbody>
+</table>
+<div class="pages">{$discount_paging}</div>
+	<a href="/admin/discounts/promo/0">Add new</a>
+	{if $_gsdata.gspgid_va.0=='promo'}
+		{handler gspgid="/admin/form/tw_promotions/`$_gsdata.gspgid_v`"}
+	{/if}
+
+
