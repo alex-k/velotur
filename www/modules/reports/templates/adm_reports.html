@@ -1,0 +1,63 @@
+{include file="inc_menu.html"}
+
+{block name="title"}
+	reports
+{/block}
+
+{block name="main"}
+
+
+	<h4>reports</h4>
+
+
+
+	
+		{handler gspgid="/filter/" class="like" name="search" fields="title" urltype=get }
+		{handler gspgid="/filter/" class="limit" name="limit" urltype=session values='20,50,100,500' default_value=20}
+		{handler gspgid="/filter/" class="offset"  name="offset" urltype=get limit='limit'}
+
+
+
+		{controller _class="reports" _assign="reports" _filters="search,,limit,offset,"}
+
+
+	<table class="main">
+	<tr><th class="ttitle">#</th>
+			<th class="ttitle">Маршрут</th>
+		<th class="ttitle">Автор</th>
+		<th class="ttitle"> {field_name name="Заголовок" type="fString" key="title" id="1"} </th>
+		<th class="ttitle">Поход</th>
+			<th class="ttitle"></th>
+	<th class="ttitle"></th>
+	<th class="ttitle"></th>
+	</tr>
+	
+	{foreach from=$reports item="e"}
+	<tr class="tbody">
+			<td>{$e->get_id()}</td>
+						<td>{$e.Trip}</td>
+									<td>{$e->authorName}</td>
+						<td class="frm_fString">
+									<a href="{gl rec_edit=$e}">{field_formatter value=$e.title type="fString"}</a>
+						
+			</td>
+				<td>
+		{$t=$e->Tour->first()}
+			<a href="/admin/tourinfo.php?tourID={$e->Tour_id}">{$t.tourTitle} {$t.tourStartDate|date_format:"%d.%m.%Y"}-{$t.tourEndDate|date_format:"%d.%m.%Y"}</a>
+			</td>
+									<td class="cnt"><a href="{gl rec_edit=$e}"><img src="/i/admin/ico_edit.png" alt="Редактировать" title="Редактировать"></a></td>
+			<td class="cnt"><a href="{gl rec_copy=$e}"><img src="/i/admin/ico_copy.png" alt="Копировать" title="Копировать"></a></td>
+			<td class="cnt"><a href="{gl rec_delete=$e}" onclick="return confirm('Вы точно хотите удалить запись ?');"><img src="/i/admin/ico_delete.png" alt="Удалить" title="Удалить"></a></td>
+	</tr>
+	{/foreach}
+	</table>
+		{handler gspgid="/filter/show" name="offset" tpl="offset_pages.html" page_title='Page' page_prev='previous' page_next='next' page_between='from' pages_count=21 recordset=$reports}
+
+	<a href="{gl rec_create=0}">создать</a>
+	{if $_gsdata.gspgid_va.0=='modify'}
+	<hr><br>
+		{$default_value=""}
+		{handler gspgid="/admin/form/reports/edit/`$_gsdata.gspgid_va.1`" _default=trim($default_value,',') }
+	{/if}
+
+{/block}

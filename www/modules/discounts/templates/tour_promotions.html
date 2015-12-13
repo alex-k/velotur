@@ -1,0 +1,18 @@
+{include file="inc_header.php"}
+<body class="tbody">
+Акции:<br>
+{handler gspgid="/admin/tour_promotions_js/`$_gsdata.gspgid_v`"}
+
+
+{handler gspgid="/admin/form/tw_tour_promotions/0" Tour_id=$_gsdata.gspgid_va.0}
+
+{controller _class=tw_tour_promotions Tour_id=$_gsdata.gspgid_va.0  _assign=tour_promotions}
+<ul>
+{foreach from=$tour_promotions item=p}
+<li>
+{$p.Amount} {$p.Title} {$p.EndDate|date_format}
+[<a href="/admin/tour_promotions/delete/{$p->get_id()}">X</a>]
+</li>
+{/foreach}
+</body>
+</div>

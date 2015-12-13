@@ -1,0 +1,66 @@
+{include file="inc_menu.html"}
+
+
+{$Guide_id=$smarty.session.guide->getID()}
+{$guide=record_by_id($Guide_id,'tw_guides')}
+
+
+<h2>Личный кабинет</h2>
+
+
+
+{if $_gsdata.gspgid_va.0=='edit'}
+	<h3>Редактирпование личных данных</h3>
+	{handler gspgid="/admin/form/guide/edit/`$Guide_id`" fields="-guideHideInfo,-userVPNumber,-guideType"}
+{elseif $_gsdata.gspgid_va.0=='edit_report'}
+	<h3>Редактирпование отчета</h3>
+	{handler gspgid="/admin/form/guide/reports/edit/`$_gsdata.gspgid_va.1`" Guide_id=$Guide_id _default="authorName={$guide.userRussianName|default:$guide.userLatinName}"}
+{else}
+<a href="/admin/guide/edit">редактировать личные данные</a>
+
+<h3>Походы</h3>
+{$ids=array_merge($guide->Tours->array_keys(),$guide->Tours2->array_keys())}
+{$now=$smarty.now|date_format:"Y-m-d"}
+{controller _class=tw_tours tourID=$ids _assign=tours _orderby=tourStartDate tourStartDate=">`$now`"}
+
+<ul>
+{foreach $tours as $t}
+<li>
+{$t.tourStartDate} - {$t.tourEndDate}
+<a href="tourinfo.php?tourID={$t.tourID}">{$t.tourTitle}</a>
+{$t.tourStatus}
+</li>
+{/foreach}
+</ul>
+
+<hr>
+{controller _class=tw_tours tourID=$ids _assign=tours _orderby='tourStartDate desc' tourStartDate="<`$now`"}
+
+<ul>
+{foreach $tours as $t}
+<li>
+{$t.tourStartDate} - {$t.tourEndDate}
+<a href="tourinfo.php?tourID={$t.tourID}">{$t.tourTitle}</a>
+{$t.tourStatus}
+</li>
+{/foreach}
+</ul>
+
+
+<h3>Отчеты</h3>
+<a href="/admin/guide/edit_report/">добавить отчет</a>
+
+<ul>
+
+	{foreach $guide->Reports as $e}
+	<li>
+		<a href="/admin/guide/edit_report/{$e->get_id()}">{$e.Trip}</a> : <a href="/reports/reports/{$e->get_id()}">{$e.title}</a>
+		<a href="/admin/guide/edit_report/{$e->get_id()}"><img src="/i/admin/ico_edit.png"></a>
+		<a href="/admin/reports/reports/delete/{$e->get_id()}" onclick="return confirm('Вы точно хотите удалить запись ?');"><img src="/i/admin/ico_delete.png" alt="Удалить" title="Удалить"></a>
+	</li>
+	{/foreach}
+
+</ul>
+
+
+{/if}

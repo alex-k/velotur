@@ -1,0 +1,31 @@
+{include file="inc_menu.html"}
+
+{assign var=g value=$_gsstack.last}
+
+<h2>
+{$g->guideName}
+</h2>
+
+<table width=700 class=main>
+<thead>
+	<th class=ttitle>Дата</th>
+	<th class=ttitle>Маршрут</th>
+	<th class=ttitle>Статус</th>
+	<th class=ttitle>Участники</th>
+</thead>
+<tbody>
+{controller _class=tw_tours tourID=array_merge($g->Tours->array_keys(),$g->Tours2->array_keys()) _assign=tours _orderby='tourStartDate desc'}
+{foreach $tours as $t}
+<tr>
+<td> {$t.tourStartDate|date_format} - {$t.tourEndDate|date_format}</td>
+<td width=300> <a href="/admin/tourinfo.php?tourID={$t.tourID}">{$t.tourTitle}</a> </td>
+<td>{$t.tourStatus}</td>
+<td>
+
+	{controller _class=tw_tour_users _assign=users tourUserType="INapply:completed" tourID=$t->get_id()}
+	{$users->count()}
+
+</td>
+</tr>
+{/foreach}
+</table>
