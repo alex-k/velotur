@@ -51,7 +51,7 @@
 			</dl>
 	</td> </tr>
 	<tr><td class="tbfr">
-			{if $t.tripDescriptionURL}<a href="{$t.tripDescriptionURL}">подробное описание</a>{/if}
+			{if $t.tripDescriptionURL}<a href="{$t.tripDescriptionURL|parse_url:5}">подробное описание</a>{/if}
 	</td></tr>	
 			{/foreach}
 
