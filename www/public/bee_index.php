@@ -1,5 +1,4 @@
 <?php
-ob_start();
 chdir(dirname(__DIR__));
 require_once('vendor/phpbee/phpbee/libs/config.lib.php');
 $gs_node_id=1;
@@ -15,9 +14,9 @@ cfg_set('tpl_data_dir',array(
 
 $init->init(LOAD_CORE);
 $init->load_modules();
-include_once('../classes/base.php');
-include_once('../classes/Users_class.php');
-include_once('../classes/Guides_class.php');
+include_once('classes/base.php');
+include_once('classes/Users_class.php');
+include_once('classes/Guides_class.php');
 session_start();
 
 if (stripos($_SERVER['REQUEST_URI'],'/admin')===0) {
