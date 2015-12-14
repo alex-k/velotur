@@ -18,3 +18,7 @@ velotur-dc-dev:
   image: tutum/ubuntu
   volumes:
     - /var/lib/mysql
+staging:
+  image: velotur/staging
+  ports:
+    - "8081:80"
