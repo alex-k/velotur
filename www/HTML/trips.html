@@ -1,0 +1,62 @@
+{extends file="about2.html"}
+{block name="page_title"}
+{/block}
+{block name="page_tag"}
+Реестр маршрутов
+{/block}
+{block name="page_center"}
+			<p>
+			Все маршруты, по которым "ВелоТур" проводил, проводит или собирвется проводить велопоходы.
+			</p>
+
+
+
+			<table cellspacing="0" class="tb_usertours tblist"> 
+				<col style="width: 28em;"> 
+			<tbody> 
+
+			{controller _assign=Trips _class=tw_trip _orderby=tripTitle tripHidden=0 }
+			{foreach $Trips as $t} 
+			
+			
+	<tr>
+	<td class="tbleft">
+		<h2>
+			<a href="{$t.tripDescriptionURL}"> {$t.tripTitle} </a>
+		</h2>
+			<dl>
+			<dt>
+			<p>
+			{$t.tripRoute}
+			</p>
+			</dt>
+			<dd>
+			<p>
+			{$t.tripDescription}
+			</p>
+			<p>
+				{$t.Countries}
+			</p>
+			{*
+			{if $t.tripPrice1}
+			<p>
+				Базовая цена {$t.tripPrice1} {$t.tripPriceTitle1}
+			</p>
+			{/if}
+			*}
+			<p>
+				Сложность <a href="/p.php?t=comfort">{$d_tourdifficulty[$t.tripDifficulty]}</a> / <a href="/p.php?t=comfort">{$d_tourcomfort[$t.tripComfort]}</a>
+			</p>
+			</dd>
+			</dl>
+	</td> </tr>
+	<tr><td class="tbfr">
+			{if $t.tripDescriptionURL}<a href="{$t.tripDescriptionURL|parse_url:5}">подробное описание</a>{/if}
+	</td></tr>	
+			{/foreach}
+
+
+			</tbody>
+
+	</table>
+{/block}

@@ -1,0 +1,23 @@
+<span class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">{if $current}{$links[array_key_recursive($links,'key',$current)].name}{else}{$label1}{/if}
+	<b class="caret"></b></a>
+
+
+{if $columnwidth}
+<div class="dropdown-menu dropdown-menu-columns" role="menu" aria-labelledby="dLabel"> 
+	<div style="-moz-column-width: {$columnwidth};  -webkit-column-width: {$columnwidth};   column-width: {$columnwidth};  ">
+{else}
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">	
+{/if}
+	<li {if !$current}class="active"{/if}><a href="/{$link_all.href}">{$label2}</a></li>
+	{foreach from=$links item=i}
+	<li {if $i.key==$current}class="active"{/if}><a href="/{$i.href}">{$i.name}</a></li>
+	{/foreach}
+{if $columnwidth}
+	</div>
+</div>
+{else}
+	</ul>
+{/if}
+
+</span>

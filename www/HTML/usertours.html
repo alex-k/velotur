@@ -1,0 +1,235 @@
+{extends file="tour2.html"}
+{block name="tour_name"}
+<h1>ваши заявки</h1>
+<br>{$User.userEmail}
+{/block}
+{block name="page_center"}
+
+{$ru=record_by_id($User.userID,'tw_users')}
+
+<p>
+Не забывайте следить за актуальностью ваших <a href="/userinfo.php">персональных данных</a>!
+</p>
+<p>
+Вы можете заявиться на новый поход на странице "<a href="/">календарь</a>"
+</p>
+
+{if $smarty.get.message=='APPLY_OK'}
+	{$t=$Tours[$smarty.get.tourID]}
+	 <div class="alert">
+	<p>
+	 Ваша заявка на участие принята.
+	 По Электронной почте вам придет письмо с дальнейшими инструкциями.
+	       Если у вас возникают какие либо вопросы, вы можете написать гиду
+	          похода <a href="/guides/{$t.guideID}">{$t.guideName}</a>, либо нашему администратору
+		     {mailto address="inbox@velotur.ru" encode=javascript}<br>
+	</p>
+	<div>
+	{$smarty.session.applymessage|nl2br}
+	</div>
+	<p>
+	 Не забдьте проверить актуальность информации  в разделе <a href="userinfo.php">"персональные данные"</a><br>
+	</p>
+
+	</div>
+
+{/if}	 
+
+{if $ru->Mails->count()}
+<table cellspacing="0" class="tb_usertours tblist"> 
+			<col style="width: 6em;"> 
+			<col style="width: 22em;"> 
+			<thead> 
+			<th colspan=2>Сообщения</th> 
+			</tr> 
+			</thead> 
+			<tbody> 
+{foreach $ru->Mails as $m}
+<tr onclick='$(this).next().toggle();'>
+<td class="tbf"> 
+{$m._ctime|date_format:"d.m.Y H:i"}
+</td>
+<td class="tbf"> 
+<a href="#">{$m.mailSubject}</a></h2> 
+</td>
+</tr> 
+<tr class="mailbody" style="display:none;"> 
+<td></td>
+<td class="tbleft"> 
+	<p>
+	<b>	{mailto address=$m.fromEmail} </b>
+	</p>
+	<p>
+		{$m.mailText|nl2br}
+	</p>	
+</td>
+</tr>
+<tr><td class="tbfr" colspan=2>
+</td></tr>
+	
+{/foreach}
+</tbody>
+</table>
+{/if}
+	<table cellspacing="0" class="tb_usertours tblist"> 
+				<col style="width: 16em;"> 
+				<col style="width: 6em;"> 
+				<col style="width: 6em;"> 
+				<thead> 
+				<th>Маршрут</th> 
+				<th>Даты</th> 
+				<th>Гид</th> 
+				</tr> 
+				</thead> 
+				<tbody> 
+{if $Tours}{$a=$Tours|uasort:sort_tours}{/if}
+{foreach from=$Tours item=t key=tid}
+<tr><td class="tbf"> 
+<h2><a href="{$t.tourDescriptionURL}">{$t.tourTitle}</a></h2> 
+</td><td>
+{$t.tourStartDate|date_format:"%d.%m.%Y"}-{$t.tourEndDate|date_format:"%d.%m.%Y"}
+</td>
+	<td> <a href="/guides/{$t.guideID}">{$t.guideName}</a> </td> 
+</tr> 
+<tr> 
+<td class="tbleft"> 
+{if $t.tourUserType=='completed'}
+<p>
+	<a href="/reports/my/trip/{$t.tourID}">Отчет о походе</a>
+</p>
+{/if}
+	статус заявки 
+<b>"{if $t.tourUserType=='apply'}участие{/if}
+{if $t.tourUserType=='WL'}лист ожидания{/if}
+{if $t.tourUserType=='completed'}маршрут пройден{/if}
+{if $t.tourUserType=='deleted'}отказ{/if}"</b>
+
+	{assign var=sd_diff value=$t.tourStartDate|@dates_diff}
+	{if !$t.tourBlockTransfers && $sd_diff.days>45 && ($t.tourUserType=='apply' || $t.tourUserType=='WL')}
+	<form name="otkaz_{$t.tourID}" style="display:inline;" method=post>
+	<input type=hidden name=applyTourID value="{$t.tourID}">
+	<input type=hidden name=_classname size=100  value="TourUsers">
+	<input type=hidden name=_action size=100  value="actionsUpdate">
+	<input type=hidden name=tourUserType size=100  value="deleted">
+	<input type=hidden name=deleteLinkedUsers size=100  value="{intval($t.RefUsers)}">
+	<a href="" onClick="
+
+		if (!confirm('вы уверены что хотите отказаться от участия в туре?')) return false;
+		if (document.forms.otkaz_{$t.tourID}.deleteLinkedUsers.value && !confirm('С вами вместе были заявлены другие участники, снять их заявку тоже?')) 						document.forms.otkaz_{$t.tourID}.deleteLinkedUsers.value=0;
+		document.forms.otkaz_{$t.tourID}.submit(); 
+		return false;
+		">отказаться от тура</a>
+	</form>
+	{/if}
+	<br>
+	заявка подана {$t.tourUserDate|date_format:"%d.%m.%Y"}
+
+
+
+	<ul>
+	<li>стоимость тура {$t.tourPrice1} {$t.tourPriceTitle1}</li>
+	{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/user_payments/`$t.tourID`/`$User.userID`/`$t.tourPrice1|intval`" gspgtype="handler"}
+	<li>Итого задолженность: {beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/payments/total/`$t.tourID`/`$User.userID`/`$t.tourPrice1|intval`" gspgtype="handler"}</li>
+	</ul>
+	{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/user_tour_promotions/`$t.tourID`" gspgtype="handler"}
+
+	{if  $t.tourUserType=='apply' || $t.tourUserType=='WL'}<a href="/apply.php?tourID={$t.tourID}&applyFriend=1">заявить еще одного участника</a>{/if}
+
+	{if $t.RefUsers}
+		<br><br>Вместе с Вами заявлены:
+		<ul>
+		{foreach from=$t.RefUsers item=r}
+		<li>
+		{assign var=rt value=$r.Tours.$tid}
+		{$r.userID}. {$r.userRussianName} / {$r.userLatinName} 
+			<b>"{if $rt.tourUserType=='apply'}участие{/if}
+			{if $rt.tourUserType=='WL'}лист ожидания{/if}
+			{if $rt.tourUserType=='completed'}маршрут пройден{/if}
+			{if $rt.tourUserType=='deleted'}отказ{/if}"</b>
+
+		{$rt.tourUserCommentsPrepay|nl2br}
+		</li>
+		{/foreach}
+		</ul>
+	{/if}
+
+
+
+</td> 
+<td colspan=2 class="tbleft">
+
+
+<p>
+{section name=id start=1 loop=6 step=1}
+{$id=$smarty.section.id.index}
+{assign var=uAN value="tourUserAddName$id"}
+{assign var=uAV value="tourUserAddValue$id"}
+{if $t.$uAV}
+{$t.$uAN}:
+{$t.$uAV}
+<br>
+{/if}
+{/section}
+</p>
+
+	{if  $t.tourUserType=='apply'}<div style="margin-bottom:20px;">{/if}
+	{if $t.tourUserCommentsUser}
+		Пожелания:
+		<div style="padding-left:20px;">{$t.tourUserCommentsUser|nl2br}</div>
+	{/if}
+	{if  $t.tourUserType=='apply'}
+		<a href="" onClick="$(this).next().toggle(); return false;">ввести пожелания</a>
+		<form method=post id=tourUserCommentsUser style="display:none;">
+		<input type=hidden name=applyTourID value="{$t.tourID}">
+		<input type=hidden name=_classname size=100  value="TourUsers">
+		<input type=hidden name=_action size=100  value="actionsUpdate">
+		<textarea name=tourUserCommentsUser style="width:200px;height:100px">{$t.tourUserCommentsUser}</textarea>
+		<br>
+		<input type="submit" class="input" value="отправить"> 
+		</form>
+		</div>
+	{/if}
+
+		<div style="margin-bottom:20px;">
+	{if $t.tourUserCommentsTicket}
+		Сведения о билете:
+		<div style="padding-left:20px;">{$t.tourUserCommentsTicket|nl2br}</div>
+	{/if}
+		<a href="" onClick="$(this).next().toggle(); return false;">ввести сведения о билете</a>
+		<form method=post id=tourUserCommentsTicket style="display:none;">
+		<input type=hidden name=applyTourID value="{$t.tourID}">
+		<input type=hidden name=_classname size=100  value="TourUsers">
+		<input type=hidden name=_action size=100  value="actionsUpdate">
+		<input name=tourUserCommentsTicket_add style="width:200px;">
+		<br>
+		<input type="submit" class="input" value="отправить"> 
+		</form>
+		</div>
+	{if $t.tourNote}
+		<div style="margin-bottom:20px;">
+		Примечания:
+		<div style="padding-left:20px;">
+		{$t.tourNote|nl2br}
+		</div>
+		</div>
+	{/if}
+	{if $t.tourTransferNote}
+		<div style="margin-bottom:20px;">
+		Рекомендации по билету/транспорту:
+		<div style="padding-left:20px;">
+		{$t.tourTransferNote|nl2br}
+		</div>
+		</div>
+	{/if}
+</td>
+</tr>
+
+<tr><td class="tbfr" colspan=3>
+</td></tr>
+{/foreach}
+
+</table>
+ 
+
+
+{/block}

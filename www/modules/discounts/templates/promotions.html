@@ -1,0 +1,39 @@
+{include file="inc_menu.html"}
+
+
+
+<h3>Скидки</h3>
+    <a href="#" onClick="$('#new_ticket_form').toggle(); return false;">{if $_gsdata.gspgid_va.1|is_numeric}Edit{else}Add New{/if}</a>
+{handler gspgid="/admin/form/tw_promotions/`$_gsdata.gspgid_v`"}
+     {if $_gsdata.gspgtype=='get' && !$_gsdata.gspgid_va.1|@is_numeric}
+    <script>
+    $('#new_ticket_form').hide();
+    </script>
+    {/if}
+
+{controller _class=tw_promotions _assign=discount _paging="pagenums:100"}
+<table class="main">
+<tbody>
+<tr><th class="ttitle">ID</th>
+<th class="ttitle">Название</th>
+<th class="ttitle">Цена</th>
+<th class="ttitle">тип</th>
+<th class="ttitle">дата окончания</th>
+</tr>
+{foreach from=$discount item=n}
+<tr class="tbody">
+<td>{$n.id}</td>
+<td>{$n.Type} {$n.Title} </td>
+<td>{$n.Amount} {$n.AmountType}</td>
+<td>	
+	{$n.EndDate}
+</td>
+<td>
+<a href="/admin/promotions/edit/{$n->get_id()}">Редактировать</a>
+<a href="/admin/promotions/delete/{$n->get_id()}">Удалить</a>
+</td>
+</tr>
+{/foreach}
+</tbody>
+</table>
+<div class="pages">{$discount_paging}</div>

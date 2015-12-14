@@ -1,0 +1,118 @@
+<?php
+
+gs_dict::append(array(
+		'left'=>'слева',
+		'center_top'=>'по центру вверху',
+		'center_bottom'=>'по центру внизу',
+	));
+
+class module_pages_banners extends gs_base_module implements gs_module {
+	function __construct() {
+	}
+	function install() {
+		foreach(array('tw_pages_banners','tw_pages_banners_files') as $r){
+			$this->$r=new $r;
+			$this->$r->install();
+		}
+	}
+	
+	function get_menu() {
+		return '<a href="/admin/banners/">Баннеры</a>';
+	}
+	
+	static function get_handlers() {
+		$data=array(
+		'handler'=>array(
+			'/banners/left'=>array(
+					'get'=>'handler_pages_banners.get_banners:return:gs_recordset',
+					'show'=>'gs_base_handler.fetch:name:banners_left.html:hkey:get',
+			),
+			'/banners/center_top'=>array(
+					'get'=>'handler_pages_banners.get_banners:return:gs_recordset',
+					'show'=>'gs_base_handler.fetch:name:banners_top.html:hkey:get',
+			),
+			'/banners/center_bottom'=>array(
+					'get'=>'handler_pages_banners.get_banners:return:gs_recordset',
+					'show'=>'gs_base_handler.fetch:name:banners_bottom.html:hkey:get',
+			),
+			'/admin/form/tw_pages_banners'=>array(
+					'gs_base_handler.post:return:gs_record:{name:form.html:form_class:g_forms_table:classname:tw_pages_banners:href:/admin/banners:form_class:form_admin}',
+					'gs_base_handler.redirect:{href:/admin/banners}',
+			),
+		),
+		'get_post'=>array(
+			'list'=>'gs_base_handler.show',
+			'/admin/banners'=>'gs_base_handler.show:{name:adm_banners.html:classname:tw_pages_banners}',
+			'/admin/banners/delete'=>'admin_handler.deleteform:{classname:tw_pages_banners}',
+		),
+	);
+	return self::add_subdir($data,dirname(__file__));
+	}
+}
+
+class handler_pages_banners extends gs_base_handler {
+	function get_banners()
+	{
+		$tpl=gs_tpl::get_instance();
+		$gspgid=$this->data['gspgid_root'];
+		$parts=explode('/',$gspgid);
+		$tb=new tw_pages;
+		$bns=new tw_pages_banners;
+		$info=null;
+		if (!empty($gspgid))
+		{
+			do {
+				$turl="/".implode('/',$parts);
+				$rec=$tb->find_records(array('url'=>$turl),array('id'))->first();
+				if (!empty($rec)) {
+					$info=$rec->Banners->find(array('position'=>$this->data['gspgid_a'][1]));
+				}
+				if (!empty($parts)) unset($parts[count($parts)-1]);
+				else $parts=-1;
+			}while (empty($info)  && $parts!=-1);
+		}
+		if (empty($gspgid) || empty($info)) {
+			$turl='/';
+			$rec=$tb->find_records(array('url'=>$turl),array('id'))->first();
+				if (!empty($rec)) {
+					$info=$rec->Banners->find(array('position'=>$this->data['gspgid_a'][1]));
+				}
+		}
+
+		//gs_logger::dump();
+		//die();
+		return $info;
+	}
+}
+
+class tw_pages_banners extends gs_recordset_short {
+	const superadmin=1;
+	function __construct($init_opts=false) { parent::__construct(array(
+		'subject'=>"fString 'Название'",
+		'url'=>"fString 'URL'",
+		'position'=>"fSelect Положение values='left,center_top,center_bottom'",
+		'File'=>"lOne2One tw_pages_banners_files 'Баннер' hidden=false widget=include_form",
+		'Pages'=> "lMany2Many tw_pages:link_pages_banners",
+				),$init_opts);
+	}
+}
+
+class tw_pages_banners_files extends tw_file_images {
+	function __construct($init_opts=false) {
+		parent::__construct($init_opts);
+		$this->structure['fkeys']=array(
+			array('link'=>'tw_pages_banners.File','on_delete'=>'CASCADE','on_update'=>'CASCADE'),
+		);
+	}
+	
+	function config_previews() {
+		parent::config_previews();
+		$this->config=array_merge($this->config,array(
+			'small'=>array('width'=>50,'height'=>50,'method'=>'use_fields','bgcolor'=>array(255,255,255)),
+			'left'=>array('width'=>160,'height'=>160,'method'=>'use_width'),
+			'center'=>array('width'=>606,'height'=>81,'method'=>'use_crop'),
+		));
+	}
+}
+
+?>

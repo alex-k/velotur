@@ -1,0 +1,18 @@
+{include file="inc_menu.html"}
+{controller _class=tw_tours tourID=$_gsdata.gspgid_va.0 _assign=t _assign_type=first _fields="tourTitle,tourPrice1,tourPriceTitle1,tourStartDate,tourEndDate"}
+<h3>finance list {$t} ({$t.tourStartDate}-{$t.tourEndDate})</h3>
+
+{controller _class=tw_tour_users  tourID=$t->get_ID() _assign=tusers}
+<ul>
+{foreach from=$tusers item=tu}
+<li>
+{$u=$tu.User->first()}
+{$u.userID}
+{$u.userRussianName}/{$u.userLatinName}
+<ul>
+{handler gspgid="/user_payments/`$t->get_id()`/`$tu.userID`/`$t.tourPrice1`"}
+<li>Итого: {handler gspgid="/payments/total/`$t->get_id()`/`$tu.userID`/`$t.tourPrice1`"}</li>
+</ul>
+</li>
+{/foreach}
+</ul>

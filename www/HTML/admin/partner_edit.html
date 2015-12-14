@@ -1,0 +1,26 @@
+{include file="inc_menu.html"}
+
+<p>
+Партнер - редактирование
+</p>
+
+<table class=main>
+
+
+<form action="partner_edit.php" method=post name=form1>
+<input type=hidden name=_classname value="Partners">
+<input type=hidden name=_action value="{if $partnerID>0}actionsUpdate{else}actionsAdd{/if}">
+<input type=hidden name=_id value="{$partnerID}">
+<input type=hidden name=_backurl value="partners.php">
+
+<tr class=tbody> <td>Login</td><td><input class=input name=partnerLogin value="{$partnerLogin}"> {validate field=partnerLogin criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Password</td><td><input class=input name=partnerPassword value="{$partnerPassword}"> {validate field=partnerPassword criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Название</td><td><input class=input name=partnerName value="{$partnerName}"> {validate field=partnerName criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Телефон</td><td><input class=input name=partnerPhone value="{$partnerPhone}"></td> </tr>
+<tr class=tbody> <td>Email</td><td><input class=input name=partnerEmail value="{$partnerEmail}"> {validate field=partnerEmail criteria=notEmpty message="*"}</td> </tr>
+
+</table>
+<input class=input type=submit name=formSubmit id=formSubmit value="Сохранить"><br><br>
+{if $partnerID>0}<input type=button class="input" value="Удалить" onClick="if (confirm('Delete partner {$partnerName}?')){literal}{document.form1._action.value='actionsDelete'; document.form1.formSubmit.click();}{/literal}">{/if}
+
+</form>

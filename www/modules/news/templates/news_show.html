@@ -1,0 +1,28 @@
+{extends file="about2.html"}
+{block name="page_title"}
+{controller _class=tw_news _assign=nn id=$_gsdata.gspgid_a.1 hidden=0 _assign_type=plain}
+<a href="/news/">НОВОСТИ</a>
+{/block}
+{block name="page_tag"}
+{$nn.subject}
+{/block}
+{block name="page_center"}
+	<p>
+	{if $nn.Images->count()}<a href="/img/s/tw_news_images/b/1000/1000/{$nn.Images->first()->id}/{$nn.Images->first()->File_filename}"><img src="/img/s/tw_news_images/b/200/200/{$nn.Images->first()->id}"></a>
+	{else}
+	<img src="/i/news.gif">
+	{/if}
+	</p>
+        <p>
+        {$nn.text}
+        </p>
+	<p>
+	{foreach from=$nn.Images item=i}
+	{if !$i@first}<a href="/img/s/tw_news_images/b/1000/1000/{$i.id}">{$i}</a>{/if}
+	{/foreach}
+	</p>
+{$nn.date}
+<p>
+<a href="/news/">ВСЕ НОВОСТИ</a>
+</p>
+{/block}

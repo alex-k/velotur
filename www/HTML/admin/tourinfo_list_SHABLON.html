@@ -1,0 +1,21 @@
+<LINK href="/index.css" type="text/css" rel="stylesheet">
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<table class=main width=100%>
+<tr class=ttitle>
+<td></td>
+{foreach from=$fields_Names item=n}
+<td>{$n}</td>
+{/foreach}
+</tr>
+{foreach from=$Users item=u key=k}
+{if $u.tourUserType=='apply' || $u.guideID}
+{assign var=i value=$i+1}
+<tr class=tbody valign=top>
+<td width=50>{$i}</td>
+{foreach from=$fields_Values key=k item=n}
+<td>{eval var=$n assign=c}{$c|nl2br}</td>
+{/foreach}
+</tr>
+{/if}
+{/foreach}
+</table>

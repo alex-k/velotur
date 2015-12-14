@@ -1,0 +1,15 @@
+{extends file="about2.html"}
+{block name="page_title"}
+НОВОСТИ
+{/block}
+{block name="page_center"}
+{controller _class=tw_news _assign=news _paging="pagenums:20" _orderby="id desc"}
+{foreach from=$news item=n}
+<div class="news_list">
+{$n.date|date_format:"%d/%m/%Y"}<br>
+<a href="/news/{$n.id}">{$n.subject}</a><br>
+{foreach from=$n.Images item=i}<a href="/news/{$n.id}">{$i}</a> {/foreach}
+</div>
+{/foreach}
+<div class="pages">Страницы: {$news_paging}</div>
+{/block}

@@ -1,0 +1,33 @@
+Название: {$t.tourTitle}
+Даты: {$t.tourStartDate} - {$t.tourEndDate}
+Гид: {$t.guideName} {$t.guideName2}
+Статус: {$t.tourUserType}
+
+{if $t.tourUserCommentsPrepay}
+Предоплата:		{$t.tourUserCommentsPrepay}
+{/if}
+{if $t.tourUserCommentsTicket}
+Билет:		{$t.tourUserCommentsTicket}
+{/if}
+{if $t.tourUserComments}
+Примечания:		{$t.tourUserComments}
+{/if}
+{if $t.tourUserCommentsRegVia}
+Код вводящего:		{$t.tourUserCommentsRegVia}
+{/if}
+{if $t.tourUserAddName1 || $t.tourUserAddValue1}
+{$t.tourUserAddName1}:	{$t.tourUserAddValue1}
+{/if}
+{if $t.tourUserAddName2 || $t.tourUserAddValue2}
+{$t.tourUserAddName2}:	{$t.tourUserAddValue2}
+{/if}
+{if $t.tourUserAddName3 || $t.tourUserAddValue3}
+{$t.tourUserAddName3}:	{$t.tourUserAddValue3}
+{/if}
+{if $t.tourUserAddName4 || $t.tourUserAddValue4}
+{$t.tourUserAddName4}:	{$t.tourUserAddValue4}
+{/if}
+{if $t.tourUserAddName5 || $t.tourUserAddValue5}
+{$t.tourUserAddName5}:	{$t.tourUserAddValue5}
+{/if}
+----------------------------------------------

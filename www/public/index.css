@@ -1,0 +1,197 @@
+@charset "utf-8";
+body {
+	background: #000000;
+	/*
+	color: #0000FF;
+	*/
+	color: #FFFFFF;
+	font-size:12px;
+}
+.hidden {display:none;}
+
+h1,h3,h2,h4,p,a,pre{
+	color: #FFFFFF;
+}
+/*
+table *{
+	color: #0000FF;
+}
+table a {
+	color: #0000FF;
+}
+table p {
+	color: #0000FF;
+}
+*/
+
+hr {
+    height: 1px;
+	border-style: none;
+	color: #e3e0e0;
+	background-color: #e3e0e0;
+}
+
+
+
+.articleCategoryMenu {
+	padding: 7px 0px 0px 10px;
+	color:#FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	border: 0px;
+	margin: 1px;
+	
+	height: 19px;
+	background: #c68f8f; /* the background color will be displayed for the length of the content in the column, but no further */
+}
+.articleCategoryMenuPartner {
+	background: #4b6f58; /* the background color will be displayed for the length of the content in the column, but no further */
+}
+
+
+
+
+img { border:0; }
+IMG.img {border: 1px #000000 solid; }
+
+.TABLE {background: #135C76; font-family: Verdana, Areal; font-size: 12px;}
+TABLE.main {font-family: Verdana, Areal; font-size: 12px; border-collapse: collapse; border: 2px solid #A0A0A0;}
+TABLE.main td {border: 2px solid #A0A0A0; padding: 3px;};
+
+
+INPUT {border: 1px #5D5A81 solid; background-color: #EBF9FE; color:#000000; font-size: 11px;}
+.INPUT {border: 1px #5D5A81 solid; background-color: #EBF9FE; color:#000000; font-size: 11px;}
+SELECT {border: 1px #5D5A81 solid; background-color: #EBF9FE; color:#000000; font-size: 11px;}
+TEXTAREA {border: 1px #5D5A81 solid; background-color: #EBF9FE; color:#000000; font-size: 11px;}
+IFRAME {border: 1px #135C76 solid; background-color:  #EBF9FE; color:#000000; font-size: 11px;}
+
+
+.pretitle {color: #488AA2; font-family: sans-serif, Tahoma, Verdana, Arial; font-size: 18px; font-weight: normal; text-decoration: none;}
+.ttitle  {font-family: Verdana, Arial; font-size: 12px; font-weight:bold;  text-align: center; color:#FFFFFF !important; background-color:  #999999; padding: 3px}
+.ttitle a {font-family: Verdana, Arial; font-size: 12px; font-weight:bold;  text-align: center; color:#FFFFFF !important;}
+.tsbody {font-family: Tahoma, Verdana, Arial; font-size: 11px;  text-align: left; color:#0000FF; padding: 3px;}
+.tbody {font-family: Arial; font-size: 12px;  text-align: left; background-color: rgb(233, 233, 233); color:#000; padding: 3px}
+.tbody a {color:#000;}
+.tbody pre {font-family: Arial; font-size: 12px;  text-align: left; color:#000; padding: 3px}
+.tbody_green {font-family: Tahoma; font-size: 11px;  text-align: left; background-color:#DCF1D9; color:#000000; padding: 3px}
+.tbody_red {font-family: Tahoma; font-size: 11px;  text-align: left; background-color:#F2C8C8; color:#000000; padding: 3px}
+.tbody_black {font-family: Tahoma; font-size: 12px;  text-align: left; background-color: #000000; color:#FFF; padding: 3px}
+.tbody_blue {font-family: Tahoma; font-size: 12px;  text-align: left; background-color: #d4e4ff; color:#000; padding: 3px}
+.tbody_yellow{font-family: Tahoma; font-size: 12px;  text-align: left; background-color: #E6E8C1; color:#000; padding: 3px}
+.ttotal {font-family: Tahoma; font-size: 11px;  text-align: left; background-color: #FFC6CA; color:#000000; padding: 3px}
+.error {font-family: Tahoma, Verdana, Arial; text-align: left; color: red; }
+.total {font-family: Tahoma, Verdana, Arial; font-size: 11px;  background-color: #FFC6CA; text-align: left; color: #B01313;}
+.label {color: #777777; font-size: 10px;}
+
+.red {color: red;}
+
+
+table {
+	margin: 1px; 
+	padding: 0;
+	border-style: none;
+}
+
+textarea {
+	width: 860px;
+	height:100px;
+}
+input.fString {
+	border: 1px #5D5A81 solid; background-color: #EBF9FE; color:#000000; font-size: 11px;
+/*	width: 600px; */
+}
+input.fNumber{
+	border: 1px #5D5A81 solid; background-color: #EBF9FE; color:#000000; font-size: 11px;
+	width: 40px;
+}
+input.fCheckbox{
+	border: 1px #5D5A81 solid; background-color: #EBF9FE; color:#000000; font-size: 11px;
+}
+.inline div {
+	display: inline;
+}
+
+div.divbox {
+	/*float: left;*/
+	padding-right:5px;
+	display:table-cell;
+	vertical-align: bottom;
+}
+
+.form_payments .fString{
+	width: 200px;
+}
+.form_payments .fText{
+	width: 200px;
+	height: 40px;
+}
+.form_payments .fNumber{
+	width: 60px;
+}
+.tb {
+	width:100%;
+	border:1px solid #e0e0e0;
+	border-collapse:collapse;
+}
+
+.tb * {
+	
+}
+
+.tb thead * {
+	background-color:#e0e0e0;
+	color:#000000;
+	border-right:1px solid #ffffff;
+}
+
+.tb td {
+	border:1px solid #e0e0e0;
+}
+
+.cnt {
+	text-align:center;
+}
+
+.main_tb {
+	width:100%;
+}
+
+.many2one_gallery {
+       display:block;
+       margin:0px;
+       padding:0px;
+       padding:5px;
+       list-style:none;
+       overflow-x:auto;
+       overflow-y:hidden;
+       white-space:nowrap;
+       width:600px;
+       border:0px solid #e0e0e0;
+}
+
+.many2one_gallery img {
+       padding-right:2px;
+}
+
+.gallery_ifr {
+       width:100%;
+       height:0px;
+}
+
+.del_img_ico {
+       position:absolute;
+       top:0px;
+       right:0px;
+       opacity:0.5;
+}
+
+.del_img_ico:hover {
+       opacity:1;
+}
+
+TABLE.helper_table {font-family: Verdana, Areal; font-size: 12px; border-collapse: collapse; border: 2px solid #A0A0A0;}
+TABLE.helper_table tbody {font-family: Tahoma; font-size: 12px;  text-align: left; background-color: #CCCCCC; color:blue; padding: 3px}
+TABLE.helper_table td {border: 2px solid #A0A0A0; padding: 3px;};
+
+
+

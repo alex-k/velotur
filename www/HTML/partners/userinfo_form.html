@@ -1,0 +1,199 @@
+{if $founded_users}
+<table class=main width=600>
+<th colspan=2  class=ttitle>Найдены участники:</th>
+{foreach from=$founded_users item=u}
+<tr>
+<td>
+<a href="apply.php?tourID={$Tour.tourID}&type=apply&doSearch=1&userID={$u.userID}">{$u.userRussianName} {$u.userBirthDay} {$u.userCity} {$u.userPhone} {$u.userEmail} </a>
+</td>
+</tr>
+{/foreach}
+</table>
+{/if}
+
+{if $_validate_error && $message!='_errorCheckValues'}
+	<p><font color=red>поля заполнены некорректно</font></p>
+	{/if}
+<table class=main width=600>
+<th colspan=2  class=ttitle>Данные пользователя</th>
+
+{if $userLoaded || $userID}
+<tr valign=top class=tbody>
+<td align=right width=240> 
+<input type=checkbox name="userLoadedOK">
+
+</td><td>
+Внимание! Данный пользователь уже присутствует в базе, подтвердите что вы хотите добавить ему заявку.
+</td>
+</tr>
+{/if}
+
+<tr valign=top class=tbody>
+  <td align=right> Код вводящего
+</td>
+  <td><input  size=40 class=input name=tourUserCommentsRegVia value="{$Partner.partnerName|escape}" readonly=readonly>{validate field=tourUserCommentsRegVia criteria=notEmpty message="<span class=error>*</span>"}
+
+  <input type=hidden name=userPartnerID value="{$Partner.partnerID}">
+</td></tr>
+
+<tr valign=top class=tbody>
+<td align=right width=240> Email</td><td><input  size=30 type=input class=input name=userEmail value="{$userEmail}">
+<input type=submit class=input name=doSearch value="Поиск">
+<a _target=_new href="apply.php?tourID={$Tour.tourID}&type=apply">начать поиск заново</a> 
+<span class="label"><br>если пользователь уже был зарегистрирован -можно его найти через этот поиск и не заполнять анкету заново</span>
+</td>
+</tr>
+
+<tr valign=top class=tbody>
+  <td align=right> Фамилия 
+</td>
+  <td><input  size=40 class=input name=userRussianName1 value="{$userRussianName1}">{validate field=userRussianName1 criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(русскими буквами:, Петров)</span>
+</td></tr>
+<tr valign=top class=tbody>
+  <td align=right> Имя 
+</td>
+  <td><input  size=40 class=input name=userRussianName2 value="{$userRussianName2}">{validate field=userRussianName2 criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(русскими буквами: Иван)</span>
+</td></tr>
+<tr valign=top class=tbody>
+  <td align=right> Отчество 
+</td>
+  <td><input  size=40 class=input name=userRussianName3 value="{$userRussianName3}">{validate field=userRussianName3 criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(русскими буквами: Абрамович)</span>
+</td></tr>
+
+<tr valign=top class=tbody>
+  <td align=right> Фамилия латиницей 
+</td>
+  <td><input  size=40 class=input name=userLatinName1 value="{$userLatinName1}">{validate field=userLatinName1 criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(как в загранпаспорте БОЛЬШИМИ БУКВАМИ - PETROV)</span>
+</td></tr>
+<tr valign=top class=tbody><td align=right> <p>Имя латиницей 
+ </p>
+  </td><td><input  size=40 class=input name=userLatinName2 value="{$userLatinName2}">{validate field=userLatinName2 criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(как в загранпаспорте БОЛЬШИМИ БУКВАМИ -IVAN)</span>
+</td></tr>
+<tr valign=top class=tbody><td align=right>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr valign=top class=tbody>
+  <td align=right> Дата рождения 
+</td>
+  <td><input  size=40 class=input name=userBirthDay value="{$userBirthDay}" >{validate field=userBirthDay criteria=isRegExp expression="/[0-3]\d-[01]\d-[12]\d\d\d/" message="<span class=error>*</span>"}
+	<span class="label"><br>(ДД-ММ-ГГГГ - ДеньДень - (ДЕФИС) - МесяцМесяц - (ДЕФИС) - ГОД - 30-06-1978)</span>
+</td></tr>
+<tr valign=top class=tbody>
+  <td align=right> Гражданство 
+ </td>
+  <td><input  size=40 class=input name=userCitizenship value="{$userCitizenship}">{validate field=userCitizenship criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(Шаблон: Россия)</span>
+</td></tr>
+
+<tr valign=top class=tbody><td align=right> Пол   </td><td> <select size="1" name="userSex" class=input>
+<option value="">--</option>
+{html_options options=$d_userSex selected=$userSex}
+</select> </td></tr>
+
+<tr valign=top class=tbody>
+  <td align=right> Страна постоянного проживания 
+</td>
+  <td><input  size=40 class=input name=userCountry value="{$userCountry}">{validate field=userCountry criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(Шаблон: Россия)</span>
+</td></tr>
+<tr valign=top class=tbody>
+  <td align=right> Город 
+  </td>
+  <td><input  size=40 class=input name=userCity value="{$userCity}">{validate field=userCity criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(Шаблон: Москва)</span>
+</td></tr>
+<tr valign=top class=tbody>
+  <td align=right> Домашний адрес 
+</td>
+  <td>
+	{*
+<textarea cols=32 rows=5 class=input name=userAddress>{$userAddress}</textarea>{validate field=userAddress criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>(название улицы, номер дома, номер квартиры . Шаблон Апрельская улица, дом 4, кв 76 )</span>
+*}
+</td></tr>
+
+<th colspan=2 class=ttitle>Данные загранпаспорта</th>
+
+
+<tr valign=top class=tbody>
+	<td  align=right> номер загранпаспорта 
+	</td>
+	<td > <input  size=40 class=input name=userPassport  value="{$userPassport}">
+	<span class="label"><br>(70 1234567 - значок &quot;№&quot; не ставится!!) </span>
+	{if  $userPassportTypeEnabled}
+	{validate field=userPassport criteria=notEmpty message="<span class=error>*</span>"} 
+	{else}
+	{validate field=userPassport criteria=isregexp expression="/\d\d \d\d\d\d\d\d\d$/" message="<span class=error>*</span>"} 
+	{/if}
+	<br> <label class=label><input type=checkbox onClick="if (document.getElementById('userPassportType')) document.getElementById('userPassportType').value=''; submit();" name=userPassportTypeEnabled {if $userPassportTypeEnabled || $userPassportType}checked{/if}>Я не являюсь гражданином России либо не имею загранпаспорта по иной причине.</label>
+
+</td>
+</tr>
+	{if  $userPassportTypeEnabled || $userPassportType}
+<tr valign=top class=tbody>
+	<td  align=right>Вид документа:</td>
+	<td > 
+	<select onChange="document.getElementById('userPassportType').value=this.value;">
+	<option value="">-------вид документа-------</option>
+	<option>Внутренний паспорт</option>
+	<option>Паспорт иностранного государства</option>
+	<option value="">Иной документ (укажите какой)</option>
+	</select>
+	<br>
+	<input  size=40 class=input name=userPassportType id=userPassportType value="{$userPassportType}">
+	{validate field=userPassportType criteria=notEmpty message="<span class=error>*</span>"} 
+	</td>
+</tr>
+	{/if}
+
+<tr valign=top class=tbody>
+	<td  align=right> кем выдан</td>
+	<td > <input  size=40 class=input name=userPassportIssuedBy  value="{$userPassportIssuedBy}">{validate field=userPassportIssuedBy criteria=notempty message="<span class=error>*</span>"}
+	<span class="label"><br>(РУВД 257) все буквы БОЛЬШИЕ</span>
+	</td>
+</tr>
+
+<tr valign=top class=tbody>
+  <td  align=right>когда выдан</td>
+  <td ><input  size=40 class=input name=userPassportIssuedDate  value="{$userPassportIssuedDate}">{validate field=userPassportIssuedDate criteria=isregexp expression="/[0-3]\d-[01]\d-[12]\d\d\d/" message="<span class=error>*</span>"}
+	<span class="label"><br>(31-12-1980) День-Месяц-Год c дефисами</span>
+</td>
+  </td>
+</tr>
+
+<tr valign=top class=tbody>
+  <td  align=right> действителен до</td>
+  <td ><input  size=40 class=input name=userPassportValidThrow  value="{$userPassportValidThrow}">{validate field=userPassportValidThrow criteria=isregexp expression="/[0-3]\d-[01]\d-[12]\d\d\d/" message="<span class=error>*</span>"}
+	<span class="label"><br>(31-12-1985)</span>
+</td>
+</tr>
+
+<th colspan=2 class=ttitle>Важная информация</th>
+
+<tr valign=top class=tbody>
+  <td align=right> Контактный телефон 
+ </td>
+  <td><input  size=40 class=input name=userPhone value="{$userPhone}">{validate field=userPhone criteria=notEmpty message="<span class=error>*</span>"}
+	<span class="label"><br>полностью с кодами. Формат:+7 901 313 59 66</span>
+</td></tr>
+<tr valign=top class=tbody><td align=right>контактный<br>E-mail</td><td><input  size=40 class=input name=tourUserAddEmail1 value="{$tourUserAddEmail1}">
+	<span class="label"><br>если имеется</span>
+</td></tr>
+<tr valign=top class=tbody><td align=right> E-mail агента </td><td><input  size=40 class=input name=tourUserAddEmail2 value="{$tourUserAddEmail2}">
+<span class="label"><br>E-mail ответственного лица</span>
+</td></tr>
+<tr valign=top class=tbody><td align=right> Номер карты ВелоПитера (если имеется)   </td><td><input  size=40 class=input name=userVPNumber value="{$userVPNumber}"></td></tr>
+<tr valign=top class=tbody><td align=right> Как вы нас нашли  </td><td>
+<select class=input name=userInfoHowFoundSelect onChange='document.getElementById("userInfoHowFound").value=this.value;'>
+<option value="">--</option>
+{html_options options=$d_userHowFound}
+</select>
+<input class=input name=userInfoHowFound id=userInfoHowFound value="{$userInfoHowFound}">{validate field=userInfoHowFound criteria=notEmpty message="<span class=error>*</span>"}
+</td></tr>
+</table>
+

@@ -1,0 +1,60 @@
+{extends file="tour2.html"}
+{block name="page_center"}
+	{if $message=='_userAuthOK'}
+	Вы регистрируетесь на велотур. Проверьте вашу анкету, особенно данные паспорта. Если есть какие нибудь изменения, пожалуйста внесите их 
+	{/if}
+	{if $message=='_userCreated'}
+	<b>
+	<font color=#FF0000> 
+	Пожалуйста, заполните анкету-заявку на велотур. будьте внимательны -
+	оставленная Вами информация будет использована нами для различных
+	целей: при взятии билетов, бронировании гостиниц.  
+		Ошибка в данных приведет к ошибке в билете, визе, со всеми вытекающими последствиями.  
+	 Если каких то данных у вас нет под рукой, это не проблема - вы можете снова зайти на сайт по вашему Логину и Паролю,
+	  и добавить недостающую информацию.
+	</font>
+	  </b>
+	{/if}
+<p>
+
+{if !$Tour.tourID}
+	Произошла ошибка: тур не найден
+{else}
+	{assign var=tourID value=$Tour.tourID}
+	{if $Tours.$tourID}
+
+
+		{if $applyFriend} 
+			{if $type=='apply' && $Tour.tourAllowApply}
+				{include file="apply_form.html" type=apply applyFriend=1}
+			{elseif $type=='WL' && $Tour.tourAllowWL}
+				{include file="apply_form.html" type=WL applyFriend=1}
+			{else}
+				<p>Извините, выбранное вами действие недопустимо</p>
+			{/if}
+		{else}
+			<div class="alert">
+			Вами уже была ранее подана заявка на поход <b>{$Tour.tourTitle}</b>. Все заявки можно просмотреть в разделе <a href="usertours.php">"ваши заявки"</a>.
+			<br>
+			Ecли вы желаете подать еще одну заявку за другого человека <a href="/apply.php?tourID={$Tour.tourID}&applyFriend=1" >нажмите здесь</a>
+			</div>
+		{/if}
+	{else}
+		{if $type=='apply' && $Tour.tourAllowApply}
+			<p class="error"> ЕСЛИ ВЫ ЕДЕТЕ ВДВОЕМ ИЛИ КОМПАНИЕЙ, НЕОБХОДИМО ПОДАТЬ ОТДЕЛЬНО ЗАЯВКУ НА КАЖДОГО ЧЕЛОВЕКА. ОДИН ЧЕЛОВЕК - ОДНА ЗАЯВКА. СПАСИБО!  </p>
+			{include file="apply_form.html" type=apply applyFriend=0}
+		{elseif $type=='WL' && $Tour.tourAllowWL}
+			<p class="error"> ЕСЛИ ВЫ ЕДЕТЕ ВДВОЕМ ИЛИ КОМПАНИЕЙ, НЕОБХОДИМО ПОДАТЬ ОТДЕЛЬНО ЗАЯВКУ НА КАЖДОГО ЧЕЛОВЕКА. ОДИН ЧЕЛОВЕК - ОДНА ЗАЯВКА. СПАСИБО!  </p>
+			{include file="apply_form.html" type=WL applyFriend=0}
+		{else}
+			<p>Извините, выбранное вами действие недопустимо</p>
+		{/if}
+
+
+	{/if}
+
+
+{/if}
+
+</p>
+{/block}

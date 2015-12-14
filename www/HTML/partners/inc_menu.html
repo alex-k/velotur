@@ -1,0 +1,19 @@
+{include file="inc_header.php"}
+<div class="articleCategoryMenu articleCategoryMenuPartner">
+<a href="users.php">Участники</a> |
+{assign var=sY value=$smarty.now|date_format:"%Y"}
+{section name=foo start=$sY loop=$sY+3 step=1}
+<a href="calendar.php?year={$smarty.section.foo.index}">Календарь {$smarty.section.foo.index}</a> |  
+  {/section}
+<span style="float:right; margin-right:10px;">Велотур: интерфейс партнера {$Partner.partnerName} ({$Partner.partnerLogin})
+|&nbsp;<a href="action.php?action=logout">Выход</a>
+</span>
+</div>
+
+{if $message}
+<b><font color=red>
+message:<br> {$message}
+</font></b><br>
+{/if}
+
+
