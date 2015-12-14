@@ -19,6 +19,6 @@ velotur-dc-dev:
   volumes:
     - /var/lib/mysql
 staging:
-  image: velotur/staging
+  image: velotur/www
   ports:
     - "8081:80"
