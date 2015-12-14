@@ -2,12 +2,6 @@
 class module_tours extends gs_base_module implements gs_module  {
 	function __construct() { }
 	function install() {
-		foreach(array(//'tw_user',
-				//'tw_user_images',
-				) as $r){
-			$this->$r=new $r;
-			$this->$r->install();
-		}
 	}
 	
 	static function get_handlers() {
@@ -102,9 +96,7 @@ class tw_tours extends gs_recordset_short{
 
 	function getTourStatus() {
 		if (!isset($this->tour_status)) {
-			$fname=realpath(dirname(__FILE__).'/../../../classes/tour_status.php');
-			include($fname);
-			$this->tour_status=$valuesarray;
+			$this->tour_status=include('classes/tour_status.php');
 		}
 		return $this->tour_status;
 	}
