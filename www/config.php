@@ -2,11 +2,11 @@
 
 $this->use_handler_cache = 0;
 
-/*
 ini_set('error_reporting',E_ALL ^E_NOTICE);
-ini_set('display_errors',0);
+ini_set('display_errors',1);
 ini_set('log_errors',1);
-ini_set('error_log','/home/activeinfo/velotur.ru/bee/var/error.log');
+ini_set('error_log','/var/log/apache2/velotur_error.log');
+/*
 */
 
 ini_set('max_execution_time', 1600);
@@ -86,4 +86,3 @@ setlocale(LC_NUMERIC, 'POSIX');
 
 
 $this->tpl_var_dir='/tmp/velotur/templates_c/';
-
