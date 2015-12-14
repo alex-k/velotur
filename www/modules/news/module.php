@@ -45,6 +45,7 @@ class module_news extends gs_base_module implements gs_module {
 	);
 	return self::add_subdir($data,dirname(__file__));
 	}
+
 }
 
 class handler_news extends gs_base_handler {
