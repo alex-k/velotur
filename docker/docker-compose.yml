@@ -22,3 +22,6 @@ staging:
   image: velotur/www
   ports:
     - "8081:80"
+  environment:
+    - VT_GIT_BRANCH=develop
+    - VT_ENV=staging

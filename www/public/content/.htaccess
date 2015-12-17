@@ -4,13 +4,13 @@ RewriteEngine On
 #RewriteCond %{REQUEST_URI} \.html$
 
 RewriteCond %{REQUEST_URI} \.htm$
-RewriteRule ^(.*)$ index.php
+RewriteRule ^(.*)$ /index.php
 
 RewriteCond %{REQUEST_URI} \.html$
-RewriteRule ^(.*)$ index.php
+RewriteRule ^(.*)$ /index.php
 
 RewriteCond %{REQUEST_URI} \.shtml$
-RewriteRule ^(.*)$ index.php
+RewriteRule ^(.*)$ /index.php
 
 #DirectoryIndex /content/index.php
 DirectoryIndex index.html index.htm index.shtml
