@@ -70,11 +70,11 @@
         <p>Ну, вот и все, что я хотел рассказать вам про велотуры и велопутешествия. </p>
         <p>Как на мой характер, так нет лучше отдыха, чем вело тур. Любой. И дело даже не в велосипеде как таковом, а в некоем сплаве отдыха на велосипеде, осмотра страны так, как ни один автомобилист ее не увидит. Возвращаешься отдохнувший, в форме. И слушаешь как друзья «отдыхали» в режиме "утром на пляж – вечером в ресторан". И еще удивляются, что набирают лишний вес и не чувствуют себя отдохнувшими. Странные люди! </p>
         <p align="left">Смотрите наши велотуры<br>
-          <a href="http://www.velotur.ru/content/kgn/cz_av.htm">велотур по Чехии</a><br>
-          <a href="http://www.velotur.ru/content/kgn/holland.htm">велотур по Голландии</a> <br>
-          <a href="http://www.velotur.ru/content/kgn/france.shtml">велотур по Франции</a><br>
-          <a href="http://www.velotur.ru/content/kgn/mosel.htm">велотур по Германии</a> <br>
-        <a href="http://velotur.ru/content/kgn/israel.htm">велотур по Израилю </a></p>
-        <p align="left">И полный список велопутешествий в <a href="http://velotur.ru/calendar.php">нашем календаре вело туров</a></p>
+          <a href="/content/kgn/cz_av.htm">велотур по Чехии</a><br>
+          <a href="/content/kgn/holland.htm">велотур по Голландии</a> <br>
+          <a href="/content/kgn/france.shtml">велотур по Франции</a><br>
+          <a href="/content/kgn/mosel.htm">велотур по Германии</a> <br>
+        <a href="/content/kgn/israel.htm">велотур по Израилю </a></p>
+        <p align="left">И полный список велопутешествий в <a href="/calendar.php">нашем календаре вело туров</a></p>
       </div>    
 {/block}

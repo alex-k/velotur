@@ -381,7 +381,7 @@ Deviniere), в которой вырос Франсуа Рабле. Сейчас
 участия в веломаршруте смотрите на странице календарь. </strong></font></p>
 
 <font size="2"> </font>
-<p class="style1" align="center"><font size="2"><a href="http://www.velotur.ru/calendar.php" class="style2">ПОДАТЬ
+<p class="style1" align="center"><font size="2"><a href="/calendar.php" class="style2">ПОДАТЬ
 ЗАЯВКУ можно со страницы "Календарь" </a></font></p>
 
 <font size="2"><font size="2"><br>
@@ -389,7 +389,7 @@ Deviniere), в которой вырос Франсуа Рабле. Сейчас
 </font><br>
 
 </font>
-<p style="text-align: justify;"><font size="2"><strong></strong></font><span class="style1"><font size="2"><a href="http://www.velotur.ru/calendar.php" class="style2">&nbsp;</a></font></span><font size="2">{/block}</font></p>
+<p style="text-align: justify;"><font size="2"><strong></strong></font><span class="style1"><font size="2"><a href="/calendar.php" class="style2">&nbsp;</a></font></span><font size="2">{/block}</font></p>
 
 </body>
 </html>

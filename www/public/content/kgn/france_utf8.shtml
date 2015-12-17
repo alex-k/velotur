@@ -77,7 +77,7 @@
       <p><font size="2">По плану похода, мы прибываем в Париж в пятницу, а улетаем на следующий день, в субботу. Если кто хочет задержаться в Париже на денек-другой, на недельку-другую, дайте нам знать. Мы сможем забронировать вам отель, и билет на нужное число. </font></p>
       <p><font size="2"><font class=bold><strong>День 13. Отлет, или &quot;продолжение банкета&quot;, кто что выбрал. </strong></font></font></p>
       <p align="center"><strong>Стоимость участия в веломаршруте  на 13-дневный маршрут - 1290 евро. </strong></p>
-      <p align="center" class="style1"><a href="http://www.velotur.ru/calendar.php" class="style2">ПОДАТЬ ЗАЯВКУ можно со страницы &quot;Календарь&quot; </a></p>
+      <p align="center" class="style1"><a href="/calendar.php" class="style2">ПОДАТЬ ЗАЯВКУ можно со страницы &quot;Календарь&quot; </a></p>
       <p><strong><font size="2">В эту сумму входит: </font></strong></p>
       <font size="2">Организация и проведение велотура<br> 
       Встреча в аэропорту, трансфер <br>
@@ -95,6 +95,6 @@
        Вечернее питание. По вечерам можно будет либо отправиться в какое-нибудь приятное место, или приготовить свой ужин (совместно или самостоятельно). <br>
       Дневное питание в Париже.<br>
       Экскурсии по ходу веломаршрута и входная плата в музеи и т.п.</font>
-      <p align="center"><span class="style1"><a href="http://www.velotur.ru/calendar.php" class="style2">ПОДАТЬ ЗАЯВКУ можно со страницы &quot;Календарь&quot; </a><a href="http://www.velotur.ru/apply.php?tourID=25&type=apply" class="style2"></a></span>
+      <p align="center"><span class="style1"><a href="/calendar.php" class="style2">ПОДАТЬ ЗАЯВКУ можно со страницы &quot;Календарь&quot; </a><a href="/apply.php?tourID=25&type=apply" class="style2"></a></span>
 	  
 	  {/block}

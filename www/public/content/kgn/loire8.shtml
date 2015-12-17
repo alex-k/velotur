@@ -25,10 +25,10 @@
 </div>
 <p>&nbsp;</p>
 <div id="comfort4euro">
-<a href="http://velotur.ru/p.php?t=comfort"></a>
+<a href="/p.php?t=comfort"></a>
 </div>
 <div id="level2simple">
-<a href="http://velotur.ru/content/comfort.html#complexity"></a>
+<a href="/content/comfort.html#complexity"></a>
 </div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -150,7 +150,7 @@
 <div class="attn">
 <h3 align="center">Стоимость участия в веломаршруте  смотрите на странице календарь. </h3>
 
-<p class="style1" align="center"><a rel="sibling" href="http://www.velotur.ru/calendar.php" class="style2">ПОДАТЬ ЗАЯВКУ можно со страницы "Календарь" </a></p>
+<p class="style1" align="center"><a rel="sibling" href="/calendar.php" class="style2">ПОДАТЬ ЗАЯВКУ можно со страницы "Календарь" </a></p>
 
 <h3>В эту сумму входит:</h3>
 
@@ -178,7 +178,7 @@
     какое-нибудь приятное место. </li>
   <li> Входная плата в музеи</li></ul></div>
 
-<p align="center"><span class="style1"><a href="http://www.velotur.ru/calendar.php" class="style2">ПОДАТЬ ЗАЯВКУ можно со страницы "Календарь" </a></span>
+<p align="center"><span class="style1"><a href="/calendar.php" class="style2">ПОДАТЬ ЗАЯВКУ можно со страницы "Календарь" </a></span>
 	  
 	  {/block}</p>
 
