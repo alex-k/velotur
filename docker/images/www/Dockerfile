@@ -4,8 +4,8 @@ MAINTAINER Alex Kochetov <alex@kochetov.com>
 ADD ./configs/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 ADD ./configs/etc/php5/apache2/php.ini /etc/php5/apache2/php.ini
 
-ADD ../../../www /var/www/testfiles
-ADD ../../../mysql/mysql_data.sql /tmp/mysql_data.sql
+#ADD ../../../www /var/www/testfiles
+#ADD ../../../mysql/mysql_data.sql /tmp/mysql_data.sql
 
 RUN apt-get update && apt-get -y install git vim curl 
 RUN a2enmod rewrite
