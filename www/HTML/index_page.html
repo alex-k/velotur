@@ -59,30 +59,29 @@
 			Полезная информация для тех,<br> кто собрался в велопутешествие
 			</p>
 			<ul>
-				<li><a {if $tplname=='equipment.shtml'}class="on"{/if} href="/content/equipment.shtml">o снаряжении</a></li>
-				<li><a {if $tplname=='training.shtml'}class="on"{/if} href="/content/training.shtml">о подготовке</a></li>
-				<li><a {if $tplname=='bikes.shtml'}class="on"{/if} href="/content/bikes.shtml">о велосипедах</a></li>
-				<li><a {if $tplname=='med.shtml'}class="on"{/if} href="/content/med.shtml">о медицине</a></li>
-				<li><a {if $tplname=='meal.shtml'}class="on"{/if} href="/content/meal.shtml">о питании</a></li>
-                <li><a {if $tplname=='comfort.html'}class="on"{/if} 
-                href="http://velotur.ru/p.php?t=comfort">о комфорте</a></li>
-                <li><a {if $tplname=='comfort.html'}class="on"{/if} href="/content/comfort.html#complexity">о сложности</a></li>
-				<li><a {if $tplname=='linki.shtml'}class="on"{/if} href="/content/linki.htm">Линки</a></li>
-				<li><a {if $tplname=='biketrans.html'}class="on"{/if} href="/content/biketrans.html">о перевозке велосипедов</a></li>
+				<li><a {if $tplname=='equipment.shtml'}class="on"{/if} href="/content/equipment.shtml">О снаряжении</a></li>
+				<li><a {if $tplname=='training.shtml'}class="on"{/if} href="/content/training.shtml">О подготовке</a></li>
+				<li><a {if $tplname=='med.shtml'}class="on"{/if} href="/content/med.shtml">О медицине</a></li>
+				<li><a {if $tplname=='meal.shtml'}class="on"{/if} href="/content/meal.shtml">О питании</a></li>
+				<li><a {if $tplname=='comfort.html'}class="on"{/if} href="http://velotur.ru/p.php?t=comfort">О комфорте</a></li>
+				<li><a {if $tplname=='comfort.html'}class="on"{/if} href="/content/comfort.html#complexity">О сложности</a></li>
+				<li><a {if $tplname=='bikes.shtml'}class="on"{/if} href="/content/bikes.shtml">О велосипедах</a></li>
+				<li><a {if $tplname=='biketrans.html'}class="on"{/if} href="/content/biketrans.html">О перевозке велосипедов</a></li>
+				<li><a {if $tplname=='velotours.shtml'}class="on"{/if} href="/content/velotours.shtml">О велотурах вообще</a></li>
 				<li><a {if $tplname=='faq.shtml'}class="on"{/if} href="/content/faq.shtml">FAQ</a></li>
-				<li><a {if $tplname=='velotours.shtml'}class="on"{/if} href="/content/velotours.shtml">о велотурах вообще</a></li>
-				<li><a {if $tplname=='rules.shtml'}class="on"{/if} href="/content/rules.shtml">походные правила</a></li>
-				<li><a {if $tplname=='guides'}class="on"{/if} href="/guides/">наши гиды</a></li>
-				<li><a {if $tplname=='trips'}class="on"{/if} href="/trips/">все маршруты</a></li>
-				<li><a {if $tplname=='reports'}class="on"{/if} href="/reports/">галереи и отчеты</a></li>
+				<li><a {if $tplname=='linki.shtml'}class="on"{/if} href="/content/linki.htm">Полезные ссылки</a></li>
+				<li><a {if $tplname=='rules.shtml'}class="on"{/if} href="/content/rules.shtml">Походные правила</a></li>
+				<li><a {if $tplname=='guides'}class="on"{/if} href="/guides/">Наши гиды</a></li>
+				<li><a {if $tplname=='trips'}class="on"{/if} href="/trips/">Все маршруты</a></li>
+				<li><a {if $tplname=='reports'}class="on"{/if} href="/reports/">Галереи и отчеты</a></li>
 			</ul>
 			{controller _class=tw_news hot=1 _assign=hot_news _orderby="id desc"}
 			{if $hot_news->count()}
 			<div class="hot_news">
-			<h5><a href="/news/">Горячие новости</a></h5>
+			<h5><a href="/news/">Новости</a></h5>
 			<ul>
 				{foreach from=$hot_news item=n}
-				<li><a href="/news/{$n.id}">{if $n.Images->count()}<img src="/img/s/tw_news_images/c/50/50/{$n.Images->first()->get_id()}">{else}<img src="/i/news.gif">{/if}</a>{$n.date|date_format:"d.m.Y"}<br><a href="/news/{$n.id}">{$n.subject}</a>
+				<li><a href="/news/{$n.id}">{if $n.Images->count()}<img src="/img/s/tw_news_images/c/50/50/{$n.Images->first()->get_id()}">{else}<img src="/i/news.gif">{/if}</a><a href="/news/{$n.id}">{$n.subject}</a>
 				</li>
 				{if !$n@last}<hr>{/if}
 				{/foreach}
@@ -122,7 +121,7 @@
 					{for $y=$cal_date_start to $cal_date_end}
 					<li {if $tplname=="calendar.php?year=$y" || $_gsdata.year==$y}class="on"{/if}><a href="/calendar.php?year={$y}">Календарь {$y}</a></li>
 					{/for}
-					<li {if $tplname=='reports'}class="on"{/if} ><a href="/reports">отчеты и фото</a></li>
+					<li {if $tplname=='reports'}class="on"{/if} ><a href="/reports">Отчеты и фото</a></li>
 					<li {if $tplname=='development2.shtml'}class="on"{/if} ><a href="/content/development2.shtml">Велотуры на заказ</a></li>
 					<li {if $tplname=='groups.shtml'}class="on"{/if} ><a href="/content/groups.shtml">Велотуры для групп</a></li>
 					<li {if $tplname=='development.shtml'}class="on"{/if} ><a href="/content/development.shtml">Турфирмам</a></li>
