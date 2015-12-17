@@ -11,6 +11,10 @@ img {
 	border:0px;
 }
 
+a {
+	color: #0000cc;
+}
+
 .center {
 	width:998px;
 	margin:auto;
@@ -207,6 +211,7 @@ img {
 	height:15px;
 	padding:0px;
 	list-style:none;
+	margin-bottom:3px;
 }
 
 .r2 li a {
@@ -250,12 +255,12 @@ img {
 	line-height:25px;
 	font-family:tahoma;
 	color:#FFFFFF;
-	text-transform:uppercase;
 	font-weight:normal;
 	background:url('/i/bg_news.gif') 0 0 repeat-x;
 }
 .hot_news h5 a {
 	color:#FFFFFF;
+	text-decoration: none;
 }
 
 .hot_news_link div {
@@ -365,11 +370,9 @@ div .news_list{
 	padding-left:15px;
 	margin-bottom:7px;
 	font-family:tahoma;
-	font-size:11px;
-	font-weight:bold;
+	font-size:12px;
 	line-height:34px;
 	color:#FFFFFF;
-	text-transform:uppercase;
 	background:url('/i/bg_li.png') 0 0 no-repeat;
 }
 
@@ -393,38 +396,32 @@ div .news_list{
 	position:relative;
 }
 
-.head ul {
-	display:block;
-	float:left;
-	padding:0px;
-	margin:0px;
-	margin-left:220px;
-	margin-top:15px;
-	list-style:none;
+.head_calendar {
+	text-align:right;
+}
+.head_calendar ul {
+	display: block;
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
 }
 
-.head ul li {
-	display:block;
-	width:148px;
-	height:31px;
-	line-height:30px;
+.head_calendar ul li {
+	display:inline;
 	text-align:center;
 	font-size:12px;
 	font-weight:bold;
 	font-family:tahoma;
-	padding-bottom:5px;
-	background:url('/i/bg_hbt.jpg') 0 0 no-repeat;
+	padding-right:30px;
 }
 
-.head ul li a {
+.head_calendar ul li a {
 	color:#FFFFFF;
-	text-transform:uppercase;
 	text-decoration:none;
 }
 
-.head ul li a.current {
+.head_calendar ul li a.current {
 	color:#fac301;
-	text-transform:uppercase;
 	text-decoration:none;
 }
 
@@ -452,7 +449,6 @@ div .news_list{
 	font-size:26px;
 	font-family:tahoma;
 	color:#fac301;
-	text-transform:uppercase;
 	margin:0px;
 	padding:0px;
 	padding-bottom:10px;
@@ -741,6 +737,11 @@ div .news_list{
 	text-transform:uppercase;
 	line-height:30px;
 	padding-right:20px;
+}
+
+.title a {
+	text-decoration: none;
+	color: #01407c;
 }
 
 .clear {

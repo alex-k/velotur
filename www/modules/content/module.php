@@ -1,14 +1,6 @@
 <?php
 class module_content extends gs_base_module implements gs_module
 {
-    function __construct()
-    {
-    }
-
-    function install()
-    {
-    }
-
     static function get_handlers()
     {
         $data = array(
@@ -24,9 +16,11 @@ class module_content extends gs_base_module implements gs_module
 class handler_content extends gs_base_handler
 {
     function content($ret) {
+
+
         $tpl=gs_tpl::get_instance();
         $tpl->addTemplateDir(cfg('document_root').DIRECTORY_SEPARATOR.'content');
-        $this->params['name']=$this->data['gspgid_va'][0];
+        $this->params['name']=$this->data['gspgid_v'];
         return $this->show($ret);
     }
 }
