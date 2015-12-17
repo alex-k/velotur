@@ -73,7 +73,7 @@
 				{foreach from=$Tours item=t}
 				{assign var=diff value=$t.tourDifficulty}{assign var=comf value=$t.tourComfort}
 				<tr><td class="tbf" colspan=5>
-				<h2><a href="{$t.tourDescriptionURL}">{$t.tourTitle}</a></h2>
+				<h2><a href="{$t.tourDescriptionURL|parse_url:5}">{$t.tourTitle}</a></h2>
 				</td></tr>
 				<tr>
 					<td>{$t.tourStartDate|date_format:"%d %b %Y"}<br>
