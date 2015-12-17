@@ -390,39 +390,66 @@ div .news_list{
 }
 
 .head {
-	background:url('/i/head.jpg') 0 0 no-repeat;
+	background:url('/i/head.jpg') 0 0 repeat-y;
 	width:766px;
-	height:100px;
+	min-height:100px;
 	position:relative;
+	vertical-align: top;
+}
+
+
+.head-left {
+	text-align: left;
+	width: 231px;
+	display: inline-block;
+}
+
+.head-right {
+	text-align: right;
+	width: 500px;
+	display: inline-block;
 }
 
 .head_calendar {
-	text-align:right;
 }
 .head_calendar ul {
 	display: block;
 	padding: 0px;
 	margin: 0px;
 	list-style: none;
+	padding-bottom: 5px;
 }
 
 .head_calendar ul li {
 	display:inline;
 	text-align:center;
-	font-size:12px;
-	font-weight:bold;
+	font-size:13px;
 	font-family:tahoma;
-	padding-right:30px;
+	padding-left:30px;
 }
 
 .head_calendar ul li a {
 	color:#FFFFFF;
-	text-decoration:none;
 }
 
 .head_calendar ul li a.current {
 	color:#fac301;
 	text-decoration:none;
+}
+
+.tour_name {
+	font-size:16px;
+	font-weight:bold;
+	font-family:tahoma;
+	color:#ffffff;
+}
+
+.tour_name h1 {
+	font-size:26px;
+	font-family:tahoma;
+	color:#fac301;
+	margin:0px;
+	padding-bottom:10px;
 }
 
 .tour_route {
@@ -432,27 +459,6 @@ div .news_list{
 	width:300px;
 	padding:20px;
 	color:#0e3170;
-}
-
-.tour_name {
-	float:right;
-	padding-right:30px;
-	padding-top:15px;
-	font-size:16px;
-	font-weight:bold;
-	font-family:tahoma;
-	color:#ffffff;
-	text-align:right;
-}
-
-.tour_name h1 {
-	font-size:26px;
-	font-family:tahoma;
-	color:#fac301;
-	margin:0px;
-	padding:0px;
-	padding-bottom:10px;
-	text-align:right;
 }
 
 .head2 {
