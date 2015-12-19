@@ -19,9 +19,12 @@ RUN a2enmod rewrite
 
 #ENTRYPOINT "/tmp/run_db.sh"
 
-ADD init_db.sh /init_db.sh
+#ADD init_db.sh /init_db.sh
+ADD build.sh /build.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
+
+RUN /build.sh
 
 EXPOSE 80 3306
 
