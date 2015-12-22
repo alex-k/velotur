@@ -1,4 +1,4 @@
-velotur-www-dev:
+www_dev:
   image: velotur/lamp
   ports:
     - "8080:80"
@@ -7,17 +7,23 @@ velotur-www-dev:
     - ../www:/var/www/velotur.ru/www
 #    - ../var/lib/mysql:/var/lib/mysql
   volumes_from: 
-    - velotur-dc-dev
+    - dc_dev
   environment:
     - VT_ENV=develop
     - VT_MYSQL_HOST=localhost
     - VT_MYSQL_DB=activeinvo_newvt
     - VT_MYSQL_USER=velotur
     - VT_MYSQL_PASS=vt123
-velotur-dc-dev:
+dc_dev:
   image: tutum/ubuntu
   volumes:
     - /var/lib/mysql
+mysql:
+  image: tutum/mysql
+  ports:
+    - "3306"
+  volumes:
+    - ../mysql:/mysql
 staging:
   image: alexk7898/velotur
   ports:
@@ -25,3 +31,5 @@ staging:
   environment:
     - VT_GIT_BRANCH=develop
     - VT_ENV=staging
+  links:
+    - mysql
