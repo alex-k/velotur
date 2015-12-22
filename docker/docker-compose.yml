@@ -27,9 +27,9 @@ mysql:
 staging:
   image: alexk7898/velotur
   ports:
-    - "8081:80"
+    - "80:80"
   environment:
-    - VT_GIT_BRANCH=develop
+    - VT_BRANCH=develop
     - VT_ENV=staging
   links:
     - mysql
