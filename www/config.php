@@ -24,7 +24,7 @@ $this->admin_ip_access = isset($this->admin_ip_access) ? array_map('trim', explo
 $this->gs_connectors = array(
     'mysql' => array(
         'db_type' => 'mysql',
-        'db_hostname' => '127.0.0.1',
+        'db_hostname' => 'mysql',
         'db_port' => '3306',
         'db_username' => 'activeinfo_newvt',
         'db_password' => 'vt123',
@@ -33,7 +33,7 @@ $this->gs_connectors = array(
     ),
     'wizard' => array(
         'db_type' => 'mysql',
-        'db_hostname' => '127.0.0.1',
+        'db_hostname' => 'mysql',
         'db_port' => '3306',
         'db_username' => 'activeinfo_newvt',
         'db_password' => 'vt123',
