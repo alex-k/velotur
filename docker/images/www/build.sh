@@ -10,3 +10,7 @@ git clone https://github.com/alex-k/velotur.git --depth 1 --branch develop --sin
 
 echo "=> Downloading composer ..."
 cd $VOLUME_WWW/www && php -r "readfile('https://getcomposer.org/installer');" | php
+
+echo "=> Runing composer install ..."
+cd $VOLUME_WWW/www && php composer.phar install
+

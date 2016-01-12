@@ -2,8 +2,8 @@
 
 VOLUME_WWW="/var/www/velotur.ru"
 
-echo "=> Runing composer install ..."
-cd $VOLUME_WWW/www && php composer.phar install
+#echo "=> Runing composer install ..."
+#cd $VOLUME_WWW/www && php composer.phar install
 
 source /etc/apache2/envvars
 tail -F /var/log/apache2/* &
