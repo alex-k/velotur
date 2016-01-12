@@ -85,4 +85,5 @@ $this->widget_MultiPowUpload_license = '0082363244411622171231821492549129187161
 setlocale(LC_NUMERIC, 'POSIX');
 
 
-$this->tpl_var_dir='/tmp/velotur/templates_c/';
+$this->tpl_data_dir = $this->root_dir . 'HTML';
+$this->tpl_var_dir = '/tmp/velotur/templates_c/templates_c' . DIRECTORY_SEPARATOR . basename($this->tpl_data_dir);
