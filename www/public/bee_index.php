@@ -37,8 +37,9 @@ if(isset($_SESSION['user'])) {
 }
 
 $tpl=gs_tpl::get_instance();
-$tpl->addTemplateDir(realpath(getcwd().'/html/'));
-
+$tplDir = realpath(getcwd() . '/html/').'/';
+$tpl->addTemplateDir($tplDir);
+cfg_set('tpl_data_dir',$tplDir);
 
 $o_h=new gs_parser($init->data);
 $o_h->process();
