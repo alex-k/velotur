@@ -15,7 +15,7 @@ gs_eventer::clean_subscribes();
 $init->clear_cache();
 $init->compile_modules();
 $init->load_modules();
-//$init->install_modules();
+# $init->install_modules();
 $init->save_handlers();
 gs_fkey::update_fkeys();
 

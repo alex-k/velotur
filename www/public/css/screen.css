@@ -307,9 +307,26 @@ a {
 	left:0px;
 }
 
-div .news_list{
+.news_list {
 	padding:10px;
+	list-style-type: none;
 }
+
+.news_list span {
+	font-weight: bold;
+}
+
+.news_list a {
+	color:#000000;
+	font-size:14px;
+}
+
+.news_list img {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
 
 .left {
 	width:766px;

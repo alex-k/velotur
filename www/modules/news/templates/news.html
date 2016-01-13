@@ -5,11 +5,17 @@
 {block name="page_center"}
 {controller _class=tw_news _assign=news _paging="pagenums:20" _orderby="id desc"}
 {foreach from=$news item=n}
-<div class="news_list">
-{$n.date|date_format:"%d/%m/%Y"}<br>
-<a href="/news/{$n.id}">{$n.subject}</a><br>
-{foreach from=$n.Images item=i}<a href="/news/{$n.id}">{$i}</a> {/foreach}
-</div>
+<ul class="news_list">
+    <li>
+        <span> <a href="/news/{$n.id}">{$n.subject}</a> </span>
+        <p>
+            <data value="{$n.date|date_format:" %d /%m/%Y"}">{$n.date|date_format:"%d/%m/%Y"}</data>
+            </p><p>
+            {$n.text}
+            </p>
+        {foreach from=$n.Images item=i}<a href="/news/{$n.id}">{$i}</a> {/foreach}
+    </li>
+</ul>
 {/foreach}
 <div class="pages">Страницы: {$news_paging}</div>
 {/block}
