@@ -1,5 +1,5 @@
 <?
-require_once "../config/init.php";
+require_once __DIR__."/../config/init.php";
 $classname=$_POST[_classname];
 $action=$_POST[_action];
 $backurl=$_POST[_backurl];
@@ -36,4 +36,3 @@ if (!$_NOREDIR) {
 	header("Location: $href");
 	exit();
 }
-?>

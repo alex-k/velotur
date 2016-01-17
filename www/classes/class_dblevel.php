@@ -325,7 +325,7 @@ class DbMysqlLayer {
 			$where.=sprintf(" %s like '%%%s%%' $type",  mysql_real_escape_string($field),mysql_real_escape_string($value));
 			break;
                     default:
-                        if ($mvalue[type]=='field') {
+                        if (is_array($mvalue) && $mvalue['type']=='field') {
                             $where.=sprintf(" %s %s %s $type", mysql_real_escape_string($field),$eq,mysql_real_escape_string($value));
                         } else {
                             $where.=sprintf(" %s %s '%s' $type", mysql_real_escape_string($field),$eq,mysql_real_escape_string($value));

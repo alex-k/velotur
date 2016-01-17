@@ -1,6 +1,6 @@
 <?
-require_once "../../config/init.php";
-require_once "auth.php";
+require_once __DIR__."/../../config/init.php";
+require_once __DIR__."/auth.php";
 $classname=$_POST[_classname];
 $action=$_POST[_action];
 $backurl=$_POST[_backurl];
