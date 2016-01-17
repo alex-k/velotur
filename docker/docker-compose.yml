@@ -1,13 +1,16 @@
+nginx:
+  image: alexk7898/velotur_nginx
+  ports:
+    - "80:80"
+  links:
+    - www_test:test
+    - staging:staging
 www_dev:
-  #image: velotur/lamp
-  #image: tutum/apache-php
   image: alexk7898/velotur
   ports:
     - "8080:80"
   volumes:
     - ../www:/var/www/velotur.ru/www
-#    - ../mysql:/tmp/mysql
-#    - ../var/lib/mysql:/var/lib/mysql
   links:
     - mysql_dev:mysql
   environment:
@@ -35,3 +38,16 @@ staging:
     - VT_ENV=staging
   links:
     - mysql_staging:mysql
+mysql_test:
+  image: tutum/mysql
+  ports:
+    - "3306"
+www_test:
+  image: alexk7898/velotur_www_test
+  ports:
+    - "8082:80"
+  environment:
+    - VT_BRANCH=develop
+    - VT_ENV=test
+  links:
+    - mysql_test:mysql
