@@ -16,7 +16,7 @@ www_dev:
     - VT_BRANCH=develop
     - VT_ENV=develop
 mysql_dev:
-  image: velotur/mysql
+  image: tutum/mysql
   ports:
     - "3306"
   volumes:
@@ -38,7 +38,7 @@ www_staging:
   links:
     - mysql_staging:mysql
 mysql_test:
-  image: velotur/mysql
+  image: tutum/mysql
   ports:
     - "3306"
 www_test:
