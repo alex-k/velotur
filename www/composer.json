@@ -23,6 +23,7 @@
       "php scripts/install.php",
       "mkdir log logs",	
       "chmod -R a+w var log logs public/files",
+      "chmod -R www-data var log logs public/files",
       "chmod -R a+w /tmp/velotur"
     ]
   }
