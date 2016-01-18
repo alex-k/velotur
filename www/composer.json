@@ -16,7 +16,8 @@
     }
   ],
   "require": {
-    "phpbee/phpbee": "dev-develop"
+    "phpbee/phpbee": "dev-develop",
+    "codeception/codeception": "*"
   },
   "scripts": {
     "post-install-cmd": [
