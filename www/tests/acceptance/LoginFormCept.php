@@ -1,6 +1,6 @@
 <?php
 $I = new AcceptanceTester($scenario);
-$I->wantTo('Trying to login with incorrect data');
+$I->wantTo('Avoid to login with incorrect data');
 
 
 $I->amOnPage('/apply.php?tourID=310');
@@ -12,15 +12,12 @@ $I->seeElement('#formLogin #formLoginSubmit');
 $I->fillField('#formLoginEmail','alex@kochetov.com');
 $I->fillField('#formLoginPassword','wrongpassword');
 $I->click('#formLoginSubmit');
-
 $I->canSee('неверный email или пароль');
 
-
-
-$I->checkOption('#formLoginNewUser');
 $I->fillField('#formLoginEmail','alex@kochetov.com');
 $I->fillField('#formLoginPassword','wrongpassword');
-
+$I->checkOption('#formLoginNewUser');
 $I->click('#formLoginSubmit');
 $I->canSee('данный e-mail уже зарегистрирован');
+
 
