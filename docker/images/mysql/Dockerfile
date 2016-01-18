@@ -3,15 +3,15 @@ MAINTAINER Alex Kochetov <alex@kochetov.com>
 
 RUN apt-get update && apt-get -y install git vim
 
-#ADD build.sh /build.sh
-#ADD mysql /tmp/velotur/mysql
-#RUN chmod 755 /*.sh
-
 RUN date > build.log
 ARG VT_BRANCH
 RUN echo $VT_BRANCH >> build.log
 
-RUN /build.sh $VT_BRANCH
+#ADD build.sh /build.sh
+#ADD mysql /tmp/velotur/mysql
+#RUN chmod 755 /*.sh
+
+#RUN /build.sh $VT_BRANCH
 
 EXPOSE 3306
 CMD ["/run.sh"]
