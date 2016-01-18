@@ -1,1 +1,9 @@
 var
+www/tests/_support/_generated
+www/tests/_output
+activeinfo_newvt.sql
+bee
+www/scripts/files
+www/vendor
+install.log
+php_errors.log
