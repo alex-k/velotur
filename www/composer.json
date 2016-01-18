@@ -22,7 +22,7 @@
     "post-install-cmd": [
       "php scripts/install.php",
       "mkdir log logs",	
-      "chmod -R a+w var log logs",
+      "chmod -R a+w var log logs public/files",
       "chmod -R a+w /tmp/velotur"
     ]
   }
