@@ -1,6 +1,6 @@
 <?php
 $I = new AcceptanceTester($scenario);
-$I->wantTo('Apply on the WL for tour 310');
+$I->wantTo('Trying to login with incorrect data');
 
 
 $I->amOnPage('/apply.php?tourID=310');
