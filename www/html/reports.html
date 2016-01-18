@@ -19,6 +19,22 @@
 				{controller _assign=Trips _class=tw_trip}
 			{/if}
 
+			{foreach $Trips as $t}
+			{if $t->Reports->count()>0}
+
+
+			<tr>
+				<td class="tbleft">
+					<h2>
+						<a href="#{$t.tripID}"> {$t.tripTitle} </a>
+					</h2>
+				</td>
+			</tr>
+			{/if}
+
+			{/foreach}
+
+
 
 			{foreach $Trips as $t} 
 			{if $t->Reports->count()>0}
@@ -26,6 +42,7 @@
 			
 	<tr>
 	<td class="tbleft">
+		<a name="{$t.tripID}"/>
 		<h2>
 			<a href="{$t.tripDescriptionURL}"> {$t.tripTitle} </a>
 		</h2>
