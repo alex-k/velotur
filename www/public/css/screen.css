@@ -787,6 +787,10 @@ a {
 	text-align: center;
 	font-size:11px;
 }
+.footer .version {
+	text-align: right;
+	color: #85acc7;
+}
 .footer a {
 	color: #FFFFFF;
 }

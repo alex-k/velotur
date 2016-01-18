@@ -104,7 +104,7 @@
 		</h5>
 	</div>
 	</a>
-	
+
 	<div class="left">
 		<div class="data">
 			<a class="logo" href="/"><img src="/i/logo.gif" alt=""></a>
@@ -130,29 +130,32 @@
 				</ul>
 			</div>
 			{block name="page_center"}
-				{handler gspgid="/newcalendar"}	
+				{handler gspgid="/newcalendar"}
 			{/block}
 		</div>
 	</div>
 	{/block}
 	<div class="clear"></div>
-<div class="footer"> 
+<div class="footer">
 	<div>
-		{include file="inc_buttons.html"}	
+		{include file="inc_buttons.html"}
 	</div>
 	<p>
 	&copy; <a href="/">velotur.ru</a> {$smarty.now|date_format:"Y"}
 	</p>
 	<p><a href="http://www.phpbee.org/">Создание и поддержка сайта: www.phpbee.org</a></p>
 	<noindex>
-	<p>
-</p>
-	<p><a href="http://www.pitermag.ru/">Туристические палатки </a></p>
+		<p>Дизайн - студия «АВЕНЮ-АРТ» <a href="http://www.avenue-art.ru" rel="nofollow">www.avenue-art.ru</a></p>
+		<p><a href="http://www.pitermag.ru/">Туристические палатки </a></p>
 	</noindex>
+
+<div class="version">
+	{include file="/app/build.log"}
+</div>
 </div>
 
 {if  isset($_gsdata.D)}
-<div class="footer" style="text-align:left;"> 
+<div class="footer" style="text-align:left;">
 <pre>
 {handler gspgid="/debug"}
 </pre>
