@@ -1,0 +1,4 @@
+modules:
+    config:
+        PhpBrowser:
+            url: http://local.velotur.ru:8080
