@@ -4,7 +4,6 @@ nginx:
     - "80:80"
   links:
     - www_test:test
-    - www_staging:staging
 www_dev:
   image: velotur/www
   ports:
