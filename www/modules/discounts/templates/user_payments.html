@@ -1,7 +1,0 @@
-{controller _class=tw_tours tourID=$_gsdata.gspgid_va.0 _assign=t _assign_type=first _fields="tourTitle,tourPrice1,tourPriceTitle1"}
-{controller _class=tw_payments Hidden=0 tourID=$_gsdata.gspgid_va.0 userID=$_gsdata.gspgid_va.1 _assign=payments}
-{foreach from=$payments item=p}
-<li>
-{$p.Amount} {$p.Title} {$p.Note}
-</li>
-{/foreach}

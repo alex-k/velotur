@@ -7,3 +7,5 @@ www/scripts/files
 www/vendor
 install.log
 php_errors.log
+www/app/vendor
+build.log

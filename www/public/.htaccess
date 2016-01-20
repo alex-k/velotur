@@ -1,8 +1,0 @@
-DirectoryIndex index.php bee_index.php
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /bee_index.php
-#RewriteRule ^(.*)$ /index.php
-
-Allow from all

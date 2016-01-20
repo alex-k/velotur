@@ -1,0 +1,40 @@
+nginx:
+  image: velotur/nginx:master
+  ports:
+    - "80:80"
+  links:
+    - www_test:test
+
+www_dev:
+  image: velotur/www
+  ports:
+    - "80:80"
+  volumes:
+    - ./www/app:/app
+  links:
+    - mysql_dev:mysql
+  environment:
+    - VT_BRANCH=develop
+    - VT_ENV=develop
+mysql_dev:
+  image: tutum/mysql
+  ports:
+    - "3306:3306"
+  volumes:
+    - /var/lib/mysql
+    - ./mysql:/mysql
+
+www_test:
+  image: velotur/www
+  ports:
+    - "8082:80"
+  environment:
+    - VT_ENV=test
+  links:
+    - mysql_test:mysql
+mysql_test:
+  image: tutum/mysql
+  ports:
+    - "3306"
+  volumes:
+    - ./mysql:/mysql

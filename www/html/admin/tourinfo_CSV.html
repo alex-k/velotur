@@ -1,8 +1,0 @@
-#; ФИО; Дата рождения; город; номер паспорта; выдан; годен до; предоплата; комментарии; код вводящего
-
-{foreach from=$Users item=u key=k}
-{if $u.tourUserType=='apply' || $u.guideID}
-{assign var=i value=$i+1}
-{$i}; {$u.userLatinName|replace:';':' '}; {$u.userBirthDay|replace:';':' '}; {$u.userCity|replace:';':' '}; {$u.userPassport|replace:';':' '}; {$u.userPassportIssuedBy|replace:';':' '} {$u.userPassportIssuedDate|replace:';':' '}; {$u.userPassportValidThrow|replace:';':' '}; {$u.tourUserCommentsPrepay|replace:';':' '}; {$u.tourUserComments|replace:';':' '}; {$u.tourUserCommentsRegVia|replace:';':' '} 
-{/if}
-{/foreach}

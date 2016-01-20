@@ -1,8 +1,0 @@
-{include file="inc_menu.html"}
-
-<h3>Все года</h3>
-<ul>
-{foreach from=$years.year item=year}
-<li><a href="calendar.php?year={$year}">Календарь {$year}</a> (<a href="calendar.php?year={$year}&tourStatus=hidden">архив</a>)</li>
-{/foreach}
-</ul>
