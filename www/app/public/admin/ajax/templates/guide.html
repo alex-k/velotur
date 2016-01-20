@@ -1,0 +1,45 @@
+{include file="inc_menu.html"}
+
+
+<script>
+{php}
+//$xajax->printJavascript(); 
+{/php}
+</script>
+
+
+
+<p>
+Гиды - редактирование
+</p>
+
+
+<table width=700 class=main>
+<th class=ttitle>ID</th>
+<th class=ttitle>Имя</th>
+<th class=ttitle>Email</th>
+<th class=ttitle>Телефон</th>
+
+{foreach from=$Guides item=g}
+{assign var=el value="guideInfo_`$g.guideID`"}
+<tr class=tbody>
+<td>{$g.guideID}</td>
+<td width=400><a href="" onCLick="return xajax_showInfo('Guides',{$g.guideID},'{$el}');"><span id='{$el}_guideName'>{$g.guideName}</span></a>
+<div cols=100 rows=40 class=info id={$el}_infoPanel style="display: none;"></div>
+</td>
+<td><span  id='{$el}_guideEmail1'>{$g.guideEmail1}</span></td>
+<td><span  id='{$el}_guidePhone'>{$g.guidePhone}</span></td>
+
+</tr>
+{/foreach}
+
+</table>
+<div id=guideAdd>
+<a href="" onCLick="return xajax_editInfo('Guides',0,'guideAdd','actionAdd');">Добавить</a>
+<div class=info id=guideAdd_infoPanel style="display: none;"></div>
+
+</div>
+
+<p id=test></p>
+
+

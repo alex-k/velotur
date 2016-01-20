@@ -1,0 +1,92 @@
+	<form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+	<input type=hidden name="gspgid_form" value="{$gspgid_form}">
+	<input type=hidden name="form_id" value="form_login">
+
+
+		{include file="form_error_messages.html"}
+
+
+			{$form->set_option('frame_no','widget','input')}
+					{$form->set_option('size','widget','input')}
+					{$form->set_option('year','widget','number')}
+					{$form->set_option('info','widget','text')}
+					{$form->set_option('Set_id','widget','parent_list')}
+					{$form->set_option('Model_id','widget','parent_list')}
+				
+			{$form->set_option('frame_no','placeholder','frame_no')}
+			{$form->set_option('size','placeholder','size')}
+			{$form->set_option('year','placeholder','year')}
+			{$form->set_option('info','placeholder','info')}
+			{$form->set_option('Set_id','placeholder','Set')}
+			{$form->set_option('Model_id','placeholder','Model')}
+	
+		{$form->set_error_template('<span class="label label-warning">%s</span>')}
+
+
+		{*$form->set_option_allfields('cssclass','span7')*}
+
+
+		{$form->_prepare_inputs()}
+
+	{$form->print_error('FORM_ERROR')}
+
+		    <div class="control-group">
+		    <label class="control-label" for="Model_id">
+							Model
+					    </label>
+			<div class="controls">
+			{$form->get_input('Model_id')} {$form->print_error('Model_id')}
+			</div>
+		    </div>
+
+	
+		    <div class="control-group">
+		    <label class="control-label" for="frame_no">
+							frame_no
+					    </label>
+			<div class="controls">
+			{$form->get_input('frame_no')} {$form->print_error('frame_no')}
+			</div>
+		    </div>
+	
+		    <div class="control-group">
+		    <label class="control-label" for="size">
+							size
+					    </label>
+			<div class="controls">
+			{$form->get_input('size')} {$form->print_error('size')}
+			</div>
+		    </div>
+	
+		    <div class="control-group">
+		    <label class="control-label" for="year">
+							year
+					    </label>
+			<div class="controls">
+			{$form->get_input('year')} {$form->print_error('year')}
+			</div>
+		    </div>
+	
+		    <div class="control-group">
+		    <label class="control-label" for="info">
+							info
+					    </label>
+			<div class="controls">
+			{$form->get_input('info')} {$form->print_error('info')}
+			</div>
+		    </div>
+	
+		    <div class="control-group">
+		    <label class="control-label" for="Set_id">
+							Set
+					    </label>
+			<div class="controls">
+			{$form->get_input('Set_id')} {$form->print_error('Set_id')}
+			</div>
+		    </div>
+	
+		<div class="form-actions">
+	<input type="submit" class="btn btn-primary" name="save_return" value="{'Save'|gsdict}">
+	<input type="submit" class="btn" name="save_cancel" value="{'Cancel'|gsdict}">
+	</div>
+</form>	

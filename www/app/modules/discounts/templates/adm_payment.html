@@ -1,0 +1,22 @@
+
+{if $smarty.session.guide}{$Guide_id=$smarty.session.guide->getID()}{/if}
+{if $smarty.session.partner}{$Partner_id=$smarty.session.partner->getID()}{/if}
+
+{$prefix='/'|explode:$smarty.server.REQUEST_URI|next}
+
+{handler gspgid="/admin/discounts/select/`$_gsdata.gspgid_v`"}
+{handler gspgid="/admin/$prefix/form/tw_payments/0" tourID=$_gsdata.gspgid_va.0 userID=$_gsdata.gspgid_va.1 Guide_id=$Guide_id Partner_id=$Partner_id}
+
+{controller _class=tw_payments tourID=$_gsdata.gspgid_va.0 userID=$_gsdata.gspgid_va.1 _assign=payments}
+<ul>
+{*<li>{$_gsdata.gspgid_va.2} Стоимость тура</li>*}
+{foreach from=$payments item=p}
+<li>
+{$p.Amount} {$p.Title} {$p.Note} ({$p.Guide->first()->guideLogin}{$p.Partner->first()->partnerLogin})
+
+[<a href="payments/delete/{$p->get_id()}">X</a>]
+
+</li>
+{/foreach}
+Итого задолженность: {handler gspgid="/payments/total/`$_gsdata.gspgid_v`"}
+</ul>

@@ -1,0 +1,12 @@
+
+{"#"|string_format:'%-4s'} {foreach from=$fields_Names item=n}{$n|string_format:'%-50s'} {/foreach}
+
+{foreach from=$Users item=u key=k}
+{if $u.tourUserType=='apply' || $u.guideID}
+
+
+{assign var=i value=$i+1}
+{capture assign=passport}{$u.userPassport} {$u.userPassportIssuedBy} {$u.userPassportIssuedDate} {$u.userPassportValidThrow}{/capture}
+{$i|string_format:'%-4s'} {foreach from=$fields_Values key=k item=n}{eval var=$n|string_format:'%-50s'}{/foreach}
+{/if}
+{/foreach}

@@ -1,0 +1,9 @@
+{"#"|string_format:'%-10s'} {"ФИО"|string_format:'%-50s'} {"Дата рождения"|string_format:'%-20s'} {"город"|string_format:'%-30s'} {"номер паспорта"|string_format:'%-30s'} {"выдан"|string_format:'%-30s'} {"годен до"|string_format:'%-30s'} {"предоплата"|string_format:'%-10s'} {"комментарии"|string_format:'%-10s'} {"код вводящего"|string_format:'%-10s'}
+
+{foreach from=$Users item=u key=k}
+{if $u.tourUserType=='apply' || $u.guideID}
+{assign var=i value=$i+1}
+{capture assign=passport}{$u.userPassport} {$u.userPassportIssuedBy} {$u.userPassportIssuedDate} {$u.userPassportValidThrow}{/capture}
+{$i|string_format:'%-4s'} {$u.userLatinName|string_format:'%-40s'} {$u.userBirthDay|string_format:'%-20s'} {$u.userCity|string_format:'%-30s'} {$u.userPassport|string_format:'%-30s'} {$u.userPassportIssuedBy|string_format:'%-30s'} {$u.userPassportIssuedDate|string_format:'%-30s'} {$u.userPassportValidThrow|string_format:'%-30s'} {$u.tourUserCommentsPrepay|string_format:'%-10s'} {$u.tourUserComments|string_format:'%-10s'} {$u.tourUserCommentsRegVia|string_format:'%-10s'}
+{/if}
+{/foreach}

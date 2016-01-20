@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Сайт о велотурах и велопоходах.Что такое велотур?</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link rel=stylesheet type="text/css" href="/style.css">
+</head>
+
+<body bgcolor="#000000" text="#000000">
+<table width="759" border="0" align="center" cellspacing="1"  cellpadding="1">
+  <tr bgcolor="#999999"> 
+    <td colspan="3">&nbsp;</td>
+  </tr>
+  <tr bgcolor="#CCCCCC" > 
+    <td width="100"><a href="/"><img src="natali_s.jpg" width="100" height="100" border="1" align="middle"></a></td>
+    <td bgcolor="#CCCCCC"> 
+      <div align="center"><b>VELOTUR.RU</b></div>
+    </td>
+    <td width="100">&nbsp;</td>
+  </tr>
+</table>
+<table width="759" border="0" align="center" cellspacing="1" cellpadding="1">
+  <tr bgcolor="#999999"> 
+    <td colspan="3" height="15" bordercolor="#CCCCCC"> 
+      <div align="center"> ВЕЛОПОХОДЫ И ВЕЛОТУРЫ. 
+        </div>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="3" height="15" bordercolor="#CCCCCC" bgcolor="#CCCCCC"> 
+      <div align="center"><b> </b></div>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="3" height="15" bordercolor="#CCCCCC" bgcolor="#CCCCCC">
+      <p align="left">Что такое велотур? Да, верно 
+      - это организованное  туристское путешествие на велосипеде. Бывают разные стили велотуров, но их объединяет одно: велотур - это поездка на велосипеде по разным странам. Не путайте с гонками, соревнованиями, чемпионатами. &quot;Тур де Франс&quot; - это гонка. А поездка по замкам Луары - велотур. </p>
+      <p align="left">Пока турист &quot;просто&quot; 
+        наблюдает за жизнью в той или иной стране через окно автобуса, турист 
+        &quot;вело&quot; погружается в эту жизнь полностью, заезжая не только 
+        в столичные отели и рестораны, но и бывая в сельских лавках и натуральных 
+        провинциальных забегаловках. Пока турист &quot;просто&quot; посещает аквапарки 
+        или лежит на культурном пляже, турист &quot;вело&quot; имеет шанс найти 
+        лесное озеро, или выйти на берег моря не огороженный забором. Да, велотур        - самая демократичная возможность знакомства со странами и народами. </p>
+      <p align="left">Обычно велотуры проходят по определенным правилам. Во-первых, человек едет налегке - весь багаж 
+        перевозится на машине сопровождения, а если вы устали, то тоже можете 
+        воспользоваться ее услугами. Хотя бывают и приключенческие велотуры, когда вы сами везете свой багаж, сами ставите палатки, готовите еду. Во-вторых, ремонт велосипеда - это дело механика. 
+        Вы можете даже и не знать, а как велосипед вообще устроен. С другой стороны, 
+        в велотуре, как и в туре обычном, все готовится организатором заранее: отели 
+      бронируются, рестораны заказываются, билеты покупаются. Подробнее о велотурах и их стилях можно <a href="/content/velotours.shtml">посмотреть тут </a></p>
+      <p align="center">Велотур - 
+    это всегда немного приключение! Почему? Съездите - сами узнаете!</p>    </td>
+  </tr>
+  <tr> 
+    <td colspan="3" height="15" bordercolor="#CCCCCC" bgcolor="#CCCCCC"> 
+      <p align="center">&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="3" bordercolor="#CCCCCC" bgcolor="#CCCCCC"> 
+      <div align="center"><b>(c) velotur.ru 2003 - 2010</b></div>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan="3" height="15" bordercolor="#CCCCCC" bgcolor="#CCCCCC"> 
+      <div align="center"><b></b></div>
+    </td>
+  </tr>
+  <tr bgcolor="#000000"> 
+    <td colspan="3" height="15" bordercolor="#CCCCCC"><!--#include virtual="links.shtml" --></td>
+  </tr>
+</table>
+<div align="center"></div>  <!--#include virtual="buttons.shtml" -->
+</body>
+</html>

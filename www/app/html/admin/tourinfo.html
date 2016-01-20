@@ -1,0 +1,399 @@
+{include file="inc_menu.html"}
+
+
+{literal}
+<script>
+function updateRooming(obj) {
+	var tid=$(obj).attr('tourID');
+	var uid=$(obj).attr('userID');
+	var type=$(obj).closest('form').children('[name=tourUserRoomingType]').val();
+	var no=$(obj).closest('form').children('[name=tourUserRoomingNo]').val();
+
+	var u='/admin/update_rooming.php?tourID='+tid+'&userID='+uid+'&tourUserRoomingType='+type+'&tourUserRoomingNo='+no;
+	$.ajax({url:u});
+}
+</script>
+
+{/literal}
+
+Гид: {$Guides.guideName} {mailto address=$Guides.guideEmail1 encode=javascript}
+<h2>
+<a href="tourinfo.php?tourID={$tourID}">{$tourTitle}  ( {$tourStartDate} -  {$tourEndDate} )</a> 
+<font color="red">{$tourPrice1} {$tourPriceTitle1}</font>
+{$tourStatusText}
+</h2>
+<div class="tourinfo_finlist">
+<span>
+<a _target=_new href="apply.php?tourID={$tourID}&type=apply">добавить участника</a> 
+</span><span>
+<a href="tour_edit.php?_id={$tourID}&_backurl={$smarty.server.REQUEST_URI}">редактировать тур</a> 
+</span><span>
+<a href="trip_edit.php?_id={$tripID}&_backurl={$smarty.server.REQUEST_URI}">редактировать маршрут</a> 
+</span>
+<div>
+
+{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/payment_js/$tourID/`$tourPrice1|intval`" gspgtype="handler"}
+
+<hr>
+{if $tourEndDate|date_format:"%Y-%m-%d"<$smarty.now|date_format:"%Y-%m-%d"}
+	<form method=post>
+	<input type=hidden name=tourID value="{$tourID}">
+	<input type=submit name=completeTour class=input value="Завершить поход">
+
+	</form>
+{/if}
+<div class="tourinfo_finlist">
+<span>
+<a  href="tourinfo.php?tourID={$tourID}&type=vypiska">ВЫПИСКА</a> 
+{*
+<a _target=_new href="/admin/list/finance/{$tourID}">ФИНАНС-ЛИСТ</a> 
+*}
+</span><span>
+<a href="tourinfo.php?tourID={$tourID}&type=list">СПИСОК</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=txt">txt</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=txt&rus=1">rus</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=xls">xls</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=xls&rus=1">rus</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=xml">xml</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=xml&rus=1">rus</a>
+</span><span>
+<a href="tourinfo.php?tourID={$tourID}&type=shortlist">ШОРТ-ЛИСТ</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=txt">txt</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=txt&rus=1">rus</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=xls">xls</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=xls&rus=1">rus</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=xml">xml</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=xml&rus=1">rus</a>
+</span><span>
+<a href="tourinfo.php?tourID={$tourID}&type=guidelist">ГИД-ЛИСТ</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=txt">txt</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=txt&rus=1">rus</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=xls">xls</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=xls&rus=1">rus</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=xml">xml</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=xml&rus=1">rus</a>
+</span><span>
+<a href="tourinfo.php?tourID={$tourID}&type=finlist">ФИН-ЛИСТ</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=finlist&format=txt">txt</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=finlist&format=txt&rus=1">rus</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=finlist&format=xls">xls</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=finlist&format=xls&rus=1">rus</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=finlist&format=xml">xml</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=finlist&format=xml&rus=1">rus</a>
+
+</span><span>
+
+<a href="tourinfo.php?tourID={$tourID}&type=chaikalist">ЧАЙКА-ЛИСТ</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=chaikalist&format=txt">txt</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=chaikalist&format=xls">xls</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=chaikalist&format=xml">xml</a>
+</span><span>
+<a href="tourinfo.php?tourID={$tourID}&type=kdenlist">KDEN-ЛИСТ</a>
+<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=kdenlist&format=xls">xls</a>
+</span>
+</div>
+</h4>
+<table width=95% class=main>
+<colgroup>
+<col style="width:4em;">
+<col style="width:20em;">
+<col style="width:20em;">
+<col style="width:20em;">
+<col>
+<col style="width:8em;">
+<col style="width:8em;">
+<col style="width:12em;">
+<col style="width:16em;">
+</colgroup>
+<TH class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=userID">#</a></TH>
+<TH class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=userRussianName">ФИО</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserCommentsPrepay">Предоплата</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserCommentsTicket">Билет</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserComments">Комментарии<br>Доп. поля</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=userCity">Город</a></TH>
+<th class=ttitle> <a href="tourinfo.php?tourID={$tourID}&s=tourUserDate">Дата</a> / <a href="tourinfo.php?tourID={$tourID}&s=tourUserCommentsRegVia">Администратор</a> </TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserType">Статус</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserRooming">Руминг</a>
+<input type="submit" value="сохранить" onClick="document.location.reload()">
+</TH>
+{foreach from=$Users item=u}
+{assign var=k value=$k+1}
+<tr 
+class="tbody 
+{if $u.guideLogin}
+	tbody_yellow
+{elseif $u.tourUserType=='WL'}
+	tbody_green
+{elseif $u.tourUserType=='deleted'}
+	tbody_blue
+{/if}
+{if  ($prev_room && $u.tourUserRooming && $u.tourUserRooming!=$prev_room) || ($prev_room && !$u.tourUserRooming)} new_rooming {/if}
+"
+>
+<td>
+{if $smarty.get.showUser && $smarty.get.showUser==$u.userID}<a name="showUser">{/if}
+{$k}
+<input type="checkbox" class="mailCheckedEmails" value="{$u.userEmail}" {literal}onClick="var t=''; $('.mailCheckedEmails:checked').each(function(){ t=t+this.value+','});$('#mailCheckedEmails').get(0).value=t;"{/literal}>
+</td>
+<td >
+	<div style="float:right;">
+	{if $u.userType=='guard'}<img title="Гвардия" src="i/1295442334_Flag2LeftRed.png">
+	{elseif $u.userCompletedTours>0}<img title="Проходил маршруты" src="i/1295518090_checkered_flag.png">
+	{/if}
+	</div>
+
+	<a href="tourinfo.php?tourID={$tourID}&showUser={$u.userID}#showUser" >{$u.userRussianName|default:$u.userLatinName}</a>
+
+	<div style="text-align:right; color:gray;">
+	{if $u.userReferalID}
+	({mailto address=$u.Users.userEmail subject="$tourTitle  ( $tourStartDate -  $tourEndDate )"|@Utf8ToWin text=$u.Users.userName|default:$u.Users.userRussianName extra='style="color:gray;"'})
+	{/if}
+	</div>
+	<div style="text-align:left; color:gray; margin-top:15px;">
+		<a style="color:gray;" href="/action.php?action=login&userID={$u.userID}&formLoginAdmin=1">login</a>
+		<a  style="color:gray;" _target=_new href="userinfo.php?userID={$u.userID}&type=txt">info</a>
+		{if $u.userEmail} {mailto address=$u.userEmail subject="$tourTitle  ( $tourStartDate -  $tourEndDate )"|@Utf8ToWin text="@" extra='style="color:gray;"'}{/if}
+	</div>
+</td>
+<td valign=top>
+	{*
+	{$u.tourUserCommentsPrepay|nl2br}
+	*}
+	{if !$u.guideType}	
+		{controller _class=tw_payments Hidden=0 tourID=$tourID Type='оплата' userID=$u.userID _assign=payments}
+		{if $payments->count()}
+		{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/user_payments/`$tourID`/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}
+		Задолженность: <span style="color:#A00;">
+		{$handler="/payments/total/{$tourID}/{$u.userID}/{intval($tourPrice1)}"}
+		{*beehandler path="/home/activeinfo/velotur.ru/bee" gspgid=$handler gspgtype="handler"*} N/A
+		</span>
+		{/if}
+	{/if}
+
+</td>
+<td valign=top>{$u.tourUserCommentsTicket|nl2br}</td>
+<td valign=top>
+
+<div style="color:rgb(223, 52, 52);">{$u.tourUserComments|nl2br}</div>
+
+{if $u.tourUserAddName1 || $u.tourUserAddValue1}
+<br>{$u.tourUserAddName1}:	{$u.tourUserAddValue1}
+{/if}
+{if $u.tourUserAddName2 || $u.tourUserAddValue2}
+<br>{$u.tourUserAddName2}:	{$u.tourUserAddValue2}
+{/if}
+{if $u.tourUserAddName3 || $u.tourUserAddValue3}
+<br>{$u.tourUserAddName3}:	{$u.tourUserAddValue3}
+{/if}
+{if $u.tourUserAddName4 || $u.tourUserAddValue4}
+<br>{$u.tourUserAddName4}:	{$u.tourUserAddValue4}
+{/if}
+{if $u.tourUserAddName5 || $u.tourUserAddValue5}
+<br>{$u.tourUserAddName5}:	{$u.tourUserAddValue5}
+{/if}
+{if $u.tourUserCommentsUser}
+<br>Пожелания:{$u.tourUserCommentsUser}
+{/if}
+
+</td>
+<td valign=top>{$u.userCity} </td>
+<td valign=top>
+{$u.tourUserDate|date_format:"%Y-%m-%d"}
+{if $u.tourUserCommentsRegVia}<br>{$u.tourUserCommentsRegVia|nl2br}{/if}
+</td>
+<td>
+	<form method=post >
+	<input type=hidden name=applyTourID value="{$tourID}">
+	<input type=hidden name=_classname size=100  value="Users">
+	<input type=hidden name=_action size=100  value="actionsUpdate">
+	<input type=hidden name=applyUserID size=100  value="{$u.userID}">
+	<select name="tourUserType" style="width:90px;" class="-chosen" >
+		<option value='apply' {if $u.tourUserType=="apply"}SELECTED{/if}> участие</option>
+		<option value='WL' {if $u.tourUserType=='WL'}SELECTED{/if}> лист ожидания</option>
+		<option value='completed' {if $u.tourUserType=='completed'}SELECTED{/if}> прошел</option>
+		<option value='deleted' {if $u.tourUserType=='deleted'}SELECTED{/if}> отказ</option>
+	</select>
+<input type=submit name=formSubmit class=input value="Ok">
+	</form>
+</td>
+<td>
+	<form method=post >
+	<input type=hidden name=applyTourID value="{$tourID}">
+	<input type=hidden name=_classname value="Users">
+	<input type=hidden name=_action value="actionsUpdate">
+	<input type=hidden name=applyUserID value="{$u.userID}">
+	<select name="tourUserRoomingType" tourID={$tourID} userID={$u.userID} onChange="updateRooming(this);" class="-chosen" style="width:90px;" data-placeholder="Тип номера">
+			<option value=""></option>
+		{foreach explode(" ","double twin room cabin single") as $r}
+			<option value="{$r}" {if $r==$u.tourUserRoomingType}SELECTED{/if}>{$r}</option>
+		{/foreach}
+	</select>
+	<input name="tourUserRoomingNo" style="width:50px;" placeholder="№" value="{$u.tourUserRoomingNo}" tourID={$tourID} userID={$u.userID} onBlur="updateRooming(this);" >
+
+
+{*	<input type=submit name=formSubmit class=input value="Ok">*}
+	</form>
+
+</td>
+
+
+</tr>
+{if $smarty.get.showUser==$u.userID && $smarty.get.showUser}
+<tr class=tbody>
+<td  align=left colspan=8 style="background-color: #FFF;">
+<div id=user_{$u.userID} style="display:block;">
+<table width=90% class=main>
+<tr class=tbody style="background-color: #EEEEEE;"><td width=600 valign=top>
+<pre>
+{include file="inc_userinfo.html"}
+</pre>
+{if $u.tourUserCommentsTicket}
+<br>Билет:		{$u.tourUserCommentsTicket}
+{/if}
+{if $u.tourUserComments}
+<br>Примечания:		{$u.tourUserComments}
+{/if}
+{if $u.tourUserCommentsRegVia}
+<br>Код вводящего:		{$u.tourUserCommentsRegVia}
+{/if}
+
+{*
+{if $u.tourUserCommentsUser}
+<br>Пожелания: {$u.tourUserCommentsUser}
+{/if}
+
+{if $u.tourUserAddName1 || $u.tourUserAddValue1}
+<br>{$u.tourUserAddName1}:	{$u.tourUserAddValue1}
+{/if}
+{if $u.tourUserAddName2 || $u.tourUserAddValue2}
+<br>{$u.tourUserAddName2}:	{$u.tourUserAddValue2}
+{/if}
+{if $u.tourUserAddName3 || $u.tourUserAddValue3}
+<br>{$u.tourUserAddName3}:	{$u.tourUserAddValue3}
+{/if}
+{if $u.tourUserAddName4 || $u.tourUserAddValue4}
+<br>{$u.tourUserAddName4}:	{$u.tourUserAddValue4}
+{/if}
+{if $u.tourUserAddName5 || $u.tourUserAddValue5}
+<br>{$u.tourUserAddName5}:	{$u.tourUserAddValue5}
+{/if}
+*}
+[<a href="user_edit.php?_id={$u.userID}&_backurl={$smarty.server.REQUEST_URI}">редактировать</a>]<br>
+</td><td valign=top>
+
+{if !$u.guideLogin}
+{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/payment/$tourID/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}
+{/if}
+	<form method=post action="tourinfo.php?tourID={$tourID}">
+	<input type=hidden name=applyTourID value="{$tourID}">
+	<input type=hidden name=_classname size=100  value="Users">
+	<input type=hidden name=_action size=100  value="actionsUpdate">
+	<input type=hidden name=applyUserID size=100  value="{$u.userID}">
+{*
+Предоплата:<br>
+<textarea name=tourUserCommentsPrepay class=input cols=80 rows=3 style="height: 50px;">{$u.tourUserCommentsPrepay}</textarea>
+<br>
+*}
+Билет:<br>
+<textarea name=tourUserCommentsTicket class=input cols=80 rows=3 style="height: 50px;">{$u.tourUserCommentsTicket}</textarea>
+<br>
+Код вводящего администратора:<br>
+<input class=input name=tourUserCommentsRegVia size=80 value="{$u.tourUserCommentsRegVia}">
+<br>
+Комментарии Гида:<br>
+<textarea name=tourUserComments class=input cols=80 rows=3 style="height: 50px;">{$u.tourUserComments}</textarea>
+<br>
+Пожелания пользователя:<br>
+<textarea name=tourUserCommentsUser class=input style="height: 50px;">{$u.tourUserCommentsUser}</textarea>
+
+
+{*
+{if $u.tourUserAddName1 || $u.tourUserAddValue1}
+<br>{$u.tourUserAddName1}:<br>
+<input class=input name="tourUserAddValue1" size=80 value="{$u.tourUserAddValue1}">
+{/if}
+{if $u.tourUserAddName2 || $u.tourUserAddValue2}
+<br>{$u.tourUserAddName2}:<br>
+<input class=input name="tourUserAddValue2" size=80 value="{$u.tourUserAddValue2}">
+{/if}
+{if $u.tourUserAddName3 || $u.tourUserAddValue3}
+<br>{$u.tourUserAddName3}:<br>
+<input class=input name="tourUserAddValue3" size=80 value="{$u.tourUserAddValue3}">
+{/if}
+{if $u.tourUserAddName4 || $u.tourUserAddValue4}
+<br>{$u.tourUserAddName4}:<br>
+<input class=input name="tourUserAddValue4" size=80 value="{$u.tourUserAddValue4}">
+{/if}
+{if $u.tourUserAddName5 || $u.tourUserAddValue5}
+<br>{$u.tourUserAddName5}:<br>
+<input class=input name="tourUserAddValue5" size=80 value="{$u.tourUserAddValue5}">
+{/if}
+*}
+
+
+
+{section name=id start=1 loop=6 step=1}
+{assign var=id value=$smarty.section.id.index}
+{assign var=AN value="tourAddName$id"}
+{assign var=AV value="tourAddValue$id"}
+{assign var=uAN value="tourUserAddName$id"}
+{assign var=uAV value="tourUserAddValue$id"}
+{if $Tour.$AN}
+{$Tour.$AN}
+{if $addvaluesArray.$AV}
+<select name={$uAV} class=input>
+{html_options values=$addvaluesArray.$AV output=$addvaluesArray.$AV selected=$u.$uAV}
+</select>
+{else}
+<input  size=40 type=input class=input name={$uAV} value="{$smarty.post.$uAV}">
+{/if}
+<br>
+{/if}
+{/section}
+
+
+<br> 
+<input type=submit name=formSubmit class=input value="Сохранить">
+<br>
+<br>
+
+<a href="#" onClick="$(this).next().toggle(); return false;">Перенести на другой тур</a>
+<div style="display:none;">
+<input  size=10 type=input class=input name=newTourID placeholder="ID тура">
+<select onChange="$(this).prev().val($(this).val()); return false;">
+{controller _class=tw_tours _assign=alltours tourStatus="normal" _orderby="tourStartDate"}
+	<option></option>
+{foreach $alltours as $ot}
+	<option value="{$ot->tourID}">{$ot->tourTitle} {$ot->tourStartDate|date_format}&ndash;{$ot->tourEndDate|date_format}</option>
+{/foreach}
+</select>
+</div>
+
+
+</form>
+</td></tr></table>
+</div>
+</td>
+</tr>
+{/if}
+{$prev_room=$u.tourUserRooming}
+{/foreach}
+</table>
+<hr>
+{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/emails/mailhistory/{$tourID}" gspgtype="handler"}
+<hr>
+<a href="" onClick="showhide('Mail'); return false;">Разослать письма:</a>
+<div id=Mail style="display:none">
+	<form method=post enctype="multipart/form-data">
+	<input type=hidden name=tourID value="{$tourID}">
+	<input type=hidden name=_action value="sendMails">
+	Тема:<br>
+		<input type=input class=input size=80 name=mailSubject  value="информация о походе {$tourTitle}"><br>
+	Текст:<br>
+	<textarea name=mailText class=input cols=80 rows=15></textarea>
+	<br>
+	Файл:<br><input type=file name=mailFile class=input size=60 ><br>
+	Кому:<br>
+		<input type=checkbox name=mailStatus[] value="apply">участникам | 
+		<input type=checkbox name=mailStatus[] value="WL">листу ожидания | 
+		<input type=checkbox name=mailStatus[] value="completed">прошедшим маршрут |
+		<input type=checkbox name=mailStatus[] value="deleted">отказникам |
+		<input type=checkbox name=mailStatus[] value="checkedUsers">отмеченным<br>
+		<br>
+		<input type=hidden name=mailCheckedEmails id=mailCheckedEmails value="">
+	только тест: <input  type=checkbox name=mailTestMode value="apply"><br>
+
+	<input type=submit name=mailFormSubmit class=input value="Ok">
+	</form>
+</div>
+
+
+

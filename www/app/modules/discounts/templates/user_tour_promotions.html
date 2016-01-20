@@ -1,0 +1,9 @@
+{controller _class=tw_tours _assign_type=plain _assign=tour tourID=$_gsdata.gspgid_va.0}
+{if $tour._Promotions_count>0}
+{$pr=$tour.Promotions->filter()}
+{if $pr->count()}
+{foreach from=$pr item=p}
+<br><a class="red" href="/promotion/{$p.id}">-{$p.Amount}&nbsp;{$p.AmountType} до {$p.EndDate|date_format:"%d.%m.%Y"}</a>
+{/foreach}
+{/if}
+{/if}

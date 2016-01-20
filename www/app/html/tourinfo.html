@@ -1,0 +1,34 @@
+{extends file="tour2.html"}
+{block name="page_center"}
+
+<h3>
+Информация по походу {$tourTitle}  ( {$tourStartDate|date_format:"%d.%m.%Y"}-{$tourEndDate|date_format:"%d.%m.%Y"} )
+</h3>
+
+
+<p>{$tourStatusText}
+{if $tourShowAvPlaces || $_CONF.minimum_avaible_places>$tourAvPlaces} <br> Осталось мест: {$tourAvPlaces} {/if}
+
+{if $tourAllowApply}<h3><a href="/apply.php?tourID={$tourID}&type=apply">Подать заявку</a></h3>{/if}
+{if $tourAllowWL}<h3><a href="/apply.php?tourID={$tourID}&type=WL">Записаться в лист ожидания</a></h3>{/if}
+<h3>Задать вопрос: {mailto address=$Guides.guideEmail1 encode=javascript}</h3>
+{if $guideName}
+<p>
+Гид похода: {$Guides.guideName} {mailto address=$Guides.guideEmail1 encode=javascript}
+{/if}
+<p>
+
+{$tourNote}
+
+<p>
+{$tourDescription|truncate:500}
+
+<p>
+Заявки:
+<ul>
+{foreach from=$Users item=u}
+{assign var=i value=$u.tourUserType}
+<li>{$u.userRussianName} / {$u.userLatinName} / {$d_apply.$i}</li>
+{/foreach}
+<p>
+{/block}

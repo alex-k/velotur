@@ -1,0 +1,33 @@
+{
+  "name": "alex-k/velotur",
+  "description": "velotur.ru web site",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Alexei Kochetov",
+      "email": "admin@velopiter.spb.ru"
+    }
+  ],
+  "repositories": [
+    {
+      "url": "https://github.com/phpbee/phpbee.git",
+      "type": "git"
+    }
+  ],
+  "require": {
+    "phpbee/phpbee": "dev-develop",
+    "codeception/codeception": "*"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php scripts/install.php",
+      "mkdir -p log logs",	
+      "chmod -R a+w var log logs public/files",
+      "chown -R www-data var log logs public/files",
+      "chmod -R a+w /tmp/velotur",
+      "chown -R www-data /tmp/velotur",
+      "cp /app/build.log VERSION"
+    ]
+  }
+}

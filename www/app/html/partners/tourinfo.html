@@ -1,0 +1,256 @@
+{include file="inc_menu.html"}
+
+<h3>
+<a href="tourinfo.php?tourID={$tourID}">Информация по походу {$tourTitle}  ( {$tourStartDate} -  {$tourEndDate} )</a>
+</h3>
+
+{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/payment_js/$tourID/`$tourPrice1|intval`" gspgtype="handler"}
+
+<hr>{$tourStatusText}<br>
+Гид похода: {$Guides.guideName} {mailto address=$Guides.guideEmail1 encode=javascript}
+<br>
+{if $tourEndDate|date_format:"%Y-%m-%d"<$smarty.now|date_format:"%Y-%m-%d"}
+	<form method=post>
+	<input type=hidden name=tourID value="{$tourID}">
+	<input type=submit name=completeTour class=input value="Завершить поход">
+
+	</form>
+{/if}
+<hr>
+
+<a _target=_new href="apply.php?tourID={$tourID}&type=apply">добавить участника</a> 
+<a _target=_new href="tourinfo.php?tourID={$tourID}&type=vypiska">сформировать выписку</a> 
+<a _target=_new href="/admin/list/finance/{$tourID}">финанс-лист</a> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="tourinfo.php?tourID={$tourID}&type=list">СПИСОК</a>
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=txt">txt</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=txt&rus=1">rus</a>)
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=xls">xls</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=xls&rus=1">rus</a>)
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=xml">xml</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=list&format=xml&rus=1">rus</a>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="tourinfo.php?tourID={$tourID}&type=shortlist">ШОРТ-ЛИСТ</a>
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=txt">txt</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=txt&rus=1">rus</a>)
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=xls">xls</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=xls&rus=1">rus</a>)
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=xml">xml</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=shortlist&format=xml&rus=1">rus</a>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="tourinfo.php?tourID={$tourID}&type=guidelist">ГИД-ЛИСТ</a>
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=txt">txt</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=txt&rus=1">rus</a>)
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=xls">xls</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=xls&rus=1">rus</a>)
+(<a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=xml">xml</a> <a style="color:grey;" href="tourinfo.php?tourID={$tourID}&type=guidelist&format=xml&rus=1">rus</a>)
+
+</h4>
+<table width=95% class=main>
+<colgroup>
+<col style="width:2em;">
+<col style="width:6em;">
+<col style="width:4em;">
+<col style="width:4em;">
+<col style="width:12em;">
+<col style="width:8em;">
+<col style="width:8em;">
+<col style="width:4em;">
+<col style="width:4em;">
+</colgroup>
+<TH class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=userID">#</a></TH>
+<TH class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=userRussianName">ФИО</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserDate">Дата</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=userCity">Город</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserCommentsPrepay">Предоплата</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserCommentsTicket">Билет</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserComments">Комментарии<br>Доп. поля</a></TH>
+<th class=ttitle width=100><a href="tourinfo.php?tourID={$tourID}&s=tourUserCommentsRegVia">Код вводящего администратора</a></TH>
+<th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserType">Статус</a></TH>
+{foreach from=$Users item=u}
+{assign var=k value=$k+1}
+<tr 
+{if $u.guideLogin}
+class=tbody_yellow
+{elseif $u.tourUserType=='WL'}
+class=tbody_green
+{elseif $u.tourUserType=='deleted'}
+class=tbody_blue
+{else}
+class=tbody
+{/if}
+>
+<td {if $u.userPartnerID==$Partner.partnerID}class="tbody_red"{else}class="tbody_black{/if} >{$k}
+{if $smarty.get.showUser && $smarty.get.showUser==$u.userID}<a name="showUser">{/if}
+<input type="checkbox" class="mailCheckedEmails" value="{$u.userEmail}" {literal}onClick="var t=''; $('.mailCheckedEmails:checked').each(function(){ t=t+this.value+','});$('#mailCheckedEmails').get(0).value=t;"{/literal}>
+</td>
+<td>
+{if $u.userType=='guard'}<div style="float:left"><img title="Гвардия" src="/admin/i/1295442334_Flag2LeftRed.png"></div>
+{elseif $u.userCompletedTours>0}<div style="float:left"><img title="Проходил маршруты" src="/admin/i/1295518090_checkered_flag.png"></div>
+{/if}
+{*<a href="" onClick="showhide('user_{$u.userID}'); return false;">{$u.userRussianName} / {$u.userLatinName}</a>*}
+
+<a href="tourinfo.php?tourID={$tourID}&showUser={$u.userID}#showUser" >{$u.userRussianName} / {$u.userLatinName}</a>
+<div align=right>
+[<a _target=_new href="userinfo.php?userID={$u.userID}&type=txt">информация</a>]
+{if $u.userEmail}
+[{mailto address=$u.userEmail subject="$tourTitle  ( $tourStartDate -  $tourEndDate )"|@Utf8ToWin text="email"}]
+{/if}
+{if $u.userReferalID}
+[введен {mailto address=$u.Users.userEmail subject="$tourTitle  ( $tourStartDate -  $tourEndDate )"|@Utf8ToWin text=$u.Users.userName|default:$u.Users.userRussianName}]
+{/if}
+{*
+[<a href="" onClick="showhide('user_{$u.userID}'); return false;">РЕДАКТИРОВАТЬ</a>]
+*}
+</div>
+</td>
+<td valign=top>{$u.tourUserDate|date_format:"%Y-%m-%d"}</td>
+<td valign=top>{$u.userCity}
+
+</td>
+<td valign=top>
+{*
+{$u.tourUserCommentsPrepay|nl2br}
+*}
+
+	{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/user_payments/`$tourID`/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}
+	Задолженность: {beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/payments/total/`$tourID`/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}</li>
+
+
+</td>
+<td valign=top>{$u.tourUserCommentsTicket|nl2br}</td>
+<td valign=top>{$u.tourUserComments|nl2br}
+
+{if $u.tourUserAddName1 || $u.tourUserAddValue1}
+<br>{$u.tourUserAddName1}:	{$u.tourUserAddValue1}
+{/if}
+{if $u.tourUserAddName2 || $u.tourUserAddValue2}
+<br>{$u.tourUserAddName2}:	{$u.tourUserAddValue2}
+{/if}
+{if $u.tourUserAddName3 || $u.tourUserAddValue3}
+<br>{$u.tourUserAddName3}:	{$u.tourUserAddValue3}
+{/if}
+{if $u.tourUserAddName4 || $u.tourUserAddValue4}
+<br>{$u.tourUserAddName4}:	{$u.tourUserAddValue4}
+{/if}
+{if $u.tourUserAddName5 || $u.tourUserAddValue5}
+<br>{$u.tourUserAddName5}:	{$u.tourUserAddValue5}
+{/if}
+{if $u.tourUserCommentsUser}
+<br>Пожелания:{$u.tourUserCommentsUser}
+{/if}
+
+</td>
+<td valign=top>
+{$u.tourUserCommentsRegVia|nl2br}
+</td>
+<td>
+	<form method=post >
+	<input type=hidden name=applyTourID value="{$tourID}">
+	<input type=hidden name=_classname size=100  value="Users">
+	<input type=hidden name=_action size=100  value="actionsUpdate">
+	<input type=hidden name=applyUserID size=100  value="{$u.userID}">
+<input name=tourUserType type=radio value='apply' {if $u.tourUserType=="apply"}CHECKED{/if}> уч
+<br>
+<input name=tourUserType type=radio value='WL' {if $u.tourUserType=='WL'}CHECKED{/if}> ожд
+<br>
+<input name=tourUserType type=radio value='completed' {if $u.tourUserType=='completed'}CHECKED{/if}> про
+<br>
+<input name=tourUserType type=radio value='deleted' {if $u.tourUserType=='deleted'}CHECKED{/if}> отк
+<br>
+<input type=submit name=formSubmit class=input value="Ok">
+	</form>
+</td>
+</tr>
+{if $smarty.get.showUser==$u.userID && $smarty.get.showUser}
+<tr class=tbody>
+<td  align=right colspan=6 style="background-color: #EEEEEE;">
+<div id=user_{$u.userID} style="display:block;">
+<table width=90% class=main>
+<tr class=tbody style="background-color: #EEEEEE;"><td width=400 valign=top>
+<pre>
+{include file="inc_userinfo.html"}
+</pre>
+<pre>
+{*if $u.tourUserCommentsPrepay}
+Предоплата:		{$u.tourUserCommentsPrepay}
+{/if*}
+{if $u.tourUserCommentsTicket}
+Билет:		{$u.tourUserCommentsTicket}
+{/if}
+{if $u.tourUserComments}
+Примечания:		{$u.tourUserComments}
+{/if}
+{if $u.tourUserCommentsRegVia}
+Код вводящего:		{$u.tourUserCommentsRegVia}
+{/if}
+{if $u.tourUserAddName1 || $u.tourUserAddValue1}
+{$u.tourUserAddName1}:	{$u.tourUserAddValue1}
+{/if}
+{if $u.tourUserAddName2 || $u.tourUserAddValue2}
+{$u.tourUserAddName2}:	{$u.tourUserAddValue2}
+{/if}
+{if $u.tourUserAddName3 || $u.tourUserAddValue3}
+{$u.tourUserAddName3}:	{$u.tourUserAddValue3}
+{/if}
+{if $u.tourUserAddName4 || $u.tourUserAddValue4}
+{$u.tourUserAddName4}:	{$u.tourUserAddValue4}
+{/if}
+{if $u.tourUserAddName5 || $u.tourUserAddValue5}
+{$u.tourUserAddName5}:	{$u.tourUserAddValue5}
+{/if}
+{if $u.tourUserCommentsUser}пожелания: {$u.tourUserCommentsUser}{/if}
+</pre>
+[<a href="user_edit.php?_id={$u.userID}&_backurl={$smarty.server.REQUEST_URI}">редактировать</a>]<br>
+</td><td valign=top>
+
+{if !$u.guideLogin}
+{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/payment/$tourID/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}
+{/if}
+	<form method=post action="tourinfo.php?tourID={$tourID}">
+	<input type=hidden name=applyTourID value="{$tourID}">
+	<input type=hidden name=_classname size=100  value="Users">
+	<input type=hidden name=_action size=100  value="actionsUpdate">
+	<input type=hidden name=applyUserID size=100  value="{$u.userID}">
+{*
+Предоплата:<br>
+<textarea name=tourUserCommentsPrepay class=input cols=80 rows=3 style="height: 50px;">{$u.tourUserCommentsPrepay}</textarea>
+<br>
+*}
+Билет:<br>
+<textarea name=tourUserCommentsTicket class=input cols=80 rows=3 style="height: 50px;">{$u.tourUserCommentsTicket}</textarea>
+<br>
+Код вводящего администратора:<br>
+<input class=input name=tourUserCommentsRegVia size=80 value="{$u.tourUserCommentsRegVia}">
+<br>
+Комментарии Гида:<br>
+<textarea name=tourUserComments class=input cols=80 rows=3 style="height: 50px;">{$u.tourUserComments}</textarea>
+<br>
+Пожелания пользователя:<br>
+<textarea name=tourUserCommentsUser class=input style="height: 50px;">{$u.tourUserCommentsUser}</textarea>
+<br> <input type=submit name=formSubmit class=input value="Ok">
+	</form>
+</td></tr></table>
+</div>
+</td>
+</tr>
+{/if}
+{/foreach}
+</table>
+<hr>
+<a href="" onClick="showhide('Mail'); return false;">Разослать письма:</a>
+<div id=Mail style="display:none">
+	<form method=post enctype="multipart/form-data">
+	<input type=hidden name=tourID value="{$tourID}">
+	<input type=hidden name=_action value="sendMails">
+	Тема:<br>
+		<input type=input class=input size=80 name=mailSubject  value="информация о походе {$tourTitle}"><br>
+	Текст:<br>
+	<textarea name=mailText class=input cols=80 rows=15></textarea>
+	<br>
+	Файл:<br><input type=file name=mailFile class=input size=60 ><br>
+	Кому:<br>
+		<input type=checkbox name=mailStatus[] value="apply">участникам | 
+		<input type=checkbox name=mailStatus[] value="WL">листу ожидания | 
+		<input type=checkbox name=mailStatus[] value="completed">прошедшим маршрут |
+		<input type=checkbox name=mailStatus[] value="deleted">отказникам |
+		<input type=checkbox name=mailStatus[] value="checkedUsers">отмеченным<br>
+		<br>
+		<input type=hidden name=mailCheckedEmails id=mailCheckedEmails value="">
+	только тест: <input  type=checkbox name=mailTestMode value="apply"><br>
+
+	<input type=submit name=mailFormSubmit class=input value="Ok">
+	</form>
+	</div>

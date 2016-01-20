@@ -1,0 +1,52 @@
+
+{controller _class=tw_promotions _assign=promotionss}
+
+
+<script>
+var tourPrice={$_gsdata.gspgid_va.1|intval};
+var promotionss=new Array();
+{foreach from=$promotionss item=d key=k}
+	var promotions=new Array();
+	{foreach from=$d->get_recordset()->structure['htmlforms'] key=f item=ff}
+	promotions['{$f}']={$d.$f|json_encode};
+	{/foreach}
+	promotionss[{$k}]=promotions;
+{/foreach}
+{literal}
+function apply_promotions(obj) {
+	var d=promotionss[obj.value];
+	var f=$(obj).parents('form');
+
+	{/literal}
+	{foreach from=$d->get_recordset()->structure['htmlforms'] key=f item=ff}
+	$('[name="{$f}"]',f).val(d.{$f});
+	{/foreach}
+	{literal}
+		if (d.AmountType=='%') {
+			$('[name="Amount"]',f).val(tourPrice*d.Amount*.01);
+		}
+
+	/*
+	$('[name="Title"]',f).val(d.Type+' '+d.Title);
+	if (d.Type=='комиссия') $('[name="Type"]',f).val('инфо'); 
+		else if (d.Type=='услуга') $('[name="Type"]',f).val('долг');
+		else if (d.Type=='задолженность') $('[name="Type"]',f).val('долг');
+		else $('[name="Type"]',f).val('оплата');
+	if (d.Hidden>0) $('[name="Hidden"]',f).attr("checked","checked"); 
+		else $('[name="Hidden"]',f).removeAttr("checked");
+	if (d.Amount>0) {
+		if (d.AmountType=='%') {
+			$('[name="Amount"]',f).val(tourPrice*d.Amount*.01);
+		} else {
+			$('[name="Amount"]',f).val(d.Amount);
+		}
+		
+	} else {
+		$('[name="Amount"]',f).val('');
+	}
+	*/
+}
+</script>
+{/literal}
+
+

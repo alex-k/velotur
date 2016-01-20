@@ -1,0 +1,89 @@
+{if $message=='APPLY_OK'}
+	 Ваша заявка на участие принята. Все заявки можно просмотреть в разделе <a href="usertours.php">"ваши заявки"</a>.
+	 По Электронной почте вам придет письмо с дальнейшими инструкциями.
+	       Если у вас возникают какие либо вопросы, вы можете написать гиду
+	          похода ({mailto address=$Tour.Guides.guideEmail1 encode=javascript}), либо нашему администратору
+		     {mailto address="inbox@velotur.ru" encode=javascript}<br>
+	{$applymessage}
+	 <br><br>
+	 Не забдьте проверить актуальность информации  в разделе <a href="userinfo.php">"персональные данные"</a><br>
+
+	<p><img src="http://www.velotur.ru/natali_s.jpg" border=0></P>
+	 
+{else}
+
+	<div class="alert">
+
+	<p>Вы собираетесь подать заявку 
+		{if $applyFriend}ЗА ДРУГОГО УЧАСТНИКА{/if}
+		{if $type=='WL'}в СПИСОК ОЖИДАНИЯ{else}на УЧАСТИЕ{/if}
+		в походе
+	<br>
+		<b>{$Tour.tourTitle}</b> 
+		запланированного на даты 
+		<b>{$Tour.tourStartDate|date_format:"%d.%m.%Y"}-{$Tour.tourEndDate|date_format:"%d.%m.%Y"}</b>
+	</p>
+	<p>
+		{if $applyFriend}
+			Пожалуйста введите анкетные данные нового участника, либо выберете его из списка тех кого вы заявляли ранее.
+		{else}
+			Пожалуйста подтвердите анкетные данные
+		{/if}
+	</p>
+	</div>
+
+
+	{controller _class=tw_users _assign=friends userReferalID=$userID}
+	{if $friends->count()}
+	<p>
+		<b>Вы можете заявить участника из списка либо добавить нового</b>
+		<table>
+		{foreach $friends as $f}
+			<tr>
+			<td>{$f->userRussianName|default:$f->userLatinName}</td>
+
+			<td>
+	<form method=post>
+	<input type=hidden name=applyTourID value="{$Tour.tourID}">
+	<input type=hidden name=applyType value="{$type}">
+		<input type=hidden name=_action size=100  value="actionsUpdate">
+		<input type=hidden name=userReferalID value="{$userID}">
+		<input type=hidden name=applyFriend value="1">
+		<input type=hidden name=applyFriendID value="{$f->userID}">
+		<input class="input" type="submit" value="Заявить этого участника">
+		</form>
+
+			</td>
+			</tr>
+		{/foreach}
+		</table>
+	</p>
+	{/if}
+		
+
+
+
+	{if $message=='_errorCheckValues'}
+		<p><font color=red>поля заполнены некорректно</font></p>
+	{/if}
+	<form method=post>
+	<input type=hidden name=_classname size=100  value="Users">
+
+	<input type=hidden name=applyTourID value="{$Tour.tourID}">
+	<input type=hidden name=applyType value="{$type}">
+	{if $applyFriend}
+		<input type=hidden name=_action size=100  value="actionsAdd">
+		<input type=hidden name=userReferalID value="{$userID}">
+		<input type=hidden name=applyFriend value="1">
+		{include file="userinfo_form.html"}
+	{else}
+		<input type=hidden name=_action  value="actionsUpdate">
+		{include file="userinfo_form.html"}
+	{/if}
+
+	{include file="inc_touraddvals.html"}
+	<div align=right style="width:480px;">
+	<input type=submit value="Подтверждаю" name=formSubmit class=input>
+	</div>
+	</form>
+{/if}

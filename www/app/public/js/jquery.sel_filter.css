@@ -1,0 +1,12 @@
+
+.sel_filter {
+	width: 26px;
+	background: url('jquery.sel_filter.png') 100% 50% no-repeat;
+	border: 1px #5D5A81 solid; background-color: #EBF9FE !important; color:#000000; font-size: 11px;
+	/*
+	opacity:0.4;
+	filter:alpha(opacity=40);
+	*/
+}
+.sel_filter_tb { display:inline; padding:0px; border-collapse:collapse;}
+.sel_filter_tb td { padding:0;}
