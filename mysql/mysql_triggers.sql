@@ -1,3 +1,5 @@
+use activeinfo_newvt;
+
 drop procedure if exists tourusers_counters;
 DELIMITER ;;
   CREATE PROCEDURE `tourusers_counters` (IN _userID INT, IN _tourID INT)
