@@ -1,5 +1,5 @@
 nginx:
-  image: velotur/nginx:${TAG}
+  image: velotur/nginx:latest
   ports:
     - "80:80"
   links:
@@ -13,7 +13,7 @@ www:
   links:
     - mysql:mysql
 mysql:
-  image: tutum/mysql:${TAG}
+  image: tutum/mysql:latest
   ports:
     - "3306"
   volumes:
