@@ -22,7 +22,7 @@
   "scripts": {
     "post-install-cmd": [
       "php scripts/install.php",
-      "cp -rv vendor/phpbee/phpbee/libs/widgets/MultiPowUpload/public_html public/libs/widgets/MultiPowUpload"
+      "cp -rv vendor/phpbee/phpbee/libs/widgets/MultiPowUpload/public_html public/libs/widgets/MultiPowUpload",
       "mkdir -p log logs",	
       "chmod -R a+w var log logs public/files",
       "chown -R www-data var log logs public/files",
