@@ -1,0 +1,13 @@
+www:
+  ports:
+    - "8088:80"
+  volumes:
+    - /data/html:/data/public
+    - /data/public:/data/public
+    - /data/public/files:/app/public/files
+    - /data/FUDforum:/app/FUDforum
+  links:
+    - mysql:mysql
+mysql:
+  volumes:
+    - /data/lib/mysql:/var/lib/mysql

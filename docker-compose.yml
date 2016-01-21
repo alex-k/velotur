@@ -1,15 +1,5 @@
-nginx:
-  image: velotur/nginx:latest
-  ports:
-    - "80:80"
-  links:
-    - www:www
 www:
   image: velotur/www:${TAG}
-  ports:
-    - "8082:80"
-  environment:
-    - VT_ENV=test
   links:
     - mysql:mysql
 mysql:
