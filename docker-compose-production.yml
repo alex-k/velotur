@@ -6,6 +6,7 @@ www:
     - /home/activeinfo/velotur.ru/public_html/files:/app/public/files
 #    - /home/activeinfo/velotur.ru/public_html/content:/app/public/content
     - /home/activeinfo/velotur.ru/FUDforum:/app/FUDforum
+    - /home/activeinfo/velotur.ru/public_html/forum:/app/public/forum
   extra_hosts:
     - "mysql:172.17.0.1"
     - "smtp:172.17.0.1"
