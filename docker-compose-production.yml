@@ -2,12 +2,9 @@ www:
   ports:
     - "8088:80"
   volumes:
-    - /data/html:/data/public
-    - /data/public:/data/public
-    - /data/public/files:/app/public/files
-    - /data/FUDforum:/app/FUDforum
-  links:
-    - mysql:mysql
-mysql:
-  volumes:
-    - /data/lib/mysql:/var/lib/mysql
+    - /home/activeinfo/velotur.ru/public_html/files:/app/public/files
+    - /home/activeinfo/velotur.ru/public_html/content:/app/public/content
+    - /home/activeinfo/velotur.ru/FUDforum:/app/FUDforum
+  extra_hosts:
+    - "mysql:144.76.13.48"
+    - "smtp:144.76.13.48"

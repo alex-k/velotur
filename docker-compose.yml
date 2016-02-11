@@ -1,5 +1,5 @@
 www:
-  image: velotur/www:${TAG}
+  build: www
   links:
     - mysql:mysql
 mysql:

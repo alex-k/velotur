@@ -58,7 +58,7 @@ $this->modules_priority = 'wizard,packagemanager';
 
 date_default_timezone_set('Europe/Moscow');
 setlocale(LC_ALL, 'ru_RU.UTF-8');
-$this->mail_smtp_host = '127.0.0.1';
+$this->mail_smtp_host = 'smtp';
 $this->mail_smtp_port = '25';
 $this->mail_smtp_username = '';
 $this->mail_smtp_password = '';
