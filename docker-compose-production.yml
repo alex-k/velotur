@@ -7,5 +7,5 @@ www:
 #    - /home/activeinfo/velotur.ru/public_html/content:/app/public/content
     - /home/activeinfo/velotur.ru/FUDforum:/app/FUDforum
   extra_hosts:
-    - "mysql:144.76.13.48"
-    - "smtp:144.76.13.48"
+    - "mysql:172.17.0.1"
+    - "smtp:172.17.0.1"
