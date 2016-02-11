@@ -1,4 +1,5 @@
 www:
+  build: www
   ports:
     - "8088:80"
   volumes:
