@@ -1,0 +1,1524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<LINK href="/libs/css/jquery-ui.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" title="CSS for site" href="/css/screen.css">
+
+<script src="/js/functions.js"></script>
+<script src="/libs/js/jquery.min.js"></script>
+<script src="/libs/js/jquery-ui.js"></script>
+<script src="/js/fancybox/jquery.fancybox-1.3.4.js"></script>
+
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"  href="/bootstrap/css/bootstrap-my.css">
+
+<link rel="stylesheet" type="text/css"  href="/js/fancybox/jquery.fancybox-1.3.4.css">
+<title>Сайт о велотурах и велопоходах  - Календарь велопоходов </title>
+<link rel="icon" href="/content/velotur_favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/content/velotur_favicon.ico" type="image/x-icon"></head>
+
+<body>
+	
+<div class="center">
+	<div class="right">
+		<div class="r2">
+			<div class="r2-ua">
+			<a href="/content/ukraine.html"><img src="/i/Ukraine.png"></a>
+			</div>
+						<form method="POST" class="auth" action="/usertours.php">
+								<label for="login">Email</label><input type="text" name=userEmail value="">
+				<label for="pass">Пароль</label><input type="password"  name=userPassword value="">
+				<input type="submit" name="formLoginSubmit" value="Вход">
+				<a href="/action.php?action=login">Регистрация</a>
+				<div class="clear"></div>
+			</form>
+						<form method="POST" class="find">
+				<label for="login">Поиск</label><input type="text" name="login">
+				<input type="submit" value="Искать">
+			</form>
+			<p>
+			<strong>Санкт-Петербург<br>
+			тел.: +7 921 327 35 89<br>
+			e-mail: <a href="mailto:inbox@velotur.ru">inbox@velotur.ru</a>
+			</strong><br><br>
+			Полезная информация для тех,<br> кто собрался в велопутешествие
+			</p>
+			<ul>
+				<li><a  href="/content/equipment.shtml">О снаряжении</a></li>
+				<li><a  href="/content/training.shtml">О подготовке</a></li>
+				<li><a  href="/content/med.shtml">О медицине</a></li>
+				<li><a  href="/content/meal.shtml">О питании</a></li>
+				<li><a  href="/p.php?t=comfort">О комфорте</a></li>
+				<li><a  href="/content/comfort.html#complexity">О сложности</a></li>
+				<li><a  href="/content/bikes.shtml">О велосипедах</a></li>
+				<li><a  href="/content/biketrans.html">О перевозке велосипедов</a></li>
+				<li><a  href="/content/velotours.shtml">О велотурах вообще</a></li>
+				<li><a  href="/content/faq.shtml">FAQ</a></li>
+				<li><a  href="/content/linki.htm">Полезные ссылки</a></li>
+				<li><a  href="/content/rules.shtml">Походные правила</a></li>
+				<li><a  href="/guides/">Наши гиды</a></li>
+				<li><a  href="/trips/">Все маршруты</a></li>
+				<li><a  href="/reports/">Галереи и отчеты</a></li>
+			</ul>
+			
+						<div class="hot_news">
+			<h5><a href="/news/">Новости</a></h5>
+			<ul>
+								<li><a href="/news/59"><img src="/i/news.gif"></a><a href="/news/59">Велокруиз по Голландии</a>
+				</li>
+				<hr>								<li><a href="/news/58"><img src="/i/news.gif"></a><a href="/news/58">Марокко! Начат набор</a>
+				</li>
+				<hr>								<li><a href="/news/57"><img src="/i/news.gif"></a><a href="/news/57">Австралия на Новый Год</a>
+				</li>
+				<hr>								<li><a href="/news/55"><img src="/i/news.gif"></a><a href="/news/55">Байк десант на Валаам</a>
+				</li>
+				<hr>								<li><a href="/news/53"><img src="/i/news.gif"></a><a href="/news/53">Начат набор в Андалузию</a>
+				</li>
+				<hr>								<li><a href="/news/29"><img src="/i/news.gif"></a><a href="/news/29">Фото галереи на сайте!</a>
+				</li>
+											</ul>
+			<div class="hot_news_link"><a href="/news/">все новости</a></div>
+			</div>
+						<div class="banner-600">
+			<style type="text/css">
+.r2 .banner-600 {
+	margin-top:10px;
+	margin-left:0px;
+	  background-color: #feedd9;
+	  width:192px;
+}
+.r2 .banner-600 p{
+	text-align: center;
+}
+.r2 .banner-600 img {
+	border:0;
+}
+
+.r2 .banner-600 h5 {
+	font-family: tahoma;
+	color: #FFFFFF;
+	font-weight: normal;
+	background: url('/i/bg_news.gif') 0 0 repeat-x;
+	height:25px;
+	line-height:25px;
+	padding-left:10px;
+}
+</style>
+
+<h5>Реклама</h5>
+<p>
+<a href="http://www.usports.ru/">
+<img src="/r2_banners/211/nban.gif">
+</a>
+</p>
+
+<h5>Реклама</h5>
+			</div>
+
+
+		</div>
+	</div>
+	
+	<a href="/">
+	<div class="header">
+		<h5>
+		<strong>velotur.ru</strong> - сайт о путешествиях и велотурах
+		</h5>
+	</div>
+	</a>
+
+	<div class="left">
+		<div class="data">
+			<a class="logo" href="/"><img src="/i/logo.gif" alt=""></a>
+			<div class="deviz">
+			Что может быть прекраснее, чем кататься на велосипеде по разным странам? Ничего!<br>
+			Так не будем же отказывать в этом удовольствии и отправимся в велопутешествие!
+			</div>
+			<div class="menu">
+				<ul>
+					<li  ><a href="/content/us.shtml">О нас</a></li>
+										<li  ><a href="/content/velotours.shtml">О велотурах</a></li>
+					<li><a  href="/trips/">Маршруты</a></li>
+										<li class="on"><a href="/calendar.php?year=2016">Календарь 2016</a></li>
+										<li ><a href="/calendar.php?year=2017">Календарь 2017</a></li>
+										<li  ><a href="/reports">Отчеты и фото</a></li>
+					<li  ><a href="/content/development2.shtml">Велотуры на заказ</a></li>
+					<li  ><a href="/content/groups.shtml">Велотуры для групп</a></li>
+					<li  ><a href="/content/development.shtml">Турфирмам</a></li>
+					<li  ><a href="/news/">Новости</a></li>
+					<li><a href="/forum/">Форум</a></li>
+				</ul>
+			</div>
+			
+				<div class="content content_blue">
+			<div class="title2"><h3>Календарь велопоходов - 2016</h3></div>
+
+
+				
+
+
+				
+				
+				
+				
+				
+
+
+				
+
+
+				
+				
+
+		
+		<div class="breadcrumb">
+			Быстрый поиск: 
+			
+			<span class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Месяц
+	<b class="caret"></b></a>
+<div class="dropdown-menu dropdown-menu-columns" role="menu" aria-labelledby="dLabel"> 
+	<div style="-moz-column-width: 120px;  -webkit-column-width: 120px;   column-width: 120px;">
+		<li class="active"> <a href="/calendar.php?year=2016&month=">Любой месяц</a>
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=1">January</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=2">February</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=3">March</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=4">April</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=5">May</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=6">June</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=7">July</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=8">August</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=9">September</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=10">October</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=11">November</a>
+		
+		</li>
+			<li > <a href="/calendar.php?year=2016&month=12">December</a>
+		
+		</li>
+		</div>
+</div>
+</span>
+
+
+			
+						<span class="dropdown">
+							  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Гид
+			<b class="caret"></b></a>
+
+		<div class="dropdown-menu dropdown-menu-columns" role="menu" aria-labelledby="dLabel"> 
+							<div style="-moz-column-width: 120px;  -webkit-column-width: 120px;   column-width: 120px;  ">
+					<li class="active"> <a href="/calendar.php?year=2016&Guide=">Любой гид</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=2">Илья Гуревич</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=3">Анатолий Чайка</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=15">Виктор Нечаев</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=39">Михаил Клеванный</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=18">Анна Кононова</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=19">ВелоТур</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=20">Аркадий Вишневский</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=21">Евгений Кузнецов</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=23">Анна Шульман</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=24">Илья Коган</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=26">Макс Матвеичев</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=27">Никита Захаров</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=30">Максим Красноперов</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=32">Ольга Гапонова</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=34">Денис Ковальчук</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=36">Алена Кузнецова</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=40">Иван Зеленов</a></li>
+			 
+					<li ><a href="/calendar.php?year=2016&Guide=41">Николай Савчук</a></li>
+						</div>
+			</div>
+			</span>
+
+
+	</div>
+
+
+			<table cellspacing="0" class="tblist">
+				<col style="width: 6em;">
+				<col style="width: 8em;">
+				<col style="width: 6em;">
+				<col style="width: 5em;">
+				<col style="width: 5em;">
+				<thead>
+				<tr>
+				<th>Даты</th>
+				<th>Стоимость</th>
+				<th>Гид</th>
+				<th>Маршрут</th>
+				<th>Места</th>
+				</tr>
+				</thead>
+				<tbody>
+
+
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/australia.html">Австралия</a></h2>
+				</td></tr>
+				<tr>
+					<td>12 Dec 2015<br>
+						26 Dec 2015
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1695 + авиабилет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/2">Илья Гуревич</a>
+					<br><a href="/guides/41">Николай Савчук</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											 0<br> 
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b>Набор прекращен</b>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/australia2.html">Австралия</a></h2>
+				</td></tr>
+				<tr>
+					<td>27 Dec 2015<br>
+						10 Jan 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1845 + авиабилет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/2">Илья Гуревич</a>
+					<br><a href="/guides/41">Николай Савчук</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											 0<br> 
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b>Набор прекращен</b>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/belozersk.html">Лыжи: По монастырям Русского севера</a></h2>
+				</td></tr>
+				<tr>
+					<td>05 Jan 2016<br>
+						09 Jan 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					18900 рур + билет на поезд
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/48">Владимир Соловьев</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+																					</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+																							<b><a class="red" href="/apply.php?tourID=310">Записаться в лист ожидания</a></b><br>
+									
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/belozersk.html">Лыжи: По монастырям Русского севера</a></h2>
+				</td></tr>
+				<tr>
+					<td>20 Feb 2016<br>
+						24 Feb 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					18900 рур + билет на поезд
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/48">Владимир Соловьев</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=315">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/slv/ustug3.html">Лыжи, дети, Великий Устюг</a></h2>
+				</td></tr>
+				<tr>
+					<td>30 Mar 2016<br>
+						02 Apr 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					12900 рур + жд билет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/48">Владимир Соловьев</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">очень&nbsp;простой</a><br>
+					<a href="p.php?t=comfort">стандартный</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=302">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/greece.html">Греция: по следам Геракла </a></h2>
+				</td></tr>
+				<tr>
+					<td>15 Apr 2016<br>
+						24 Apr 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					965 евро + а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/34">Денис Ковальчук</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=301">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/portugal.htm">Океан и старинные города Португалии</a></h2>
+				</td></tr>
+				<tr>
+					<td>16 Apr 2016<br>
+						24 Apr 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					845 евро + виза и а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/39">Михаил Клеванный</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">средней&nbsp;сложности</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=300">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/hollandt.htm">Тюльпановая Голландия</a></h2>
+				</td></tr>
+				<tr>
+					<td>23 Apr 2016<br>
+						30 Apr 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					935 евро + виза и а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=312">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/sicily.html">Сицилия</a></h2>
+				</td></tr>
+				<tr>
+					<td>29 Apr 2016<br>
+						08 May 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1135 +виза и авиабилет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/34">Денис Ковальчук</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=307">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/spain.htm">Camino de Santiago</a></h2>
+				</td></tr>
+				<tr>
+					<td>29 Apr 2016<br>
+						09 May 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					995 евро + а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/39">Михаил Клеванный</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">средней&nbsp;сложности</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=308">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/4ka/litva.htm">Велосипедная Литва</a></h2>
+				</td></tr>
+				<tr>
+					<td>30 Apr 2016<br>
+						03 May 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					295 евро + виза + жд билет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/40">Иван Зеленов</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">очень&nbsp;простой</a><br>
+					<a href="p.php?t=comfort">стандартный</a><br>
+					
+					</td>
+					<td><span>
+											 11<br> 
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=323">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/loire8.shtml">Замки Луары</a></h2>
+				</td></tr>
+				<tr>
+					<td>01 May 2016<br>
+						09 May 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					925 + виза и авиабилет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/24">Илья Коган</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=313">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/minsk.html">Минск и окрестности</a></h2>
+				</td></tr>
+				<tr>
+					<td>06 May 2016<br>
+						09 May 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					215 евро 
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/40">Иван Зеленов</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=334">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/bordo.html">Бордо - Коньяк</a></h2>
+				</td></tr>
+				<tr>
+					<td>27 May 2016<br>
+						05 Jun 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1090  евро + а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/34">Денис Ковальчук</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=306">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/mosel.html">Замки Мозеля и Рейна </a></h2>
+				</td></tr>
+				<tr>
+					<td>28 May 2016<br>
+						05 Jun 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1070 + виза и а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/2">Илья Гуревич</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+																					</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+																							<b><a class="red" href="/apply.php?tourID=304">Записаться в лист ожидания</a></b><br>
+									
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/mosel.html">Замки Мозеля и Рейна </a></h2>
+				</td></tr>
+				<tr>
+					<td>04 Jun 2016<br>
+						11 Jun 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1070 + виза и а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/2">Илья Гуревич</a>
+					<br><a href="/guides/41">Николай Савчук</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+																					</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+																							<b><a class="red" href="/apply.php?tourID=317">Записаться в лист ожидания</a></b><br>
+									
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/39_tsarstvo.html">Тридевятое царство</a></h2>
+				</td></tr>
+				<tr>
+					<td>08 Jun 2016<br>
+						13 Jun 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					22900 + билет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/40">Иван Зеленов</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+																					</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b>Набор прекращен</b>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/av/fortress5.htm">Озера и крепости Финляндии</a></h2>
+				</td></tr>
+				<tr>
+					<td>09 Jun 2016<br>
+						13 Jun 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					355 евро + виза
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">стандартный</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=314">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/piter.html">Дворцы и Парки Санкт-Петербурга</a></h2>
+				</td></tr>
+				<tr>
+					<td>09 Jun 2016<br>
+						13 Jun 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					14450 рублей
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/34">Денис Ковальчук</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=328">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/39_tsarstvo.html">Тридевятое царство</a></h2>
+				</td></tr>
+				<tr>
+					<td>14 Jun 2016<br>
+						19 Jun 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					22900 + билет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=332">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/av/king_road.html">По Королевской дороге </a></h2>
+				</td></tr>
+				<tr>
+					<td>20 Jun 2016<br>
+						25 Jun 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					375 евро + паром из Хельсинки
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">стандартный</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=320">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/mix/lad.htm">Белые ночи. Карелия</a></h2>
+				</td></tr>
+				<tr>
+					<td>03 Jul 2016<br>
+						09 Jul 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					17900 рублей
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">туристский</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=319">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/mix/kar.htm">Велопоход по Карелии - Заонежье - Кижи</a></h2>
+				</td></tr>
+				<tr>
+					<td>17 Jul 2016<br>
+						22 Jul 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					16950 руб
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">экспедиционный</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=318">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/aland2.htm">Аланды детские (с 7 лет)</a></h2>
+				</td></tr>
+				<tr>
+					<td>23 Jul 2016<br>
+						31 Jul 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					545 евро + виза 
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/36">Алена Кузнецова</a>
+					<br><a href="/guides/21">Евгений Кузнецов</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">очень&nbsp;простой</a><br>
+					<a href="p.php?t=comfort">стандартный</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=316">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/av/holland2.htm">Велосипедный круиз по Голландии</a></h2>
+				</td></tr>
+				<tr>
+					<td>30 Jul 2016<br>
+						06 Aug 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					950 + виза и а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/2">Илья Гуревич</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=309">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/aland9norr.html">Аландские острова</a></h2>
+				</td></tr>
+				<tr>
+					<td>30 Jul 2016<br>
+						07 Aug 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					645 евро
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">стандартный</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=311">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/cz_av.htm">Романтическая Чехия</a></h2>
+				</td></tr>
+				<tr>
+					<td>19 Aug 2016<br>
+						27 Aug 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					695 + a/б 
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/34">Денис Ковальчук</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=327">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/bavaria.html">Бавария: Романтическая дорога</a></h2>
+				</td></tr>
+				<tr>
+					<td>28 Aug 2016<br>
+						04 Sep 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					 
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/34">Денис Ковальчук</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=329">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/georgia.html">Грузия</a></h2>
+				</td></tr>
+				<tr>
+					<td>03 Sep 2016<br>
+						10 Sep 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					695 евро евро + а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=326">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/italy.htm">Северная Италия: Милан - Венеция</a></h2>
+				</td></tr>
+				<tr>
+					<td>09 Sep 2016<br>
+						09 Sep 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1090 евро + а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/34">Денис Ковальчук</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=330">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/armenia.html">Армения: Гюмри - Ереван</a></h2>
+				</td></tr>
+				<tr>
+					<td>11 Sep 2016<br>
+						18 Sep 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					695 евро + авиабилет
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=325">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/bordo.html">Бордо - Коньяк</a></h2>
+				</td></tr>
+				<tr>
+					<td>23 Sep 2016<br>
+						02 Oct 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1090  евро + а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/19">ВелоТур</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">простой</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=333">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="/content/kgn/wild_west.htm">Дикий Запад. США</a></h2>
+				</td></tr>
+				<tr>
+					<td>01 Oct 2016<br>
+						12 Oct 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1490 долл + виза и а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/24">Илья Коган</a>
+										</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=331">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+												<tr><td class="tbf" colspan=5>
+				<h2><a href="">Италия: Флоренция - Рим</a></h2>
+				</td></tr>
+				<tr>
+					<td>07 Oct 2016<br>
+						16 Oct 2016
+					</td>
+					<td style="text-align: left; padding:5px;">
+					1240 + а/б
+					
+
+
+					
+					</td>
+					<td>
+					<a href="/guides/2">Илья Гуревич</a>
+					<br><a href="/guides/19">ВелоТур</a>					</td>
+					<td >
+					<a href="p.php?t=comfort">стандартный</a><br>
+					<a href="p.php?t=comfort">евро-к</a><br>
+					
+					</td>
+					<td><span>
+											есть
+																</span></td>
+				</tr>
+
+				<tr><td class="tbfr" colspan=5>
+
+													<b><a class="red" href="/apply.php?tourID=322">Подать заявку!</a></b><br>
+				
+				
+
+				</td></tr>
+								</tbody>
+			</table>
+			</div>
+
+	
+
+		</div>
+	</div>
+	
+	<div class="clear"></div>
+<div class="footer">
+	<div>
+		      <a href="http://activeinfo.ru/"><img src="http://activeinfo.ru/ai.gif" border="0" height="31" width="88"></a>
+      <a href="http://www.veloguide.ru/"><img src="http://activeinfo.ru/veloguide_88x31.gif" alt="Велогид" border="0" height="31" width="81"></a>
+      <a href="http://velopiter.spb.ru/"><img src="/i/vp.gif" border="0" height="31" width="88"></a>
+      <a href="http://www.turizm.ru/veter/"><img src="/i/vv.gif" border="0" height="31" width="88"></a>
+	<a href="http://www.vvv.ru/cnt.php3?id=2008" target="_top"><img src="http://cnt.vvv.ru/cgi-bin/cnt?id=2008" border="0" height="31" width="88"></a>
+      <a href="http://top100.rambler.ru/top100/"><img src="http://top100-images.rambler.ru/top100/b1.gif" alt="Rambler's Top100" border="0" height="31" width="88"></a> 
+
+
+      <script language="javascript">
+hotlog_js="1.0";
+hotlog_r=""+Math.random()+"&s=148584&im=102&r="+escape(document.referrer)+"&pg="+
+escape(window.location.href);
+document.cookie="hotlog=1; path=/"; hotlog_r+="&c="+(document.cookie?"Y":"N");
+</script>
+<script language="javascript1.1">
+hotlog_js="1.1";hotlog_r+="&j="+(navigator.javaEnabled()?"Y":"N")</script>
+<script language="javascript1.2">
+hotlog_js="1.2";
+hotlog_r+="&wh="+screen.width+'x'+screen.height+"&px="+
+(((navigator.appName.substring(0,3)=="Mic"))?
+screen.colorDepth:screen.pixelDepth)</script>
+<script language="javascript1.3">hotlog_js="1.3"</script>
+<script language="javascript">hotlog_r+="&js="+hotlog_js;
+document.write("<a href='http://click.hotlog.ru/?148584' target='_top'><img "+
+" src='http://hit6.hotlog.ru/cgi-bin/hotlog/count?"+
+hotlog_r+"&' border=0 width=88 height=31 ></a>")</script>
+<noscript><a href=http://click.hotlog.ru/?148584 target=_top><img
+src="http://hit6.hotlog.ru/cgi-bin/hotlog/count?s=148584&im=102" border=0 
+width="88" height="31" ></a></noscript> 
+  
+	</div>
+	<p>
+	&copy; <a href="/">velotur.ru</a> 2016
+	</p>
+	<p><a href="http://www.phpbee.org/">Создание и поддержка сайта: www.phpbee.org</a></p>
+	<noindex>
+		<p>Дизайн - студия «АВЕНЮ-АРТ» <a href="http://www.avenue-art.ru" rel="nofollow">www.avenue-art.ru</a></p>
+		<p><a href="http://www.pitermag.ru/">Туристические палатки </a></p>
+	</noindex>
+
+<div class="version">
+	Mon Jan 18 19:38:45 UTC 2016
+develop
+</div>
+</div>
+
+</div>
+
+
+<!-- Yandex.Metrika counter -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter137941 = new Ya.Metrika({id:137941});}
+catch(e) { }
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/137941" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+
+</body>
+
+<script src="/js/common.js"></script>
+</html>

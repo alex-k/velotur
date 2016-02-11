@@ -1,1 +1,10 @@
+www/app/vendor
+www/app/scripts/files
+www/app/tests/_support/_generated
+www/app/tests/_output
 var
+activeinfo_newvt.sql
+bee
+install.log
+php_errors.log
+build.log

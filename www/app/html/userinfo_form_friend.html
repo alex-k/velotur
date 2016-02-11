@@ -1,0 +1,99 @@
+{$validate_err_msg='<span class="error">ошибка</span>'}
+{if $_validate_error && $message!='_errorCheckValues'}
+	<p><font color=red>поля заполнены некорректно</font></p>
+	{/if}
+<table class="userform">
+<th colspan=2  class=ttitle>Данные пользователя</th>
+<tr valign=top class=tbody>
+
+<tr valign=top class=tbody><td align=right> Фамилия (русскими буквами)</td><td><input  size=40 class=input name=userRussianName1 value="{$smarty.post.userRussianName1}" >{validate field=userRussianName1 criteria=notEmpty message="<span class=error>*</span>"}</td></tr>
+<tr valign=top class=tbody><td align=right> Имя (русскими буквами)</td><td><input  size=40 class=input name=userRussianName2 value="{$smarty.post.userRussianName2}" >{validate field=userRussianName2 criteria=notEmpty message="<span class=error>*</span>"}</td></tr>
+<tr valign=top class=tbody><td align=right> Отчество (русскими буквами)</td><td><input  size=40 class=input name=userRussianName3 value="{$smarty.post.userRussianName3}">{validate field=userRussianName3 criteria=notEmpty message="<span class=error>*</span>"}</td></tr>
+
+<tr valign=top class=tbody><td align=right> Фамилия латиницей (как в загранпаспорте)</td><td><input  size=40 class=input name=userLatinName1 value="{$smarty.post.userLatinName1}">{validate field=userLatinName1 criteria=notEmpty message="<span class=error>*</span>"}</td></tr>
+<tr valign=top class=tbody><td align=right> Имя латиницей </td><td><input  size=40 class=input name=userLatinName2 value="{$smarty.post.userLatinName2}">{validate field=userLatinName2 criteria=notEmpty message="<span class=error>*</span>"}</td></tr>
+<tr valign=top class=tbody><td align=right>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+<tr valign=top class=tbody><td align=right> Дата рождения (ДД-ММ-ГГГГ)</td><td><input  size=40 class=input name=userBirthDay value="{$smarty.post.userBirthDay}" >{validate field=userBirthDay criteria=isRegExp expression="/[0-3]\d-[01]\d-[12]\d\d\d/" message="<span class=error>*</span>"}</td></tr>
+<tr valign=top class=tbody><td align=right> Гражданство   </td><td><input  size=40 class=input name=userCitizenship value="{$smarty.post.userCitizenship}">{validate field=userCitizenship criteria=notEmpty message="<span class=error>*</span>"}</td></tr>
+
+<tr valign=top class=tbody><td align=right> Пол   </td><td> <select size="1" name="userSex" class=input>
+<option value="">--</option>
+{html_options options=$d_userSex selected=$userSex}
+</select> 
+{if $Tour.tourPlacesGender=='male' || $Tour.tourPlacesGender=='female'}
+	{validate field=userSex criteria=isEqual value=$Tour.tourPlacesGender message=$validate_err_msg}
+{else}
+	{validate field=userSex criteria=notEmpty message=$validate_err_msg}
+{/if}
+
+{include file="apply_tourgender.html"}
+
+</td></tr>
+
+<tr valign=top class=tbody><td align=right> Город   </td><td><input  size=40 class=input name=userCity value="{$smarty.post.userCity}">{validate field=userCity criteria=notEmpty message="<span class=error>*</span>"}</td></tr>
+
+<th colspan=2 class=ttitle>Данные загранпаспорта</th>
+
+
+<tr valign=top class=tbody>
+	<td  align=right> номер загранпаспорта 
+	</td>
+	<td > <input  size=40 class=input name=userPassport  value="{$userPassport}">
+	<span class="label"><br>(70 1234567 - значок &quot;№&quot; не ставится!!) </span>
+	{if  $userPassportTypeEnabled}
+	{validate field=userPassport criteria=notEmpty message="<span class=error>*</span>"} 
+	{else}
+	{validate field=userPassport criteria=isregexp expression="/\d\d \d\d\d\d\d\d\d$/" message="<span class=error>*</span>"} 
+	{/if}
+	<br> <label class=label><input type=checkbox onClick="if (document.getElementById('userPassportType')) document.getElementById('userPassportType').value=''; submit();" name=userPassportTypeEnabled {if $userPassportTypeEnabled || $userPassportType}checked{/if}>Я не являюсь гражданином России либо не имею загранпаспорта по иной причине.</label>
+
+</td>
+</tr>
+	{if  $userPassportTypeEnabled || $userPassportType}
+<tr valign=top class=tbody>
+	<td  align=right>Вид документа:</td>
+	<td > 
+	<select onChange="document.getElementById('userPassportType').value=this.value;">
+	<option value="">-------вид документа-------</option>
+	<option>Внутренний паспорт</option>
+	<option>Паспорт иностранного государства</option>
+	<option value="">Иной документ (укажите какой)</option>
+	</select>
+	<br>
+	<input  size=40 class=input name=userPassportType id=userPassportType value="{$userPassportType}">
+	{validate field=userPassportType criteria=notEmpty message="<span class=error>*</span>"} 
+	</td>
+</tr>
+	{/if}
+
+<tr valign=top class=tbody>
+	<td  align=right> кем выдан</td>
+	<td > <input  size=40 class=input name=userPassportIssuedBy  value="{$userPassportIssuedBy}">{validate field=userPassportIssuedBy criteria=notempty message="<span class=error>*</span>"}
+	<span class="label"><br>(РУВД 257) все буквы БОЛЬШИЕ</span>
+	</td>
+</tr>
+
+<tr valign=top class=tbody>
+  <td  align=right>когда выдан</td>
+  <td ><input  size=40 class=input name=userPassportIssuedDate  value="{$userPassportIssuedDate}">{validate field=userPassportIssuedDate criteria=isregexp expression="/[0-3]\d-[01]\d-[12]\d\d\d/" message="<span class=error>*</span>"}
+	<span class="label"><br>(31-12-1980) День-Месяц-Год c дефисами</span>
+</td>
+  </td>
+</tr>
+
+<tr valign=top class=tbody>
+  <td  align=right> действителен до</td>
+  <td ><input  size=40 class=input name=userPassportValidThrow  value="{$userPassportValidThrow}">{validate field=userPassportValidThrow criteria=isregexp expression="/[0-3]\d-[01]\d-[12]\d\d\d/" message="<span class=error>*</span>"}
+	<span class="label"><br>(31-12-1985)</span>
+</td>
+</tr>
+
+
+<tr valign=top class=tbody>
+  <td align=right> Контактный телефон  </td>
+  <td><input  size=40 class=input name=userPhone value="{$smarty.post.userPhone}">{validate field=userPhone criteria=notEmpty message="<span class=error>*</span>"}</td></tr>
+<tr valign=top class=tbody><td align=right> Номер карты ВелоПитера (если имеется)   </td><td><input  size=40 class=input name=userVPNumber value="{$smarty.post.userVPNumber}"></td></tr>
+</table>
+

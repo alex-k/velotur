@@ -1,0 +1,10 @@
+www:
+  build: www
+  links:
+    - mysql:mysql
+mysql:
+  image: tutum/mysql:latest
+  ports:
+    - "3306"
+  volumes:
+    - ./mysql:/mysql

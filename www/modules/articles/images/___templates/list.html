@@ -1,3 +1,0 @@
-{assign var=id value=$_gsdata.gspgid_va.0|intval}
-{controller _class=tw_articles_images Parent_id=$id _assign=images _fields='id,File_id'}
-{$images->img('gallery')|implode}

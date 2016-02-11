@@ -1,0 +1,22 @@
+update TourUsers set tourUserCommentsTicket=substr(md5(rand()),1,10) where tourUserCommentsTicket>'';
+update TourUsers set tourUserCommentsPrepay=substr(md5(rand()),1,10) where tourUserCommentsPrepay>'';
+update User set userEmail=concat(substr(md5(rand()),1,5),'@staging.velotur.ru') where userEmail>'';
+update User set userPassword=substr(md5(rand()),1,10) where userPassword>'';
+update User set userBirthDay='1981-01-10' where userBirthDay>'';
+update User set userAddress=substr(md5(rand()),1,10) where userAddress>'';
+update User set userJob=substr(md5(rand()),1,10) where userJob>'';
+update User set userPassport=123456 where userPassport>'';
+update User set userPassportIssuedBy=substr(md5(rand()),1,10) where userPassportIssuedBy>'';
+update User set userPassportIssuedDate='2015-01-20' where userPassportIssuedDate>'';
+update User set userPassportValidThrow='2025-01-20' where userPassportValidThrow>'';
+update User set userPhone=1234567 where userPhone>'';
+
+update Guide set guideEmail1=concat(substr(md5(rand()),1,5),'-guide@staging.velotur.ru') where guideEmail1>'';
+update Guide set guideEmail2=concat(substr(md5(rand()),1,5),'-guide@staging.velotur.ru') where guideEmail2>'';
+update Guide set guidePassword=substr(md5(rand()),1,10) where guidePassword>'';
+update Guide set userBirthDay='1981-01-10' where userBirthDay>'';
+update Guide set userAddress=substr(md5(rand()),1,10) where userAddress>'';
+update Guide set userJob=substr(md5(rand()),1,10) where userJob>'';
+update Guide set userPassport=123456 where userPassport>'';
+update Guide set userPassportIssuedBy=substr(md5(rand()),1,10) where userPassportIssuedBy>'';
+update Guide set userPassportValidThrow='2025-01-20' where userPassportValidThrow>'';

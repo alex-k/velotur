@@ -1,0 +1,24 @@
+{extends file="tour2.html"}
+{block name="tour_name"}
+Заявка  принята
+{/block}
+{block name="page_center"}
+
+{if $Tour.tourID>0}
+{if $message=='APPLY_OK'}
+	 Ваша заявка на участие принята. Все заявки можно просмотреть в разделе <a href="usertours.php">"ваши заявки"</a>.
+	 По Электронной почте вам придет письмо с дальнейшими инструкциями.
+	       Если у вас возникают какие либо вопросы, вы можете написать гиду
+	          похода ({mailto address=$Tour.Guides.guideEmail1 encode=javascript}), либо нашему администратору
+		     {mailto address="inbox@velotur.ru" encode=javascript}<br>
+	{$applymessage}
+	 <br><br>
+	 Не забдьте проверить актуальность информации  в разделе <a href="userinfo.php">"персональные данные"</a><br>
+
+	<p><img src="http://www.velotur.ru/content/natali_s.jpg" border=0></P>
+{/if}	 
+{else}
+Произошла ошибка: данные не найдены
+{/if}
+
+{/block}

@@ -1,0 +1,18 @@
+{extends file="about2.html"}
+{block name="page_title"}
+{/block}
+{block name="page_tag"}
+ГИДЫ "ВЕЛОТУРА"
+{/block}
+{block name="page_center"}
+{controller _class=tw_guide _assign=guides guideHideInfo=0 langRU=1}
+<ul class="guide_list">
+{foreach from=$guides item=g}
+<li>
+<a href="/guides/{$g->get_id()}">{$g.Images->first()->img1('glist')}</a>
+<h3><a href="/guides/{$g->get_id()}">{$g.guideName}</a></h3>
+{$g.guideAbstract}
+</li>
+{/foreach}
+</ul>
+{/block}

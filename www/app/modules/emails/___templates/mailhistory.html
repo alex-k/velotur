@@ -1,0 +1,74 @@
+{$tour=$_gsstack.rec}
+
+		{*
+		{handler gspgid="/filter/" class="select_by_links" link="mailhistory.Tour:tourID" name="Tour" urltype=get}
+        
+		{handler gspgid="/filter/" class="limit" name="limit" urltype=session values='10,20,50,500' default_value=20}
+		{handler gspgid="/filter/" class="offset"  name="offset" urltype=get limit='limit'}
+		{controller _class="mailhistory" _assign="mailhistory" _filters="limit,offset," tourID=$tour.tourID}
+
+		*}
+		        
+
+
+
+		{controller _class="mailhistory" _assign="mailhistory" tourID=$tour.tourID}
+
+	{if $mailhistory->count()}
+	<div>
+	<b>Отправленные рассылки</b>
+
+	<table width=95% class=main>
+	{*
+	<thead class="ttitle">
+	<tr>
+		<th> Date </th>
+		<th> Subject </th>
+		<th> Status </th>
+		<th> Test mode </th>
+	
+		</tr>
+
+	</thead>
+	*}
+	
+	{foreach from=$mailhistory item="e"}
+	<tr>
+						<td >
+						
+					{$e->_ctime|date_format:"%d %b %Y %H:%M"}
+                    
+			</td>
+			<td> {$e->fromEmail}</td>
+						<td >
+					<a href="#" onclick="$(this).next().toggle(); return false;">{$e->mailSubject}</a>
+					<div style="display:none;">
+					<p>
+					{$e->mailText|escape|nl2br}
+					</p>
+					</div>
+				    
+			</td>
+						<td >
+						
+					{$e->mailStatus}
+                    
+			</td>
+						<td >
+						
+					{if $e->mailTestMode}test{/if}
+                    
+			</td>
+						
+	</tr>
+	{/foreach}
+	</table>
+
+	{*        
+		{handler gspgid="/filter/show" name="offset" tpl="offset_bootstrap.html" page_title='Page' page_prev='previous' page_next='next' page_between='from' pages_count=21 recordset=$mailhistory}
+		{handler gspgid="/filter/show" name="limit" tpl="limit_dropdown.html" prelabel='show by' label='records'}
+        *}
+
+	</div>
+
+	{/if}

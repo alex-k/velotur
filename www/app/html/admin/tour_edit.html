@@ -1,0 +1,157 @@
+{include file="inc_menu.html"}
+
+<p>
+Поход - {if $tourID}редактирование{else}добавление{/if}
+</p>
+
+
+{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="--init--" gspgtype="handler"}
+
+<form action="tour_edit.php" method=post name=form1>
+<input type=hidden name=_classname size=100  value="Tours">
+<input type=hidden name=_action size=100  value="{if $tourID>0}actionsUpdate{else}actionsAdd{/if}">
+<input type=hidden name=_id size=100  value="{$tourID}">
+<input type=hidden name=tripID size=100  value="{$tripID}">
+<input type=hidden name=_backurl size=100  value="{$_backurl|default:"tour.php"}">
+
+<table class=main>
+
+<tr class=tbody><td style="text-align: right;">
+<input class=input type=submit name=formSubmit size=100  value="Сохранить"></td><td  style="text-align: right;">
+</td></tr>
+
+<tr class=tbody> <td>Название</td><td><input class=input name=tourTitle size=100  value="{$tourTitle}"> {validate field=tourTitle criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Название EN</td><td><input class=input name=tourTitleEn size=100  value="{$tourTitleEn}"></td> </tr>
+<tr class=tbody> <td>Показывать на RU</td><td><input type=checkbox class=input name=langRU value="1" {if $langRU}checked{/if}></td> </tr>
+<tr class=tbody> <td>Показывать на EN</td><td><input type=checkbox class=input name=langEN value="1" {if $langEN}checked{/if}></td> </tr>
+
+<tr class=tbody> <td>Статус</td><td>
+<select size="1" name="tourStatus" class=select> 
+{html_options options=$d_tourstatus selected=$tourStatus}
+</select>
+</td></tr>
+<tr class=tbody> <td>Гид</td><td>
+<select size="1" name="guideID" class=select> 
+<option value="">--</option>
+{html_options options=$Guides selected=$guideID}
+</select> {validate field=guideID criteria=notEmpty message="*"}
+</td></tr>
+<tr class=tbody> <td>Второй Гид</td><td>
+<select size="1" name="guideID2" class=select> 
+<option value="">--</option>
+{html_options options=$Guides selected=$guideID2}
+</select>
+</td></tr>
+<tr class=tbody> <td>Гид-Куратор</td><td>
+<select size="1" name="guideKuratorID" class=select> 
+<option value="">--</option>
+{html_options options=$Guides selected=$guideKuratorID}
+</select>
+</td></tr>
+<tr class=tbody> <td>Дата начала (YYYY-MM-DD)</td><td><input class="input fDateTime" name=tourStartDate id=tourStartDate size=14  value="{$tourStartDate}"
+onChange="$('#tourEndDate').each(function(){
+	var sd=new Date($('#tourStartDate').val());
+	sd.setMonth(sd.getMonth()+1);
+	this.value=$.datepicker.formatDate('yy-mm-dd',sd);
+});
+"
+>{validate field=tourStartDate criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Дата окончания (YYYY-MM-DD)</td><td><input class="input fDateTime" id="tourEndDate" name=tourEndDate size=14  value="{$tourEndDate}">{validate field=tourEndDate criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Дата начала приема заявок (YYYY-MM-DD)</td>
+<td>
+	<input class="input fDateTime" name=tourAppStartDate id="tourAppStartDate" size=14  value="{$tourAppStartDate}" rel_today="{date("Y-m-d",strtotime('today'))}">
+	<input type="button" value="Сегодня" onClick="$('#tourAppStartDate').each(function(){ this.value=$.datepicker.formatDate('yy-mm-dd', new Date());       });">
+</td> 
+</tr>
+{*
+<tr class=tbody> <td>Дата окончания приема заявок (YYYY-MM-DD)</td>
+<td>
+	<input class="input fDateTime" name=tourAppEndDate id=tourAppEndDate size=14  value="{$tourAppEndDate}">
+	<input type="button" value="6 weeks" onClick="$('#tourAppEndDate').each(function(){ 
+			var sd=new Date($('#tourStartDate').val());
+			sd.setDate(sd.getDate()-6*7);
+			this.value=$.datepicker.formatDate('yy-mm-dd',sd);
+		});">
+	<input type="button" value="1 month" onClick="$('#tourAppEndDate').each(function(){ 
+            var sd=new Date($('#tourStartDate').val());
+            sd.setMonth(sd.getMonth()-1);
+            this.value=$.datepicker.formatDate('yy-mm-dd',sd);
+        });">
+</td>
+</tr>
+*}
+
+<tr class=tbody> <td>URL описания</td><td><input class=input name=tourDescriptionURL size=100  value="{$tourDescriptionURL}"></td> </tr>
+<tr class=tbody> <td>Нитка маршрута</td><td><textarea cols=80 rows=4 class=input name=tourRoute>{$tourRoute}</textarea> {validate field=tourRoute criteria=notEmpty message="*"}</td> </tr>
+<tr class=tbody> <td>Описание</td><td><textarea cols=80 rows=4 class=input name=tourDescription>{$tourDescription}</textarea></td> </tr>
+<tr class=tbody> <td>Примечания</td><td><textarea cols=80 rows=4 class=input name=tourNote>{$tourNote}</textarea></td> </tr>
+<tr class=tbody> <td>Рекомендации по билету/транспорту</td><td><textarea cols=80 rows=4 class=input name=tourTransferNote>{$tourTransferNote}</textarea></td> </tr>
+<tr class=tbody> <td>Уровень сложности</td><td>
+<select size="1" name="tourDifficulty" class=select> 
+{html_options options=$d_tourdifficulty selected=$tourDifficulty}
+</select>
+</td></tr>
+
+<tr class=tbody> <td>Уровень комфорта</td><td>
+<select size="1" name="tourComfort" class=select> 
+{html_options options=$d_tourcomfort selected=$tourComfort}
+</select>
+</td></tr>
+
+
+<tr class=tbody> <td>Цена</td><td><input class=input name=tourPrice1 size=6  value="{$tourPrice1}"><input class=input name=tourPriceTitle1 size=100  value="{$tourPriceTitle1}"></td> </tr>
+
+<tr class=tbody> <td>Цена EN</td><td><input class=input name=tourPriceEn size=100  value="{$tourPriceEn}"></td> </tr>
+
+<tr class=tbody> <td>Кол-во мест</td><td><input class=input name=tourPlaces size=100  value="{$tourPlaces}"></td> </tr>
+<tr class=tbody> <td>Мужские/женские места</td><td>
+<select size="1" name="tourPlacesGender" class=select> 
+{html_options options=$d_tourPlacesGender selected=$tourPlacesGender}
+</select>
+</td></tr>
+<tr class=tbody> <td>Запись только рецидивистам</td><td><input type="hidden" name=tourApplyOnlyExpired value=0><input type=checkbox class=input name=tourApplyOnlyExpired size=100  value="1" {if $tourApplyOnlyExpired}checked{/if}></td> </tr>
+<tr class=tbody> <td>Показывать свободные места</td><td><input type=checkbox class=input name=tourShowAvPlaces size=100  value="1" {if $tourShowAvPlaces}checked{/if}></td> </tr>
+<tr class=tbody> <td>Запретить отказываться от тура</td><td><input type=checkbox class=input name=tourBlockTransfers size=100  value="1" {if $tourBlockTransfers}checked{/if}></td> </tr>
+
+<tr class=tbody> <td>Доп поле 1 название</td><td><input class=input name=tourAddName1 size=100  value="{$tourAddName1}"></td> </tr>
+<tr class=tbody> <td>Доп поле 1 значение</td><td><input class=input name=tourAddValue1 size=100  value="{$tourAddValue1}"></td> </tr>
+<tr class=tbody> <td>Доп поле 2 название</td><td><input class=input name=tourAddName2 size=100  value="{$tourAddName2}"></td> </tr>
+<tr class=tbody> <td>Доп поле 2 значение</td><td><input class=input name=tourAddValue2 size=100  value="{$tourAddValue2}"></td> </tr>
+<tr class=tbody> <td>Доп поле 3 название</td><td><input class=input name=tourAddName3 size=100  value="{$tourAddName3}"></td> </tr>
+<tr class=tbody> <td>Доп поле 3 значение</td><td><input class=input name=tourAddValue3 size=100  value="{$tourAddValue3}"></td> </tr>
+<tr class=tbody> <td>Доп поле 4 название</td><td><input class=input name=tourAddName4 size=100  value="{$tourAddName4}"></td> </tr>
+<tr class=tbody> <td>Доп поле 4 значение</td><td><input class=input name=tourAddValue4 size=100  value="{$tourAddValue4}"></td> </tr>
+<tr class=tbody> <td>Доп поле 5 название</td><td><input class=input name=tourAddName5 size=100  value="{$tourAddName5}"></td> </tr>
+<tr class=tbody> <td>Доп поле 5 значение</td><td><input class=input name=tourAddValue5 size=100  value="{$tourAddValue5}"></td> </tr>
+
+<tr class=tbody> <td>rentabikeSet</td><td>
+	<select size="1" name="rentabikeSetID" class=select> 
+	<option value="0">--</option>
+	{html_options options=$rentabikeSet selected=$rentabikeSetID}
+	</select>
+</td> </tr>
+<tr class=tbody> <td>rentabikePrice</td><td><input class=input name=rentabikePrice size=5  value="{$rentabikePrice}">(евро)</td> </tr>
+<tr class=tbody> <td>rentabikeOnPlace</td><td>
+	<input type=hidden name="rentabikeOnPlace" value="0">
+	<input type=checkbox class=input name=rentabikeOnPlace value="1" {if $rentabikeOnPlace}checked{/if}>
+</td> </tr>
+<tr class=tbody> <td>текст Email</td><td><textarea cols=80 rows=40 class=input name=tourEmailText>{$tourEmailText}</textarea></td> </tr>
+<tr class=tbody> <td>текст Email для листа ожидания</td><td><textarea cols=80 rows=40 class=input name=tourEmailTextWL>{$tourEmailTextWL}</textarea></td> </tr>
+
+<tr class=tbody><td style="text-align: right;">
+<input class=input type=submit id=formSubmit name=formSubmit size=100  value="Сохранить"></td><td  style="text-align: right;">
+{if $tourID>0}<input type=button class="input" size=100  value="Удалить" onClick="if (confirm('Delete tour {$tourTitle}?')){literal}{document.form1._action.value='actionsDelete';}{/literal}">{/if}
+</td></tr>
+
+
+<tr class=tbody><td colspan=2>
+<iframe src="/admin/tour_promotions/{$tourID}/{$ourPrice1|intval}" style="width:1100px; height:500px;" scrolling="auto"></iframe>
+{*
+{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/tour_promotions_js/0/`$tourPrice1|intval`" gspgtype="handler"}
+{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/tour_promotions/$tourID/`$tourPrice1|intval`" gspgtype="handler"}
+*}
+</td>
+</tr>
+
+</form>
+</table>

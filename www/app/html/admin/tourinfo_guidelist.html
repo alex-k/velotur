@@ -1,0 +1,22 @@
+<LINK href="/index.css" type="text/css" rel="stylesheet">
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<table class=main width=100%>
+<tr class=ttitle>
+<td></td>
+<td>ФИО</td>
+<td>Номер Телефона</td>
+<td>предоплата</td>
+<td>комментарии</td>
+</tr>
+{foreach from=$Users item=u key=k}
+{if $u.tourUserType=='apply' || $u.guideID}
+{assign var=i value=$i+1}
+<tr class=tbody valign=top>
+<td width=50>{$i}</td>
+<td>{$u.userLatinName}</td>
+<td>{$u.userPhone}</td>
+<td>{$u.tourUserCommentsPrepay}</td>
+<td>{$u.tourUserComments}</td>
+{/if}
+{/foreach}
+</table>

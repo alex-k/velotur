@@ -1,0 +1,31 @@
+{extends file="index_page.html"}
+{block name="content_left"}
+	<div class="left nobg">
+		<div class="head">
+			<div class="head-left">
+				<a href="/"><img src="/i/head_logo.jpg"/></a>
+			</div>
+
+			<divi class="head-right">
+				<div class="tour_name">
+				{block name="tour_name"}
+						<h1></h1>
+				{/block}
+				</div>
+
+				<div class="head_calendar">
+					<ul>
+						{for $y=$cal_date_start to $cal_date_end}
+						<li><a href="/calendar.php?year={$y}">Календарь {$y}</a></li>
+						{/for}
+					</ul>
+				</div>
+			</divi>
+		</div>
+			<div class="content3">
+			{block name="page_center"}
+			{/block}
+			</div>
+	</div>
+
+{/block}

@@ -1,0 +1,36 @@
+{include file="inc_menu.html"}
+
+<h3>
+Календарь походов  на {$year} год (<a href=calendar.php?year={$year}&tourStatus=hidden>архив</a>)
+</h3>
+
+<table class=main>
+<th class=ttitle>Наименование маршрута</th>
+<th class=ttitle>Дата заезда</th>
+<th class=ttitle>Прием заявок до:</th>
+<th class=ttitle>Стоимость</th>
+<th class=ttitle>Гид</th>
+<th class=ttitle>Статус</th>
+<th class=ttitle>Осталось мест</th>
+<th class=ttitle>Заявок</th>
+<th class=ttitle>Ожидают</th>
+{foreach from=$Tours item=t}
+<tr class=tbody valign=top>
+<td>
+<a href="tourinfo.php?tourID={$t.tourID}">{$t.tourTitle}</a></td>
+</form>
+<td><a href="" onClick="return false;">{$t.tourStartDate} - {$t.tourEndDate}</a></td>
+<td>{$t.tourAppEndDate}</td>
+<td>{$t.tourPrice1}</td>
+<td>{$t.guideName}{if $t.guideName2} +{$t.guideName2}{/if}</td>
+{assign var=tourStatus value=$t.tourStatus}
+<td>{$d_tourstatus.$tourStatus}</td>
+<td>{$t.tourAvPlaces}</td>
+<td>{$t.tourUsersApply}</td>
+<td>{$t.tourUsersWL}</td>
+</tr>
+{/foreach}
+
+</table>
+					
+

@@ -1,0 +1,41 @@
+{extends file="index.html"}
+
+{block name="title"}
+	mailhistory
+{/block}
+
+{block name="content"}
+
+	{$e=$_gsstack.last}
+
+	<h4><a href="/emails/mailhistory/">mailhistory</a></h4>
+
+	<dl>
+			            <dt>Subject</dt>
+			<dd>{$e->mailSubject}</dd>
+
+			            <dt>Text</dt>
+			<dd>{$e->mailText}</dd>
+
+			            <dt>File</dt>
+			<dd>{$e->mailFile}</dd>
+
+			            <dt>Status</dt>
+			<dd>{$e->mailStatus}</dd>
+
+			            <dt>Emails</dt>
+			<dd>{$e->mailCheckedEmails}</dd>
+
+			            <dt>Test mode</dt>
+			<dd>{$e->mailTestMode}</dd>
+
+			            <dt>recipients</dt>
+			<dd>{$e->recipients}</dd>
+
+						            <dt>Tour</dt>
+			<dd>{$e->Tour}</dd>
+
+			
+	</dl>
+
+{/block}

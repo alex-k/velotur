@@ -1,0 +1,13 @@
+www:
+  ports:
+    - "80:80"
+  volumes:
+    - ./www/app:/app
+  links:
+    - mysql:mysql
+mysql:
+  ports:
+    - "3306:3306"
+  volumes:
+    - /var/lib/mysql
+    - ./mysql:/mysql

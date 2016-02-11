@@ -1,8 +1,0 @@
-	<label>{$prelabel}<input type=text name="{$keyname}" 
- 	{if $current || !isset($params.default)}		
-	value="{$current}" 
-	{else}
-	value="{$params.default}"
-	{/if}
-	{if isset($params.placeholder)} placeholder="{$params.placeholder}"{/if}
-	{if isset($params.cssclass)}class="{$params.cssclass}"{/if}>{$label}</label>
