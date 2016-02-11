@@ -3,8 +3,10 @@ MAINTAINER Alex Kochetov <alex@kochetov.com>
 
 ADD ./configs/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 ADD ./configs/etc/php5/apache2/php.ini /etc/php5/apache2/php.ini
+ADD ./configs/etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
+ADD ./configs/etc/ssmtp/revaliases /etc/ssmtp/revaliases
 
-RUN apt-get update && apt-get -y install git vim curl mysql-client
+RUN apt-get update && apt-get -y install git vim curl mysql-client ssmtp
 RUN a2enmod rewrite
 
 #RUN apt-get -y install mysql-server

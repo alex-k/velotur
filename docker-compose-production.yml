@@ -9,4 +9,3 @@ www:
     - /home/activeinfo/velotur.ru/public_html/forum:/app/public/forum
   extra_hosts:
     - "mysql:172.17.0.1"
-    - "smtp:172.17.0.1"
