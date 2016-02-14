@@ -6,6 +6,7 @@ www:
     - ./www/app:/app
   links:
     - mysql:mysql
+    - smtp:smtp
 mysql:
   image: tutum/mysql:latest
   ports:
@@ -13,3 +14,7 @@ mysql:
   volumes:
     - /var/lib/mysql
     - ./mysql:/mysql
+smtp:
+  build: exim4
+  ports:
+    - "25:25"
