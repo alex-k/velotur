@@ -8,3 +8,4 @@ bee
 install.log
 php_errors.log
 build.log
+www/app/public/libs/widgets/MultiPowUpload
