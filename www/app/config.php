@@ -64,7 +64,7 @@ $this->mail_smtp_username = '';
 $this->mail_smtp_password = '';
 $this->mail_smtp_auth = 0;
 $this->mail_from = 'info';
-$this->mail_type = 'sendmail';
+$this->mail_type = 'smtp';
 
 $this->languages = NULL;
 //$this->languages=array('ru'=>'RUS','en'=>'ENG');

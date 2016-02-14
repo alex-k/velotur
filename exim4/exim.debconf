@@ -1,3 +1,13 @@
-exim4-config  exim4/dc_local_interfaces string  0.0.0.0
-exim4-config  exim4/dc_eximconfig_configtype  string  internet site; mail is sent and received directly using SMTP
-exim4-config  exim4/dc_relay_domains  string  *
+exim4-config   exim4/dc_eximconfig_configtype string internet site; mail is sent and received directly using SMTP
+exim4-config   exim4/dc_other_hostnames string 
+exim4-config   exim4/dc_local_interfaces string 0.0.0.0
+exim4-config   exim4/dc_readhost string 
+exim4-config   exim4/dc_relay_domains string *
+exim4-config   exim4/dc_minimaldns string false
+exim4-config   exim4/dc_relay_nets string 127.0.0.1/32;172.0.0.1/8
+exim4-config   exim4/dc_smarthost string 
+exim4-config   exim4/CFILEMODE string 644
+exim4-config   exim4/dc_use_split_config string false
+exim4-config   exim4/dc_hide_mailname string 
+exim4-config   exim4/dc_mailname_in_oh string true
+exim4-config   exim4/dc_localdelivery string mail_spool

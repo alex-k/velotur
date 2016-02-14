@@ -1,5 +1,5 @@
 <?php
 require_once("../config/init.php");
 
-pmail('alexei.kochetov@gmail.com',123,123);
+md(pmail('alexei.kochetov@gmail.com',123,123,null,null,true));
 
