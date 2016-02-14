@@ -15,4 +15,4 @@ mysql:
     - /var/lib/mysql
     - ./mysql:/mysql
 smtp:
-  build: exim4
+  build: mailtrap
