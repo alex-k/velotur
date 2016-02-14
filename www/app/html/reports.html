@@ -50,10 +50,14 @@
 			{foreach $t->Reports as $r}
 			<a href="{gl rec_show=$r}">
 			<dt>
-			<strong>{$r->title}</strong>
-<br>
-			{$r->_ctime|date_format}
-			<i>{implode(" ",array_reverse(array_slice(preg_split("/[\s,]+/",$r->authorName),0,2)))}</i>
+				<strong>{$r->title}</strong>,
+				<a href="{gl rec_show=$r}">{$r->Images->count()} фото</a>
+
+				<br>
+
+				{$r->_ctime|date_format}
+				<i>{implode(" ",array_reverse(array_slice(preg_split("/[\s,]+/",$r->authorName),0,2)))}</i>
+
 			</dt>
 			<dd>
 			<p>
