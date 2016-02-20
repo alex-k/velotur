@@ -1,20 +1,32 @@
-
 {include file="inc_header.php"}
 
 <form method=post>
-<table class=main width=500>
-<th colspan=2  class=ttitle>Авторизация гида</th>
-<tr class=tbody>
-<td align=right width=150> Логин </td><td><input type=input class=input name=guideLogin value="{$guideLogin}">{validate field=guideLogin criteria=notEmpty message="*"}</td>
-</tr>
-<tr class=tbody>
-<td align=right> Пароль</td><td><input type=password  class=input name=guidePassword value="{$guidePassword}">{validate field=guidePassword criteria=notEmpty message="*"}</td>
-</tr>
-<tr class=tbody>
-<td colspan=2 align=right><input type=submit class=input name=formLoginSubmit value="Ok"></td>
-</tr>
+    <table class=main width=500>
+        <th colspan=2 class=ttitle>Авторизация гида</th>
+        {if $AUTH_INCORRECT_LOGIN}
+        <tr class="tbody error">
+            <td colspan=2 align=right>
+                Неверные логин или пароль
+            </td>
+        </tr>
+        {/if}
+        <tr class=tbody>
+            <td align=right width=150> Логин</td>
+            <td><input type=input class=input name=guideLogin value="{$guideLogin}">{validate field=guideLogin
+                criteria=notEmpty message="*"}
+            </td>
+        </tr>
+        <tr class=tbody>
+            <td align=right> Пароль</td>
+            <td><input type=password class=input name=guidePassword value="{$guidePassword}">{validate
+                field=guidePassword criteria=notEmpty message="*"}
+            </td>
+        </tr>
+        <tr class=tbody>
+            <td colspan=2 align=right><input type=submit class=input name=formLoginSubmit value="Ok"></td>
+        </tr>
 
-</table>
+    </table>
 
 </form>
 
