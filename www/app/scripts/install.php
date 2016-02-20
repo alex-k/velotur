@@ -2,6 +2,15 @@
 
 chdir(dirname(__DIR__));
 
+if (!defined('PHPBEE_VAR_DIR')) {
+    if (getenv('PHPBEE_VAR_DIR') !== FALSE) {
+        define('PHPBEE_VAR_DIR', getenv('PHPBEE_VAR_DIR'));
+    } else {
+        define('PHPBEE_VAR_DIR', '/tmp/velotur/var/');
+    }
+}
+
+
 require "vendor/phpbee/phpbee/libs/config.lib.php";
 
 $gs_node_id=1;

@@ -14,8 +14,7 @@ $this->install_key = '12345'; // run site.com/install.php?install_key=12345
 //$this->admin_user_name='ilia';
 //$this->admin_password='cucer71';
 
-DEFINE('DEBUG', 0);
-DEFINE('UDP_DEBUG', 0);
+$this->log_file='phpbee.log';
 
 $this->admin_ip_access = isset($this->admin_ip_access) ? array_map('trim', explode(',', $this->admin_ip_access)) : array();
 
@@ -81,7 +80,6 @@ $this->widget_MultiPowUpload_license = '0082363244411622171231821492549129187161
 
 
 setlocale(LC_NUMERIC, 'POSIX');
-
 
 $this->tpl_data_dir = $this->root_dir . 'HTML';
 $this->tpl_var_dir = '/tmp/velotur/templates_c/templates_c' . DIRECTORY_SEPARATOR . basename($this->tpl_data_dir);

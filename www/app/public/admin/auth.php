@@ -7,14 +7,15 @@ if (!empty($_POST['formLoginSubmit'])) {
 	if (!empty($_POST) && !empty($_POST[formLoginSubmit]) && (($smarty->_validate_processed==1 && $smarty->_validate_error!=1))) {
 		$guide=new Guides();
 		if ($guide->auth($_POST['guideLogin'],$_POST['guidePassword'])) {
-			mydump($guide->guideType);
 			$message='_guideAuthOK';
 			$_SESSION['guide']=$guide;
+			gs_session::save($guide->getValues(),'login_gs_admin');
 			if ($guide->guideType=='admin') {
 				header('Location: stats.php');
 				die();
 			}
 		} else {
+			$smarty->assign('AUTH_INCORRECT_LOGIN','AUTH_INCORRECT_LOGIN');
 			$message='_errorLogPass';
 		} 
 	}

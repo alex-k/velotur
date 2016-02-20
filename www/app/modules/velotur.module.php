@@ -24,7 +24,7 @@ class velotur_module extends gs_base_module implements gs_module {
 				'/admin/menu'=>'admin_handler.show_menu',
 				'/admin/login'=>array(        
 					  'admin_handler.check_login:return:true^show', 
-					  'show'=> 'gs_base_handler.show:name:admin_login.html', 
+					  'show'=> 'gs_base_handler.show:name:admin_login.html',
 				  ),              
 				 '/admin/form/login'=>array(
 					  'admin_handler.post_login:return:true:form_class:form_admin_login',
