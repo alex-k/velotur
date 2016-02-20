@@ -144,16 +144,12 @@ class="tbody
 	</div>
 </td>
 <td valign=top>
-	{*
-	{$u.tourUserCommentsPrepay|nl2br}
-	*}
 	{if !$u.guideType}	
 		{controller _class=tw_payments Hidden=0 tourID=$tourID Type='оплата' userID=$u.userID _assign=payments}
 		{if $payments->count()}
 		{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/user_payments/`$tourID`/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}
 		Задолженность: <span style="color:#A00;">
 		{$handler="/payments/total/{$tourID}/{$u.userID}/{intval($tourPrice1)}"}
-		{*beehandler path="/home/activeinfo/velotur.ru/bee" gspgid=$handler gspgtype="handler"*} N/A
 		</span>
 		{/if}
 	{/if}
@@ -218,8 +214,6 @@ class="tbody
 	</select>
 	<input name="tourUserRoomingNo" style="width:50px;" placeholder="№" value="{$u.tourUserRoomingNo}" tourID={$tourID} userID={$u.userID} onBlur="updateRooming(this);" >
 
-
-{*	<input type=submit name=formSubmit class=input value="Ok">*}
 	</form>
 
 </td>
@@ -245,27 +239,6 @@ class="tbody
 <br>Код вводящего:		{$u.tourUserCommentsRegVia}
 {/if}
 
-{*
-{if $u.tourUserCommentsUser}
-<br>Пожелания: {$u.tourUserCommentsUser}
-{/if}
-
-{if $u.tourUserAddName1 || $u.tourUserAddValue1}
-<br>{$u.tourUserAddName1}:	{$u.tourUserAddValue1}
-{/if}
-{if $u.tourUserAddName2 || $u.tourUserAddValue2}
-<br>{$u.tourUserAddName2}:	{$u.tourUserAddValue2}
-{/if}
-{if $u.tourUserAddName3 || $u.tourUserAddValue3}
-<br>{$u.tourUserAddName3}:	{$u.tourUserAddValue3}
-{/if}
-{if $u.tourUserAddName4 || $u.tourUserAddValue4}
-<br>{$u.tourUserAddName4}:	{$u.tourUserAddValue4}
-{/if}
-{if $u.tourUserAddName5 || $u.tourUserAddValue5}
-<br>{$u.tourUserAddName5}:	{$u.tourUserAddValue5}
-{/if}
-*}
 [<a href="user_edit.php?_id={$u.userID}&_backurl={$smarty.server.REQUEST_URI}">редактировать</a>]<br>
 </td><td valign=top>
 
@@ -277,11 +250,7 @@ class="tbody
 	<input type=hidden name=_classname size=100  value="Users">
 	<input type=hidden name=_action size=100  value="actionsUpdate">
 	<input type=hidden name=applyUserID size=100  value="{$u.userID}">
-{*
-Предоплата:<br>
-<textarea name=tourUserCommentsPrepay class=input cols=80 rows=3 style="height: 50px;">{$u.tourUserCommentsPrepay}</textarea>
-<br>
-*}
+
 Билет:<br>
 <textarea name=tourUserCommentsTicket class=input cols=80 rows=3 style="height: 50px;">{$u.tourUserCommentsTicket}</textarea>
 <br>
@@ -293,31 +262,6 @@ class="tbody
 <br>
 Пожелания пользователя:<br>
 <textarea name=tourUserCommentsUser class=input style="height: 50px;">{$u.tourUserCommentsUser}</textarea>
-
-
-{*
-{if $u.tourUserAddName1 || $u.tourUserAddValue1}
-<br>{$u.tourUserAddName1}:<br>
-<input class=input name="tourUserAddValue1" size=80 value="{$u.tourUserAddValue1}">
-{/if}
-{if $u.tourUserAddName2 || $u.tourUserAddValue2}
-<br>{$u.tourUserAddName2}:<br>
-<input class=input name="tourUserAddValue2" size=80 value="{$u.tourUserAddValue2}">
-{/if}
-{if $u.tourUserAddName3 || $u.tourUserAddValue3}
-<br>{$u.tourUserAddName3}:<br>
-<input class=input name="tourUserAddValue3" size=80 value="{$u.tourUserAddValue3}">
-{/if}
-{if $u.tourUserAddName4 || $u.tourUserAddValue4}
-<br>{$u.tourUserAddName4}:<br>
-<input class=input name="tourUserAddValue4" size=80 value="{$u.tourUserAddValue4}">
-{/if}
-{if $u.tourUserAddName5 || $u.tourUserAddValue5}
-<br>{$u.tourUserAddName5}:<br>
-<input class=input name="tourUserAddValue5" size=80 value="{$u.tourUserAddValue5}">
-{/if}
-*}
-
 
 
 {section name=id start=1 loop=6 step=1}
