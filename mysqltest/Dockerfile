@@ -3,8 +3,8 @@ MAINTAINER Alex Kochetov <alex@kochetov.com>
 
 RUN date > build.log
 
-ADD activeinfo_newvt.sql /activeinfo_newvt.sql
-ADD activeinfo_newvt_triggers.sql /activeinfo_newvt_triggers.sql
+#ADD activeinfo_newvt.sql /activeinfo_newvt.sql
+#ADD activeinfo_newvt_triggers.sql /activeinfo_newvt_triggers.sql
 
 ADD mysql_user.sql /mysql_user.sql
 ADD strip_user_data.sql /strip_user_data.sql
