@@ -31,6 +31,22 @@ DELIMITER ;;
 
 DELIMITER ;
 /*!50003 SET SESSION SQL_MODE=@SAVE_SQL_MODE*/;
+
+--
+-- Dumping routines for database 'activeinfo_newvt'
+--
+DELIMITER ;;
+/*!50003 SET SESSION SQL_MODE=""*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `tourusers_counters`(IN _userID INT, IN _tourID INT)
+BEGIN
+	update User set userCompletedTours=(select count(tourID) from TourUsers where userID=_userID and tourUserType='completed') where userID=_userID;
+
+	update Tour set completedUsersCount=(select count(userID) from TourUsers where tourID=_tourID and tourUserType='completed') where tourID=_tourID;
+	update Tour set tourUsersApply=(select count(userID) from TourUsers  where tourID=_tourID and tourUserType='apply') where tourID=_tourID;
+    update Tour set tourAvPlaces=tourPlaces-tourUsersApply where tourID=_tourID;
+ END */;;
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE*/;;
+DELIMITER ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -38,4 +54,4 @@ DELIMITER ;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-20  9:56:34
+-- Dump completed on 2016-02-20 15:31:47

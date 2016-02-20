@@ -7,7 +7,7 @@ echo "=> Dump production DB..."
 mysqldump --skip-triggers -h velotur.ru -u activeinfo_newvt -pvt123 activeinfo_newvt > activeinfo_newvt.sql
 
 echo "=> Dump production DB triggers..."
-mysqldump --no-create-info --no-data --no-create-db --skip-opt -h velotur.ru -u activeinfo_newvt -pvt123 activeinfo_newvt > activeinfo_newvt_triggers.sql
+mysqldump --no-create-info --no-data --no-create-db --skip-opt --routines --triggers -h velotur.ru -u activeinfo_newvt -pvt123 activeinfo_newvt > activeinfo_newvt_triggers.sql
 
 echo "=> Remove DEFINER from triggers..."
 sed -i 's/DEFINER=[^*]*\*/\*/g' activeinfo_newvt_triggers.sql
