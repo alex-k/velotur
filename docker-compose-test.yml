@@ -1,0 +1,13 @@
+www:
+  build: www
+  ports:
+    - "80:80"
+  volumes:
+    - data/test/public/files:/app/public/files
+  links:
+    - smtp:smtp
+    - mysql:mysql
+smtp:
+  build: mailtrap
+mysql:
+  build: mysqltest
