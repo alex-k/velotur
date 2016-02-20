@@ -8,6 +8,7 @@ $user=new Users();
 $options=array();
 if (isset($_POST['searchstr'])) {
 	$_POST['searchstr']=trim($_POST['searchstr']);
+	$options['strings_OR'][]=array('field'=>'userID', 'eq'=>'=', 'value'=>$_POST['searchstr']);
 	$options['strings_OR'][]=array('field'=>'userEmail', 'eq'=>'like', 'value'=>'%%'.$_POST['searchstr'].'%%');
 	$options['strings_OR'][]=array('field'=>'userRussianName', 'eq'=>'like', 'value'=>'%%'.$_POST['searchstr'].'%%');
 	$options['strings_OR'][]=array('field'=>'userLatinName', 'eq'=>'like', 'value'=>'%%'.$_POST['searchstr'].'%%');
