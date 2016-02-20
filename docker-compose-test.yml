@@ -10,4 +10,4 @@ www:
 smtp:
   build: mailtrap
 mysql:
-  build: mysqltest
+  image: velotur_mysqltest:latest

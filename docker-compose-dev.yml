@@ -7,12 +7,14 @@ www:
   links:
     - mysql:mysql
     - smtp:smtp
+  environment:
+      PHPBEE_DEBUG: 1
 mysql:
   image: tutum/mysql:latest
-  ports:
-    - "3306:3306"
+  #ports:
+  #  - "3306:3306"
   volumes:
-    - /var/lib/mysql
-    - ./mysql:/mysql
+    #- /var/lib/mysql
+    - ./mysqltest:/mysql
 smtp:
   build: mailtrap
