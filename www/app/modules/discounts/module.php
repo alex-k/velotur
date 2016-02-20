@@ -160,7 +160,7 @@ class tw_payments extends gs_recordset_short {
 			'Type'=>'fSelect verbose_name=" " values="оплата,скидка,долг,инфо" widget=select cssclass=hidden',
 			'Amount'=>'fFloat "сумма" ',
 			'Title'=>'fString описание',
-			'Note'=>'fString "примечание (например номер квитанции или визы)" required=false',
+			'Note'=>'fString "примечание (например номер квитанции)" required=false',
 			'Hidden'=>'fCheckbox " " cssclass=hidden',
 			//'tourID'=>'fInt',
 			//'userID'=>'fInt',
