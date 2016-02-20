@@ -178,9 +178,9 @@ function getPlacesGender() {
     include "tour_gender.php";
     return  $valuesarray;
     return array (
-            'all'=>'áåç îãðàíè÷åíèé',
-            'male'=>'òîëüêî ÌÓÆÑÊÈÅ',
-            'female'=>'òîëüêî ÆÅÍÑÊÈÅ',
+            'all'=>'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+            'male'=>'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+            'female'=>'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
             );
 }
 function getUserType() {
@@ -846,6 +846,70 @@ function any2UTF($a) {
     }
 }
 
+function utf8_to_win($str) {
+    $str = utf8_decode ($str); //  utf8 to iso8859-5
+    $str = convert_cyr_string($str, 'i','w'); // w - windows-1251   to  i - iso8859-5
+    return $str;
+}
+function Utf8ToWin($fcontents) {
+    $out = $c1 = '';
+    $byte2 = false;
+    for ($c = 0;$c < strlen($fcontents);$c++) {
+        $i = ord($fcontents[$c]);
+        if ($i <= 127) {
+            $out .= $fcontents[$c];
+        }
+        if ($byte2) {
+            $new_c2 = ($c1 & 3) * 64 + ($i & 63);
+            $new_c1 = ($c1 >> 2) & 5;
+            $new_i = $new_c1 * 256 + $new_c2;
+            if ($new_i == 1025) {
+                $out_i = 168;
+            } else {
+                if ($new_i == 1105) {
+                    $out_i = 184;
+                } else {
+                    $out_i = $new_i - 848;
+                }
+            }
+            // UKRAINIAN fix
+            switch ($out_i) {
+                case 262:
+                    $out_i=179;
+                    break;// Ñ–
+                case 182:
+                    $out_i=178;
+                    break;// Ð†
+                case 260:
+                    $out_i=186;
+                    break;// Ñ”
+                case 180:
+                    $out_i=170;
+                    break;// Ð„
+                case 263:
+                    $out_i=191;
+                    break;// Ñ—
+                case 183:
+                    $out_i=175;
+                    break;// Ð‡
+                case 321:
+                    $out_i=180;
+                    break;// Ò‘
+                case 320:
+                    $out_i=165;
+                    break;// Ò
+            }
+            $out .= chr($out_i);
+
+            $byte2 = false;
+        }
+        if ( ( $i >> 5) == 6) {
+            $c1 = $i;
+            $byte2 = true;
+        }
+    }
+    return $out;
+}
 
 function getLettersArray() {
 
@@ -857,7 +921,7 @@ function getLettersArray() {
             $ret['russian'][200+$i]=$rl;
         }
     } else {
-        for ($i=ord('À');$i<=ord('ß');$i++) {
+        for ($i=ord('ï¿½');$i<=ord('ï¿½');$i++) {
             $ret['russian'][$i]=(chr($i));
         }
         unset($ret['russian'][201]);
@@ -893,7 +957,3 @@ function so_tour_status_sort($a, $b) {
     }
     return $r;
 }
-
-
-
-?>

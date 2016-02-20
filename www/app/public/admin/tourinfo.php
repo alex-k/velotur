@@ -124,7 +124,7 @@ $tw_tour=record_by_id($t->getID(),'tw_tours');
 $ps=new tw_payments;
 
 
-if (is_array($t->Users)) foreach ($t->Users as $k=>$u) {
+/*if (is_array($t->Users)) foreach ($t->Users as $k=>$u) {
 	 $u->loadLinkedFromDB();
 	 $u->payments_pay=$tw_tour->Payments->find(array('userID'=>$k,array('field'=>'Type','case'=>'!=','value'=>'скидка')));
 	 $u->payments_discounts=$tw_tour->Payments->find(array('userID'=>$k,'Type'=>'скидка'));
@@ -139,7 +139,7 @@ if (is_array($t->Users)) foreach ($t->Users as $k=>$u) {
 		$u->payments_credit_sum=$ps->calc_total($t->getID(),$k);
 	 }
 	 $t->Users[$k]=$u;
-}
+}*/
 
 if (is_array($t->Users)) so_tour_status($t->Users);
 
@@ -284,8 +284,6 @@ if ($sf) {
 	usort($t['Users'],create_function('$a,$b',"return is_numeric($sa) && is_numeric($sb) ? $sa-$sb : strcmp($sa,$sb);"));
 }
 
-//usort($t['Users'],create_function('$a,$b','return strcmp($a["tourUserRooming"],$b["tourUserRooming"]);'));
-
 
 $smarty->assign($t);
 
@@ -415,68 +413,3 @@ if ($_POST['type']=='vypiska') {
 	$smarty->display("tourinfo.html");
 }
 
-function utf8_to_win($str) {
-	$str = utf8_decode ($str); //  utf8 to iso8859-5
-	$str = convert_cyr_string($str, 'i','w'); // w - windows-1251   to  i - iso8859-5
-	return $str;
-}
-function Utf8ToWin($fcontents) {
-	$out = $c1 = '';
-	$byte2 = false;
-	for ($c = 0;$c < strlen($fcontents);$c++) {
-		$i = ord($fcontents[$c]);
-		if ($i <= 127) {
-			$out .= $fcontents[$c];
-		}
-		if ($byte2) {
-			$new_c2 = ($c1 & 3) * 64 + ($i & 63);
-			$new_c1 = ($c1 >> 2) & 5;
-			$new_i = $new_c1 * 256 + $new_c2;
-			if ($new_i == 1025) {
-				$out_i = 168;
-			} else {
-				if ($new_i == 1105) {
-					$out_i = 184;
-				} else {
-					$out_i = $new_i - 848;
-				}
-			}
-			// UKRAINIAN fix
-			switch ($out_i) {
-			case 262:
-				$out_i=179;
-				break;// і
-			case 182:
-				$out_i=178;
-				break;// І
-			case 260:
-				$out_i=186;
-				break;// є
-			case 180:
-				$out_i=170;
-				break;// Є
-			case 263:
-				$out_i=191;
-				break;// ї
-			case 183:
-				$out_i=175;
-				break;// Ї
-			case 321:
-				$out_i=180;
-				break;// ґ
-			case 320:
-				$out_i=165;
-				break;// Ґ
-			}
-			$out .= chr($out_i);
-
-			$byte2 = false;
-		}
-		if ( ( $i >> 5) == 6) {
-			$c1 = $i;
-			$byte2 = true;
-		}
-	}
-	return $out;
-}
-?>
