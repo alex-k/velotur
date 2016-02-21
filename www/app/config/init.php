@@ -52,6 +52,12 @@ require_once('vendor/phpbee/phpbee/libs/smarty/SmartyValidate.class.php');
 #require_once('__smarty/plugins/function.beehandler.php');
 #require_once('__smarty/plugins/modifier.date_format.php');
 
+$init = new gs_init('auto');
+$init->init(LOAD_CORE);
+$init->load_modules();
+$smarty=gs_tpl::get_instance();
+$smarty->assign('_gsdata',$_REQUEST);
+
 
 require_once $_CONF[root_dir] . $_CONF[classes_dir] . 'class_dblevel.php';
 require_once $_CONF[root_dir] . $_CONF[classes_dir] . 'base.php';
@@ -67,15 +73,6 @@ if ($_CONF['default_socket_timeout']) {
 $subDir = str_replace($_SERVER[DOCUMENT_ROOT], '', dirname($_SERVER['SCRIPT_FILENAME']));
 $wwwSubDir = substr($_SERVER['REQUEST_URI'], -1) == '/' ? $_SERVER['REQUEST_URI'] : dirname($_SERVER['REQUEST_URI']);
 
-class veloturSmarty extends extSmarty
-{
-    public $_validate_processed = false;
-    public $_validate_error = false;
-    public $_validate_error_fields = array();
-}
-
-
-$smarty = new veloturSmarty();
 $smarty->setTemplateDir(array(
     realpath($_CONF['root_dir'] . $_CONF['template_dir'] . $wwwSubDir . '/'),
     realpath($_CONF['root_dir'] . $_CONF['template_dir'] . $subDir . '/'),
