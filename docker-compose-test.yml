@@ -3,11 +3,13 @@ www:
   ports:
     - "80:80"
   volumes:
-    - data/test/public/files:/app/public/files
+    - /data/public/files:/app/public/files
   links:
     - smtp:smtp
     - mysql:mysql
 smtp:
   build: mailtrap
 mysql:
-  image: velotur_mysqltest:latest
+  image: tutum/mysql:latest
+  volumes:
+    - /root/mysqltest:/mysql
