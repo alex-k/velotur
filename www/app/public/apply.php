@@ -181,9 +181,7 @@ function email_apply($origuser, $tour)
 
 function apply_discount($user_id, $tour_id)
 {
-    global $smarty;
-    require_once("./smarty/plugins/function.beehandler.php");
-    smarty_function_beehandler_init(array('path' => '../bee'), $smarty);
+
     $tw_user = tw_users::record_by_id($user_id);
     $tw_tour = tw_tours::record_by_id($tour_id);
 
