@@ -4,7 +4,7 @@
 <a href="tourinfo.php?tourID={$tourID}">Информация по походу {$tourTitle}  ( {$tourStartDate} -  {$tourEndDate} )</a>
 </h3>
 
-{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/payment_js/$tourID/`$tourPrice1|intval`" gspgtype="handler"}
+{handler gspgid="/admin/payment_js/$tourID/`$tourPrice1|intval`" }
 
 <hr>{$tourStatusText}<br>
 Гид похода: {$Guides.guideName} {mailto address=$Guides.guideEmail1 encode=javascript}
@@ -105,8 +105,8 @@ class=tbody
 {$u.tourUserCommentsPrepay|nl2br}
 *}
 
-	{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/user_payments/`$tourID`/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}
-	Задолженность: {beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/payments/total/`$tourID`/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}</li>
+	{handler gspgid="/user_payments/`$tourID`/`$u.userID`/`$tourPrice1|intval`" }
+	Задолженность: {handler gspgid="/payments/total/`$tourID`/`$u.userID`/`$tourPrice1|intval`" }</li>
 
 
 </td>
@@ -197,7 +197,7 @@ class=tbody
 </td><td valign=top>
 
 {if !$u.guideLogin}
-{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/payment/$tourID/`$u.userID`/`$tourPrice1|intval`" gspgtype="handler"}
+{handler gspgid="/admin/payment/$tourID/`$u.userID`/`$tourPrice1|intval`" }
 {/if}
 	<form method=post action="tourinfo.php?tourID={$tourID}">
 	<input type=hidden name=applyTourID value="{$tourID}">

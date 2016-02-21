@@ -128,10 +128,10 @@
 
 	<ul>
 	<li>стоимость тура {$t.tourPrice1} {$t.tourPriceTitle1}</li>
-	{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/user_payments/`$t.tourID`/`$User.userID`/`$t.tourPrice1|intval`" gspgtype="handler"}
-	<li>Итого задолженность: {beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/payments/total/`$t.tourID`/`$User.userID`/`$t.tourPrice1|intval`" gspgtype="handler"}</li>
+	{handler gspgid="/user_payments/`$t.tourID`/`$User.userID`/`$t.tourPrice1|intval`" }
+	<li>Итого задолженность: {handler gspgid="/payments/total/`$t.tourID`/`$User.userID`/`$t.tourPrice1|intval`" }</li>
 	</ul>
-	{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/user_tour_promotions/`$t.tourID`" gspgtype="handler"}
+	{handler gspgid="/user_tour_promotions/`$t.tourID`" }
 
 	{if  $t.tourUserType=='apply' || $t.tourUserType=='WL'}<a href="/apply.php?tourID={$t.tourID}&applyFriend=1">заявить еще одного участника</a>{/if}
 

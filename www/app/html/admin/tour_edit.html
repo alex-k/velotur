@@ -5,7 +5,7 @@
 </p>
 
 
-{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="--init--" gspgtype="handler"}
+{handler gspgid="--init--" }
 
 <form action="tour_edit.php" method=post name=form1>
 <input type=hidden name=_classname size=100  value="Tours">
@@ -147,8 +147,8 @@ onChange="$('#tourEndDate').each(function(){
 <tr class=tbody><td colspan=2>
 <iframe src="/admin/tour_promotions/{$tourID}/{$ourPrice1|intval}" style="width:1100px; height:500px;" scrolling="auto"></iframe>
 {*
-{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/tour_promotions_js/0/`$tourPrice1|intval`" gspgtype="handler"}
-{beehandler path="/home/activeinfo/velotur.ru/bee" gspgid="/admin/tour_promotions/$tourID/`$tourPrice1|intval`" gspgtype="handler"}
+{handler gspgid="/admin/tour_promotions_js/0/`$tourPrice1|intval`" }
+{handler gspgid="/admin/tour_promotions/$tourID/`$tourPrice1|intval`" }
 *}
 </td>
 </tr>
