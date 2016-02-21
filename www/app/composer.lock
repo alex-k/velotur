@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a4156a3ea7fd1167d6ff6bc190238bc1",
+    "hash": "22c902e2a58a9cf1859e4c266845e081",
     "content-hash": "c19160f3f6480d7f8b287dc3dea7fa5f",
     "packages": [
         {
@@ -361,7 +361,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpbee/phpbee.git",
-                "reference": "85ae5f9b6008660acaf3d9a3b13c5df2c94dd01b"
+                "reference": "0f3c422fcab7009f4e379c19ce7a6235174cec7b"
             },
             "type": "library",
             "license": [
@@ -374,7 +374,7 @@
                 }
             ],
             "description": "PhpBee framework",
-            "time": "2016-02-20 17:06:02"
+            "time": "2016-02-21 20:14:25"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
