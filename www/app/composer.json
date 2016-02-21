@@ -27,6 +27,9 @@
       "chmod -R a+w /tmp/velotur",
       "chown -R www-data /tmp/velotur",
       "cp /app/build.log VERSION"
+    ],
+    "db": [
+      "php scripts/database.php"
     ]
   }
 }
