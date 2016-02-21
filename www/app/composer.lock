@@ -361,7 +361,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpbee/phpbee.git",
-                "reference": "0f3c422fcab7009f4e379c19ce7a6235174cec7b"
+                "reference": "b322bfd210bc8f24d97a2ee14852f0d33c76b681"
             },
             "type": "library",
             "license": [
@@ -374,7 +374,7 @@
                 }
             ],
             "description": "PhpBee framework",
-            "time": "2016-02-21 20:14:25"
+            "time": "2016-02-21 20:49:05"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
