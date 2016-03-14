@@ -90,8 +90,8 @@
 					{if $t.guideName2}<br><a href="/guides/{$t.guideID2}">{$t.guideName2}</a>{/if}
 					</td>
 					<td >
-					<a href="p.php?t=comfort">{$d_tourdifficulty.$diff|replace:" ":"&nbsp;"}</a><br>
-					<a href="p.php?t=comfort">{$d_tourcomfort.$comf|replace:" ":"&nbsp;"}</a><br>
+					<a href="/content/comfort.html#complexity">{$d_tourdifficulty.$diff|replace:" ":"&nbsp;"}</a><br>
+					<a href="/content/comfort.html">{$d_tourcomfort.$comf|replace:" ":"&nbsp;"}</a><br>
 					{if $User.userType=='guard'}
 					<a href="tourinfo.php?tourID={$t.tourID}">подробнее (список заявок и т.д.)</a><br>
 					{/if}
