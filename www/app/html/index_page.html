@@ -81,12 +81,22 @@
 			<h5><a href="/news/">Новости</a></h5>
 			<ul>
 				{foreach from=$hot_news item=n}
-				<li><a href="/news/{$n.id}">{if $n.Images->count()}<img src="/img/s/tw_news_images/c/50/50/{$n.Images->first()->get_id()}">{else}<img src="/i/news.gif">{/if}</a><a href="/news/{$n.id}">{$n.subject}</a>
+				<li>
+					<a href="/news/{$n.id}">
+						{if $n.Images->count()}
+						<img src="/img/s/tw_news_images/c/50/50/{$n.Images->first()->get_id()}">
+						{else}
+						<img src="/i/news.gif">
+						{/if}
+					</a>
+					<small>{$n.date|date_format:"%d.%m.%Y"}</small><br>
+					<a href="/news/{$n.id}">{$n.subject}</a>
+
 				</li>
 				{if !$n@last}<hr>{/if}
 				{/foreach}
 			</ul>
-			<div class="hot_news_link"><a href="/news/">все новости</a></div>
+			<div class="hot_news_link"><a href="/news/">Все новости &raquo;</a></div>
 			</div>
 			{/if}
 			<div class="banner-600">

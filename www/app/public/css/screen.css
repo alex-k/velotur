@@ -326,7 +326,12 @@ a {
 	top:0px;
 	left:0px;
 }
-
+.news_list li {
+	padding-bottom: 30px;
+}
+.news_list p {
+	margin-top: 6px;
+}
 
 .left {
 	width:766px;

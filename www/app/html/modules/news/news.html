@@ -4,18 +4,17 @@
 {/block}
 {block name="page_center"}
 {controller _class=tw_news _assign=news _paging="pagenums:20" _orderby="id desc"}
-{foreach from=$news item=n}
 <ul class="news_list">
+    {foreach from=$news item=n}
     <li>
+        <data value="{$n.date|date_format:" %d/%m/%Y"}">{$n.date|date_format:"%d %b %Y"}</data><br>
         <span> <a href="/news/{$n.id}">{$n.subject}</a> </span>
         <p>
-            <data value="{$n.date|date_format:" %d /%m/%Y"}">{$n.date|date_format:"%d/%m/%Y"}</data>
-            </p><p>
             {$n.text}
             </p>
         {foreach from=$n.Images item=i}<a href="/news/{$n.id}">{$i}</a> {/foreach}
     </li>
+    {/foreach}
 </ul>
-{/foreach}
 <div class="pages">Страницы: {$news_paging}</div>
 {/block}
