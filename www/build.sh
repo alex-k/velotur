@@ -12,5 +12,5 @@ echo "=> Touch build.log file..."
 cd /app && date > build.log
 
 echo "=> Runing composer install ..."
-cd /app && php composer.phar install
+cd /app && php composer.phar install --no-dev
 
