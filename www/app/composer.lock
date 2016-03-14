@@ -4,9 +4,32 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "22c902e2a58a9cf1859e4c266845e081",
-    "content-hash": "c19160f3f6480d7f8b287dc3dea7fa5f",
+    "hash": "90efa3a2d733a7ef8877f2d78f80c0ca",
+    "content-hash": "2f67d40020cdafab569a1b104ce5092f",
     "packages": [
+        {
+            "name": "phpbee/phpbee",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpbee/phpbee.git",
+                "reference": "4b5b914b07faf374f7e66157e87e71b7b02e1551"
+            },
+            "type": "library",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "PhpBee Studio",
+                    "email": "info@phpbee.org"
+                }
+            ],
+            "description": "PhpBee framework",
+            "time": "2016-03-14 20:32:30"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "codeception/codeception",
             "version": "2.1.7",
@@ -355,27 +378,6 @@
                 "uri"
             ],
             "time": "2016-02-18 21:54:00"
-        },
-        {
-            "name": "phpbee/phpbee",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpbee/phpbee.git",
-                "reference": "4b5b914b07faf374f7e66157e87e71b7b02e1551"
-            },
-            "type": "library",
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "PhpBee Studio",
-                    "email": "info@phpbee.org"
-                }
-            ],
-            "description": "PhpBee framework",
-            "time": "2016-03-14 20:32:30"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1720,7 +1722,6 @@
             "time": "2016-02-23 15:16:06"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
