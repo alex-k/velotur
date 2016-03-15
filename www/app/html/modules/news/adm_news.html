@@ -1,4 +1,9 @@
-{extends file="admin_page.html"}
+{include file="inc_menu.html"}
+
+{block name="title"}
+reports
+{/block}
+
 {block name="main"}
 	<table class="tb">
 	<thead>
@@ -9,8 +14,8 @@
 	{controller _class=$_gsparams.classname _assign="list" _orderby="id desc"}
 	{foreach from=$list item="e"}
 	<tr class="{cycle values='odd,even'}">
-			<td>{$e.id}</td>
-			<td>{$e.subject}</td>
+			<td><a href="/admin/news/{$e.id}#form">{$e.id}</a></td>
+			<td><a href="/admin/news/{$e.id}#form">{$e.subject}</a></td>
 			<td class="imgs_list">{assign var="imgs" value=$e.Images->img('admin')}
 			{if count($imgs)}{$imgs|array_slice:0:3|implode}<br>{/if}
 			Всего картинок:{$imgs|count}</td>
