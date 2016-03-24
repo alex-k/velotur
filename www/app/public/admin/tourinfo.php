@@ -123,6 +123,9 @@ $t->loadLinkedFromDB();
 $tw_tour=record_by_id($t->getID(),'tw_tours');
 $ps=new tw_payments;
 
+if (is_array($t->Users)) foreach ($t->Users as $k=>$u) {
+	 $u->loadLinkedFromDB();
+}
 
 /*if (is_array($t->Users)) foreach ($t->Users as $k=>$u) {
 	 $u->loadLinkedFromDB();
