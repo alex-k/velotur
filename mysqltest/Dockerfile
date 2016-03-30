@@ -9,6 +9,7 @@ RUN date > build.log
 ADD mysql_user.sql /mysql_user.sql
 ADD strip_user_data.sql /strip_user_data.sql
 ADD build.sh /build.sh
+ADD dump.sh /dump.sh
 
 RUN cd / && sh ./build.sh 
 
