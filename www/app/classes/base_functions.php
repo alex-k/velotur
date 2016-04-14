@@ -117,7 +117,7 @@ function mylog($mix,$type='mydump') {
             break;
     }
 
-    if ($logfilename && $p = fopen($_CONF[root_dir].$_CONF[log_dir].$logfilename,"a+") ) {
+    if ($logfilename && $p = fopen($_CONF[log_dir].$logfilename,"a+") ) {
         fputs($p,date("Y-m-d H:i:s")."  ");
         fputs($p,"\n");
         //	if ($type=='auth' || $type=='api') ;
