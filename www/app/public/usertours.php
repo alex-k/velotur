@@ -6,6 +6,8 @@ include ("restricted.php");
 if (isset($_POST['_action'])) {
 	if ($_POST['tourUserType']=='deleted') {
 		$tour=new Tours($_POST['applyTourID']);
+		$tour->loadLinkedFromDB();
+
 		if ($_POST['deleteLinkedUsers']) {
 			$twt=record_by_id($tour->getID(),'tw_tours');
 			foreach ($twt->Users as $t) {
@@ -21,7 +23,6 @@ if (isset($_POST['_action'])) {
 		$user->Tours[$_POST['applyTourID']]->tourUserType='deleted';
 		$user->Tours[$_POST['applyTourID']]->tourUserModifyDate=date('Y-m-d H:i:s');
 
-		$gmail=$tour->Guides->guideEmail1;
 		$subject="отказ от тура $tour->tourTitle";
 		$body="
 		ваш статус изменен. 
@@ -36,7 +37,8 @@ if (isset($_POST['_action'])) {
 			http://velotur.ru/admin/tourinfo.php?tourID=$tour->tourID&showUser=$user->userID#showUser
 			</a>
 		";
-		pmail($gmail,$body,$subject,false,$gmail);
+		pmail($tour->Guides->guideEmail1,$body,$subject,false,$gmail);
+		pmail($tour->Guides->guideEmail2,$body,$subject,false,$gmail);
 
 
 		$message.="$user->userEmail: mail sent<br>";
