@@ -5,7 +5,7 @@ $this->use_handler_cache = 0;
 ini_set('error_reporting',E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
 ini_set('display_errors',1);
 ini_set('log_errors',1);
-ini_set('error_log','/var/log/apache2/velotur_error.log');
+ini_set('error_log','/var/log/velotur/php_error.log');
 
 ini_set('max_execution_time', 1600);
 
@@ -13,8 +13,8 @@ $this->install_key = '12345'; // run site.com/install.php?install_key=12345
 //$this->admin_ip_access='127.0.0.1, 192.168.1.102';
 //$this->admin_user_name='ilia';
 //$this->admin_password='cucer71';
-
-$this->log_file='phpbee.log';
+$this->log_dir='/var/log/velotur/';
+$this->log_file='velotur.log';
 
 $this->admin_ip_access = isset($this->admin_ip_access) ? array_map('trim', explode(',', $this->admin_ip_access)) : array();
 
