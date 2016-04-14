@@ -18,6 +18,8 @@ ADD build.sh /build.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
+RUN mkdir -m 0777 /var/log/velotur/
+
 #ADD mysql.sql /mysql_data.sql
 RUN date > build.log
 
