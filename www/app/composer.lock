@@ -13,7 +13,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpbee/phpbee.git",
-                "reference": "1873bc805971365c8da9babba6d7c3f1393f2916"
+                "reference": "36266102e2d50c851712b78453657d9b77001795"
             },
             "type": "library",
             "license": [
@@ -26,7 +26,7 @@
                 }
             ],
             "description": "PhpBee framework",
-            "time": "2016-04-30 10:42:17"
+            "time": "2016-04-30 11:31:35"
         }
     ],
     "packages-dev": [
