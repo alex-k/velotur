@@ -62,7 +62,7 @@ $this->mail_smtp_port = '25';
 $this->mail_smtp_username = '';
 $this->mail_smtp_password = '';
 $this->mail_smtp_auth = 0;
-$this->mail_from = 'info@velotur.ru';
+$this->mail_from = 'inbox@velotur.ru';
 $this->mail_type = 'smtp';
 
 $this->languages = NULL;
