@@ -66,8 +66,8 @@
 <tr ><td align=right> Пол   </td><td> <select size="1" name="userSex" class=input>
 <option value="">--</option>
 {html_options options=$d_userSex selected=$userSex}
-</select> 
-{if $Tour.tourPlacesGender=='male' || $Tour.tourPlacesGender=='female'}
+</select>
+{if $Tour.tourPlacesGender=='Male' || $Tour.tourPlacesGender=='Female'}
 	{validate field=userSex criteria=isEqual value=$Tour.tourPlacesGender message=$validate_err_msg}
 {else}
 	{validate field=userSex criteria=notEmpty message=$validate_err_msg}
