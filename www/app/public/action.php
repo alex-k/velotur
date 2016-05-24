@@ -1,16 +1,14 @@
 <?
 require_once("../config/init.php");
-switch ($_POST['action']) {
-	case 'login':
-		include ("auth.php");
-		include ("restricted.php");
-		break;
-	case 'logout':
-		unset($_SESSION['user']);
-		break;
+switch ($_REQUEST['action']) {
+    case 'login':
+        include("auth.php");
+        include("restricted.php");
+        break;
+    case 'logout':
+        $_SESSION['user'] = null;
+        break;
 }
 
-header("Location: /calendar.php?year=".date("Y"));
+header("Location: /calendar.php?year=" . date("Y"));
 include("index.php");
-
-?>
