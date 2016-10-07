@@ -57,7 +57,28 @@
             </div>
         {/if}
 
-		{if $type=='apply' && $Tour.tourAllowApply}
+		{if $overlaps}
+			{$o=reset($overlaps)}
+			<div class="alert">
+				<p>Вы собираетесь подать заявку на тур<br>
+					<b>{$Tour.tourTitle}</b><br>
+					{$Tour.tourStartDate|date_format:"%d.%m.%Y"}-{$Tour.tourEndDate|date_format:"%d.%m.%Y"}
+				</p>
+			<p >
+				Даты этого тура пересекается с другой вашей заявкой<br>
+				<b>{$o->tourTitle}</b><br>
+				{$o->tourStartDate|date_format:"%d.%m.%Y"} - {$o->tourEndDate|date_format:"%d.%m.%Y"}.
+			</p>
+				<p>
+					Так  как  походы  пересекаются по срокам, вы можете
+					подать    заявку    только    на   один из них. Чтобы подать заявку на
+					этот поход, необходимо снять Вашу заявку на другой.
+				</p>
+				<p>
+					Все заявки можно просмотреть в разделе <a href="usertours.php">"ваши заявки"</a>.
+				</p>
+			</div>
+		{elseif $type=='apply' && $Tour.tourAllowApply}
 			<p class="error"> ЕСЛИ ВЫ ЕДЕТЕ ВДВОЕМ ИЛИ КОМПАНИЕЙ, НЕОБХОДИМО ПОДАТЬ ОТДЕЛЬНО ЗАЯВКУ НА КАЖДОГО ЧЕЛОВЕКА. ОДИН ЧЕЛОВЕК - ОДНА ЗАЯВКА. СПАСИБО!  </p>
 			{include file="apply_form.html" type=apply applyFriend=0}
 		{elseif $type=='WL' && $Tour.tourAllowWL}
