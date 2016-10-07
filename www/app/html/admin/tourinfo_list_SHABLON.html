@@ -8,7 +8,7 @@
 {/foreach}
 </tr>
 {foreach from=$Users item=u key=k}
-{if $u.tourUserType=='apply' || $u.guideID}
+{if $u.tourUserType=='apply' ||$u.tourUserType=='completed' || $u.guideID }
 {assign var=i value=$i+1}
 <tr class=tbody valign=top>
 <td width=50>{$i}</td>
