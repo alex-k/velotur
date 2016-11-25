@@ -3,6 +3,7 @@ www:
   build: www
   ports:
     - "8088:80"
+#  restart: always
   volumes:
     - /home/activeinfo/velotur.ru/public_html/files:/app/public/files
     - /home/activeinfo/velotur.ru/public_html/content:/app/public/content
@@ -19,3 +20,4 @@ www:
 smtp:
   container_name: velotur_smtp
   build: exim4
+  restart: always
