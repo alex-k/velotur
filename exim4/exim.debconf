@@ -7,7 +7,8 @@ exim4-config   exim4/dc_minimaldns string false
 exim4-config   exim4/dc_relay_nets string 127.0.0.1/32;172.0.0.1/8
 exim4-config   exim4/dc_smarthost string 
 exim4-config   exim4/CFILEMODE string 644
-exim4-config   exim4/dc_use_split_config string false
-exim4-config   exim4/dc_hide_mailname string 
+exim4-config   exim4/dc_use_split_config string true
+exim4-config   exim4/dc_hide_mailname string true
+exim4-config   exim4/mailname string velotur.ru
 exim4-config   exim4/dc_mailname_in_oh string true
 exim4-config   exim4/dc_localdelivery string mail_spool
