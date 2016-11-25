@@ -36,20 +36,19 @@ $user->loadLinkedFromDB();
 
 
 $sd = strtotime($tour->tourStartDate);
-$ed = strtotime($tour->tourEndDate." -1 day");
+$ed = strtotime($tour->tourEndDate . " -1 day");
 $overlaps = array();
 foreach ($user->Tours as $t) {
     $sd1 = strtotime($t->tourStartDate);
-    $ed1 = strtotime($t->tourEndDate." -1 day");
-    if (
-        ($sd <= $sd1 && $sd1 <= $ed)
-        ||
-        ($sd1 <= $sd && $sd <= $ed1)
+    $ed1 = strtotime($t->tourEndDate . " -1 day");
+    if (in_array($t->tourUserType, array('WL', 'apply')) &&
+        (($sd <= $sd1 && $sd1 <= $ed) ||
+            ($sd1 <= $sd && $sd <= $ed1))
     ) {
-        array_push($overlaps,$t);
+        array_push($overlaps, $t);
     }
 }
-$smarty->assign('overlaps',$overlaps);
+$smarty->assign('overlaps', $overlaps);
 
 
 if (isset($_POST['applyFriend'])) {
