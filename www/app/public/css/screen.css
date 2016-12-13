@@ -118,7 +118,7 @@ a {
 	padding-top:3px;
 }
 
-.r2 .auth input[type="submit"] {
+.auth input[type="submit"] {
 	display: block;
 	float: right;
 	width: 50px;

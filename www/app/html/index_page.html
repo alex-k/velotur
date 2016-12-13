@@ -26,24 +26,19 @@
 			{else}
 			<form method="POST" class="auth" action="/usertours.php">
 				{if $message}
-				<span class="error">
-				{if $message=='_userAuthOK'}
-				вход выполнен
-				{elseif $message=='_userCreated'}
-				пользователь зарегистрирован
-				{elseif $message=='_errorBusyEmail'}
-				данный e-mail уже зарегистрирован
-				{elseif $message=='_errorLogPass'}
+				<div class="error">
+				{if $message=='_errorLogPass'}
 				неверный email или пароль
 				{elseif $message=='_errorCheckValues'}
 				поля заполнены некорректно
 				{/if}
-				</span >
+				</div >
 				{/if}
-				<label for="login">Email</label><input type="text" name=userEmail value="{$userEmail}">{validate field=userEmail criteria=isEmail message="<span class=error>*</span>"}
-				<label for="pass">Пароль</label><input type="password"  name=userPassword value="{$userPassword}">{validate field=userPassword criteria=notEmpty message="<span class=error>*</span>"}
+				<label for="login">Email {validate field=userEmail criteria=isEmail message="*"}</label><input type="text" name=userEmail value="{$userEmail}">
+				<label for="pass">Пароль {validate field=userPassword criteria=notEmpty message="*"}</label><input type="password"  name=userPassword value="{$userPassword}">
 				<input type="submit" name="formLoginSubmit" value="Вход">
 				<a href="/action.php?action=login">Регистрация</a>
+				<a href="password.php">Напомнить пароль</a>
 				<div class="clear"></div>
 			</form>
 			{/if}
