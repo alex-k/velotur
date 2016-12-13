@@ -1,16 +1,19 @@
 www:
   container_name: velotur_www
-  build: www
+#  build: www
+  image: alexk7898/velotur:www-master
   ports:
-    - "8088:80"
-#  restart: always
+    - "127.0.0.1:8088:80"
+  restart: always
   volumes:
     - /home/activeinfo/velotur.ru/public_html/files:/app/public/files
     - /home/activeinfo/velotur.ru/public_html/content:/app/public/content
     - /home/activeinfo/velotur.ru/public_html/r2_banners:/app/public/r2_banners
 #    - /home/activeinfo/velotur.ru/public_html/content:/app/public/content
     - /home/activeinfo/velotur.ru/FUDforum:/app/FUDforum
+    - /home/activeinfo/velotur.ru/FUDforum:/home/activeinfo/velotur.ru/FUDforum
     - /home/activeinfo/velotur.ru/public_html/forum:/app/public/forum
+    - /home/activeinfo/velotur.ru/public_html/forum:/home/activeinfo/velotur.ru/public_html/forum
     - /home/velotur/log/apache2:/var/log/apache2
     - /home/velotur/log/velotur:/var/log/velotur
   extra_hosts:
@@ -19,5 +22,6 @@ www:
     - smtp:smtp
 smtp:
   container_name: velotur_smtp
-  build: exim4
+#  build: exim4
+  image: alexk7898/velotur:exim4-master
   restart: always
