@@ -127,7 +127,7 @@ if (is_array($t->Users)) foreach ($t->Users as $k=>$u) {
 	 $u->loadLinkedFromDB();
 }
 
-/*if (is_array($t->Users)) foreach ($t->Users as $k=>$u) {
+if ($_GET['type']=='finlist' && is_array($t->Users)) foreach ($t->Users as $k=>$u) {
 	 $u->loadLinkedFromDB();
 	 $u->payments_pay=$tw_tour->Payments->find(array('userID'=>$k,array('field'=>'Type','case'=>'!=','value'=>'скидка')));
 	 $u->payments_discounts=$tw_tour->Payments->find(array('userID'=>$k,'Type'=>'скидка'));
@@ -142,7 +142,7 @@ if (is_array($t->Users)) foreach ($t->Users as $k=>$u) {
 		$u->payments_credit_sum=$ps->calc_total($t->getID(),$k);
 	 }
 	 $t->Users[$k]=$u;
-}*/
+}
 
 if (is_array($t->Users)) so_tour_status($t->Users);
 
@@ -377,8 +377,6 @@ if ($_POST['type']=='vypiska') {
 	                       'пожелания'=>'{$u.tourUserCommentsUser}',
 	                   ),
 	        );
-
-
 	$v=$values[$_POST['type']];
 	if (is_array($v)) {
 		$smarty->assign('fields_Names',array_keys($v));

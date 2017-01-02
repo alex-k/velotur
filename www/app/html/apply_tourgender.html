@@ -1,9 +1,10 @@
-{if $Tour.tourPlacesGender=='male' or $Tour.tourPlacesGender=='female'}
+{if $Tour.tourPlacesGender=='Male' or $Tour.tourPlacesGender=='Female'}
 <div style="max-width:350px;">
 На  этот  поход  осталось 
 {if $Tour.tourShowAvPlaces || $_CONF.minimum_avaible_places>$Tour.tourAvPlaces} {$Tour.tourAvPlaces} {else} мало {/if}
 мест. 
-И эти  места  может  занять  только <strong>{if $Tour.tourPlacesGender=='male'}МУЖЧИНА{else if $Tour.tourPlacesGender=='female'}ЖЕНЩИНА{/if}</strong>. 
+И эти  места  может  занять  только
+    <strong>{if $Tour.tourPlacesGender=='Male'}МУЖЧИНА{else if $Tour.tourPlacesGender=='Female'}ЖЕНЩИНА{/if}</strong>.
 Это
 связано с тем, что у нас двухместное размещение, а незнакомых мужчин и
 женщин  в  один  номер мы не селим :). У вас есть два варианта: подать

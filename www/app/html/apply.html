@@ -1,15 +1,15 @@
 {extends file="tour2.html"}
 {block name="page_center"}
 	{if $message=='_userAuthOK'}
-	Вы регистрируетесь на велотур. Проверьте вашу анкету, особенно данные паспорта. Если есть какие нибудь изменения, пожалуйста внесите их 
+	Вы регистрируетесь на велотур. Проверьте вашу анкету, особенно данные паспорта. Если есть какие нибудь изменения, пожалуйста внесите их
 	{/if}
 	{if $message=='_userCreated'}
 	<b>
-	<font color=#FF0000> 
+	<font color=#FF0000>
 	Пожалуйста, заполните анкету-заявку на велотур. будьте внимательны -
 	оставленная Вами информация будет использована нами для различных
-	целей: при взятии билетов, бронировании гостиниц.  
-		Ошибка в данных приведет к ошибке в билете, визе, со всеми вытекающими последствиями.  
+	целей: при взятии билетов, бронировании гостиниц.
+		Ошибка в данных приведет к ошибке в билете, визе, со всеми вытекающими последствиями.
 	 Если каких то данных у вас нет под рукой, это не проблема - вы можете снова зайти на сайт по вашему Логину и Паролю,
 	  и добавить недостающую информацию.
 	</font>
@@ -21,26 +21,64 @@
 	Произошла ошибка: тур не найден
 {else}
 	{assign var=tourID value=$Tour.tourID}
-	{if $Tours.$tourID}
-
-
-		{if $applyFriend} 
+    {if $Tours.$tourID && $Tours.$tourID.tourUserType != 'deleted'}
+        {if $applyFriend}
 			{if $type=='apply' && $Tour.tourAllowApply}
 				{include file="apply_form.html" type=apply applyFriend=1}
 			{elseif $type=='WL' && $Tour.tourAllowWL}
 				{include file="apply_form.html" type=WL applyFriend=1}
 			{else}
 				<p>Извините, выбранное вами действие недопустимо</p>
-			{/if}
+            {/if}
 		{else}
 			<div class="alert">
-			Вами уже была ранее подана заявка на поход <b>{$Tour.tourTitle}</b>. Все заявки можно просмотреть в разделе <a href="usertours.php">"ваши заявки"</a>.
-			<br>
-			Ecли вы желаете подать еще одну заявку за другого человека <a href="/apply.php?tourID={$Tour.tourID}&applyFriend=1" >нажмите здесь</a>
+                <p>
+                    Вами уже была ранее подана заявка на поход <b>{$Tour.tourTitle}</b>.
+                </p>
+                <p>
+                    Все заявки можно просмотреть в разделе <a href="usertours.php">"ваши заявки"</a>.
+                </p>
+                <p>
+                    Ecли вы желаете подать еще одну заявку за другого человека,
+                    <a href="/apply.php?tourID={$Tour.tourID}&applyFriend=1" >нажмите здесь</a>
+                </p>
 			</div>
 		{/if}
 	{else}
-		{if $type=='apply' && $Tour.tourAllowApply}
+
+        {if $Tours.$tourID.tourUserType == 'deleted'}
+            <div class="alert">
+            <p>
+                Вы  уже были заявлены на поход <b>{$Tour.tourTitle}</b>, затем ваша заявка перешла в  отказ  (лист  ожидания).
+            </p>
+            <p>
+                Для того чтобы восстановить вашу заявку проверьте ваши данные и отправьте анкету еще раз.
+            </p>
+            </div>
+        {/if}
+
+		{if $overlaps}
+			{$o=reset($overlaps)}
+			<div class="alert">
+				<p>Вы собираетесь подать заявку на тур<br>
+					<b>{$Tour.tourTitle}</b><br>
+					{$Tour.tourStartDate|date_format:"%d.%m.%Y"}-{$Tour.tourEndDate|date_format:"%d.%m.%Y"}
+				</p>
+			<p >
+				Даты этого тура пересекается с другой вашей заявкой<br>
+				<b>{$o->tourTitle}</b><br>
+				{$o->tourStartDate|date_format:"%d.%m.%Y"} - {$o->tourEndDate|date_format:"%d.%m.%Y"}.
+			</p>
+				<p>
+					Так  как  походы  пересекаются по срокам, вы можете
+					подать    заявку    только    на   один из них. Чтобы подать заявку на
+					этот поход, необходимо снять Вашу заявку на другой.
+				</p>
+				<p>
+					Все заявки можно просмотреть в разделе <a href="usertours.php">"ваши заявки"</a>.
+				</p>
+			</div>
+		{elseif $type=='apply' && $Tour.tourAllowApply}
 			<p class="error"> ЕСЛИ ВЫ ЕДЕТЕ ВДВОЕМ ИЛИ КОМПАНИЕЙ, НЕОБХОДИМО ПОДАТЬ ОТДЕЛЬНО ЗАЯВКУ НА КАЖДОГО ЧЕЛОВЕКА. ОДИН ЧЕЛОВЕК - ОДНА ЗАЯВКА. СПАСИБО!  </p>
 			{include file="apply_form.html" type=apply applyFriend=0}
 		{elseif $type=='WL' && $Tour.tourAllowWL}

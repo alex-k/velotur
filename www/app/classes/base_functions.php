@@ -188,14 +188,10 @@ function getUserType() {
     return  $valuesarray;
 }
 function getTripComfort() {
-    global $_CONF;
-    include $_CONF['root_dir']."config/trip_comfort.php";
-    return  $comfortarray;
+    return include("config/trip_comfort.php");
 }
 function getTripDifficulty() {
-    global $_CONF;
-    include $_CONF['root_dir']."config/trip_difficulty.php";
-    return  $difficultyarray;
+    return include("config/trip_difficulty.php");
 }
 
 

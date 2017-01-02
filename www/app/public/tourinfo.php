@@ -13,7 +13,7 @@ $t->loadLinkedFromDB();
 	 }
 
  function fo ($a) {
-	 return in_array($a->tourUserType, array('apply','WL','completed'));
+	 return in_array($a->tourUserType, array('apply','completed'));
  }
 
 if (is_array($t->Users))  {

@@ -22,9 +22,9 @@
 				{*controller _class="tw_tours" _assign=Tours _orderby='tourStartDate' _filters='url,year,month,Guide'  tourStatus='!=hidden' tourStartDate='>2000-01-01' tripID=$Trips->array_keys() langRU=1 _fields=$fields*}
 				{controller _class="tw_tours" _assign=Tours _orderby='tourStartDate' _filters='url,year,month,Guide'  tourStatus='!=hidden' tourStartDate='>2000-01-01'  langRU=1 _fields=$fields}
 
-		
+
 		<div class="breadcrumb">
-			Быстрый поиск: 
+			Быстрый поиск:
 			{*
 			{handler gspgid="/filter/show/Country" name="Country"  __recordset=$Trips tpl="links_line_velotur.html" label1="Страна" label2="Все страны" columnwidth="120px"}
 			*}
@@ -37,11 +37,11 @@
 		  <a class="dropdown-toggle" data-toggle="dropdown" href="#">{$g.guideName|default:"Гид"}
 			<b class="caret"></b></a>
 
-		<div class="dropdown-menu dropdown-menu-columns" role="menu" aria-labelledby="dLabel"> 
+		<div class="dropdown-menu dropdown-menu-columns" role="menu" aria-labelledby="dLabel">
 				{$columnwidth="120px"}
 			<div style="-moz-column-width: {$columnwidth};  -webkit-column-width: {$columnwidth};   column-width: {$columnwidth};  ">
 					<li {if !$current}class="active"{/if}> <a href="{href_get_push("Guide=")}">Любой гид</a></li>
-			{foreach $Guides as $g} 
+			{foreach $Guides as $g}
 					<li {if $g->get_id()==$current}class="active"{/if}><a href="{href_get_push("Guide={$g->get_id()}")}">{$g->guideName}</a></li>
 			{/foreach}
 			</div>
@@ -70,71 +70,95 @@
 				<tbody>
 
 
-				{foreach from=$Tours item=t}
-				{assign var=diff value=$t.tourDifficulty}{assign var=comf value=$t.tourComfort}
-				<tr><td class="tbf" colspan=5>
-				<h2><a href="{$t.tourDescriptionURL|parse_url:5}">{$t.tourTitle}</a></h2>
-				</td></tr>
-				<tr>
-					<td>{$t.tourStartDate|date_format:"%d %b %Y"}<br>
-						{$t.tourEndDate|date_format:"%d %b %Y"}
-					</td>
-					<td style="text-align: left; padding:5px;">
-					{$t.tourPrice1} {$t.tourPriceTitle1}
-					{handler gspgid="/user_tour_promotions/`$t.tourID`"}
+                {foreach from=$Tours item=t}
+                {assign var=diff value=$t.tourDifficulty}{assign var=comf value=$t.tourComfort}
+                <tr>
+                    <td class="tbf" colspan=5>
+                            <h2>
+                                <a href="{$t.tourDescriptionURL}">{$t.tourTitle}</a>
+                            </h2>
 
-					
-					</td>
-					<td>
-					<a href="/guides/{$t.guideID}">{$t.guideName}</a>
-					{if $t.guideName2}<br><a href="/guides/{$t.guideID2}">{$t.guideName2}</a>{/if}
-					</td>
-					<td >
-					<a href="/content/comfort.html#complexity">{$d_tourdifficulty.$diff|replace:" ":"&nbsp;"}</a><br>
-					<a href="/content/comfort.html">{$d_tourcomfort.$comf|replace:" ":"&nbsp;"}</a><br>
-					{if $User.userType=='guard'}
-					<a href="tourinfo.php?tourID={$t.tourID}">подробнее (список заявок и т.д.)</a><br>
-					{/if}
+                    </td>
+                </tr>
 
-					</td>
-					<td><span>
+                {*if $t.tourLogoURL}
+                <tr>
+                    <td class="tbf" colspan=5>
+                        <a href="{$t.tourDescriptionURL}" class="nondashed">
+                            <img class="tourLogo" src="{$t.tourLogoURL}">
+                        </a>
+                    </td>
+                </tr>
+                {/if*}
+
+
+                <tr>
+                    <td>{$t.tourStartDate|date_format:"%d %b %Y"}<br>
+                        {$t.tourEndDate|date_format:"%d %b %Y"}
+                    </td>
+                    <td style="text-align: left; padding:5px;">
+                        {$t.tourPrice1} {$t.tourPriceTitle1}
+                        {handler gspgid="/user_tour_promotions/`$t.tourID`"}
+
+
+                    </td>
+                    <td>
+                        <a href="/guides/{$t.guideID}">{$t.guideName}</a>
+                        {if $t.guideName2}<br><a href="/guides/{$t.guideID2}">{$t.guideName2}</a>{/if}
+                    </td>
+                    <td>
+                        <a href="/content/comfort.html#complexity">{$d_tourdifficulty.$diff|replace:"
+                            ":"&nbsp;"}</a><br>
+                        <a href="/content/comfort.html">{$d_tourcomfort.$comf|replace:" ":"&nbsp;"}</a><br>
+                        {if $User.userType=='guard'}
+                        <a href="tourinfo.php?tourID={$t.tourID}">подробнее (список заявок и т.д.)</a><br>
+                        {/if}
+
+                    </td>
+                    <td><span>
 					{if $t.tourStatus!='waitinglist'}
 						{if $t.tourShowAvPlaces || $_CONF.minimum_avaible_places>$t.tourAvPlaces} {$t.tourAvPlaces}<br> 
 						{elseif $t.tourAllowApply}есть
 						{/if}
 					{/if}
 					</span></td>
-				</tr>
+                </tr>
 
-				<tr><td class="tbfr" colspan=5>
+                <tr>
+                    <td class="tbfr" colspan=5>
 
-				{if $t.tourApplyOnlyExpired==0 || $User.userCompletedTours>0}
-				{if $t.tourAllowApply}
-					<b><a class="red" href="/apply.php?tourID={$t.tourID}">Подать заявку!</a></b><br>
-				{elseif $t.tourAllowWL}
-					{if $t.tourAppStartDate>$smarty.now|date_format:'%Y-%m-%d'}Запись после {$t.tourAppStartDate|date_format:"%d.%m.%Y"}<br>{/if}
-					{if $t.tourAllowPreApply}
-					<b><a class="red" href="/apply.php?tourID={$t.tourID}">оставить предварительную заявку</a></b><br>
-					{else}
-					<b><a class="red" href="/apply.php?tourID={$t.tourID}">Записаться в лист ожидания</a></b><br>
-					{/if}
-				{else if $t.tourStatus=='closed'}
-					<b>Набор прекращен</b>
-				{/if}
+                        {if $t.tourApplyOnlyExpired==0 || $User.userCompletedTours>0}
+                        {if $t.tourAllowApply}
+                        <b><a class="red" href="/apply.php?tourID={$t.tourID}">Подать заявку!</a></b><br>
+                        {elseif $t.tourAllowWL}
+                        {if $t.tourAppStartDate>$smarty.now|date_format:'%Y-%m-%d'}Запись после
+                        {$t.tourAppStartDate|date_format:"%d.%m.%Y"}<br>{/if}
+                        {if $t.tourAllowPreApply}
+                        <b><a class="red" href="/apply.php?tourID={$t.tourID}">оставить предварительную
+                            заявку</a></b><br>
+                        {else}
+                        <b><a class="red" href="/apply.php?tourID={$t.tourID}">Записаться в лист ожидания</a></b><br>
+                        {/if}
+                        {else if $t.tourStatus=='closed'}
+                        <b>Набор прекращен</b>
+                        {/if}
 
-				{else}
-					Доступен только прошедшим другие наши походы
+                        {else}
+                        Доступен только прошедшим другие наши походы
 
-				{/if}
+                        {/if}
 
 
-				</td></tr>
-				{foreachelse}
-					<tr><td colspan=5>
-					Не найдено походов удовлетворяющих заданным критериям.
-					</td></tr>
-				{/foreach}
-				</tbody>
+                    </td>
+                </tr>
+                {foreachelse}
+                <tr>
+                    <td colspan=5>
+                        Не найдено походов удовлетворяющих заданным критериям.
+                    </td>
+                </tr>
+                {/foreach}
+                </tbody>
 			</table>
 			</div>
 

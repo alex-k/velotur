@@ -1,20 +1,14 @@
 www:
   build: www
   ports:
-    - "80:80"
+    - "8084:80"
   volumes:
     - ./www/app:/app
+  external_links:
+    - mysql_dev:mysql
   links:
-    - mysql:mysql
     - smtp:smtp
   environment:
       PHPBEE_DEBUG: 1
-mysql:
-  image: tutum/mysql:latest
-  #ports:
-  #  - "3306:3306"
-  volumes:
-    #- /var/lib/mysql
-    - ./mysqltest:/mysql
 smtp:
   build: mailtrap

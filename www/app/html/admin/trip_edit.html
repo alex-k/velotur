@@ -25,6 +25,7 @@
 <tr class=tbody> <td>Показывать на RU</td><td><input type=checkbox class=input name=langRU value="1" {if $langRU}checked{/if}></td> </tr>
 <tr class=tbody> <td>Показывать на EN</td><td><input type=checkbox class=input name=langEN value="1" {if $langEN}checked{/if}></td> </tr>
 <tr class=tbody> <td>URL описания</td><td><input class=input name=tripDescriptionURL size=100  value="{$tripDescriptionURL}"></td> </tr>
+<tr class=tbody> <td>URL Logo</td><td><input class=input name=tripLogoURL size=100  value="{$tripLogoURL}"></td> </tr>
 <tr class=tbody> <td>Нитка маршрута</td><td><textarea cols=80 rows=4 class=input name=tripRoute>{$tripRoute}</textarea> {validate field=tripRoute criteria=notEmpty message="*"}</td> </tr>
 <tr class=tbody> <td>Нитка маршрута EN</td><td><textarea cols=80 rows=4 class=input name=tripRouteEn>{$tripRouteEn}</textarea></td> </tr>
 <tr class=tbody> <td>Описание</td><td><textarea cols=80 rows=4 class=input name=tripDescription>{$tripDescription}</textarea></td> </tr>
