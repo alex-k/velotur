@@ -132,12 +132,14 @@
 					<li {if $tplname=="calendar.php?year=$y" || $_gsdata.year==$y}class="on"{/if}><a href="/calendar.php?year={$y}">Календарь {$y}</a></li>
 					{/for}
 					<li {if $tplname=='reports'}class="on"{/if} ><a href="/reports">Отчеты и фото</a></li>
-					<li {if $tplname=='development2.shtml'}class="on"{/if} ><a href="/content/development2.shtml">Велотуры на заказ</a></li>
 					<li {if $tplname=='groups.shtml'}class="on"{/if} ><a href="/content/groups.shtml">Велотуры для групп</a></li>
 					<li {if $tplname=='development.shtml'}class="on"{/if} ><a href="/content/development.shtml">Турфирмам</a></li>
 					<li {if $tplname=='news.php'}class="on"{/if} ><a href="/news/">Новости</a></li>
-					<li><a href="/forum/">Форум</a></li>
+					<li><a  href="https://vk.com/velotur_ru" target="_blank">Мы вКонтакте</a></li>
+					<li><a  href="https://www.facebook.com/velotur.rus/" target="_blank">Мы в Facebook</a></li>
 				</ul>
+
+
 			</div>
 			{block name="page_center"}
 				{handler gspgid="/newcalendar"}
