@@ -99,7 +99,12 @@ function updateRooming(obj) {
 <th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserCommentsTicket">Билет</a></TH>
 <th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserComments">Комментарии<br>Доп. поля</a></TH>
 <th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=userCity">Город</a></TH>
-<th class=ttitle> <a href="tourinfo.php?tourID={$tourID}&s=tourUserDate">Дата</a> / <a href="tourinfo.php?tourID={$tourID}&s=tourUserCommentsRegVia">Администратор</a> </TH>
+<th class=ttitle>
+	<a href="tourinfo.php?tourID={$tourID}&s=tourUserDate">Дата</a>
+	/
+	<a href="tourinfo.php?tourID={$tourID}&s=tourUserModifyDate">Модификация</a>
+
+</TH>
 <th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserType">Статус</a></TH>
 <th class=ttitle><a href="tourinfo.php?tourID={$tourID}&s=tourUserRooming">Руминг</a>
 <input type="submit" value="сохранить" onClick="document.location.reload()">
@@ -132,11 +137,19 @@ class="tbody
 
 	<a href="tourinfo.php?tourID={$tourID}&showUser={$u.userID}#showUser" >{$u.userRussianName|default:$u.userLatinName}</a>
 
-	<div style="text-align:right; color:gray;">
 	{if $u.userReferalID}
-	({mailto address=$u.Users.userEmail|default:none subject="$tourTitle  ( $tourStartDate -  $tourEndDate )"|@Utf8ToWin text=$u.Users.userName|default:$u.Users.userRussianName extra='style="color:gray;"'})
-	{/if}
+	<div style="text-align:right; color:gray;">
+		({mailto address=$u.Users.userEmail|default:none subject="$tourTitle ( $tourStartDate - $tourEndDate )"|@Utf8ToWin
+		text=$u.Users.userName|default:$u.Users.userRussianName extra='style="color:gray;"'})
 	</div>
+	{/if}
+	{if $u.tourUserCommentsRegVia}
+	<div style="text-align:right; color:gray;">
+		Администратор {$u.tourUserCommentsRegVia|nl2br}
+	</div>
+	{/if}
+
+
 	<div style="text-align:left; color:gray; margin-top:15px;">
 		<a style="color:gray;" href="/action.php?action=login&userID={$u.userID}&formLoginAdmin=1">login</a>
 		<a  style="color:gray;" _target=_new href="userinfo.php?userID={$u.userID}&type=txt">info</a>
@@ -185,10 +198,12 @@ class="tbody
 
 </td>
 <td valign=top>{$u.userCity} </td>
-<td valign=top>
-{$u.tourUserDate|date_format:"%Y-%m-%d"}
-{if $u.tourUserCommentsRegVia}<br>{$u.tourUserCommentsRegVia|nl2br}{/if}
-</td>
+	<td valign=top>
+		{$u.tourUserDate|date_format:"%Y-%m-%d"}
+		{if $u.tourUserModifyDate|strtotime > 0}
+		<br>/ {$u.tourUserModifyDate|date_format:"%Y-%m-%d"}
+		{/if}
+	</td>
 <td>
 	<form method=post >
 	<input type=hidden name=applyTourID value="{$tourID}">
