@@ -86,6 +86,8 @@ class tw_tours extends gs_recordset_short{
 			'Users'=>'lMany2One tw_tour_users:Tour local_field_name=tourID counter=false',
 			'Trip'=>'lOne2One tw_trip local_field_name=tripID foreign_field_name=tripID',
 //			'Countries'=>'lMany2Many countries:m2m_countries_tw_trip:tw_trip_id local_field_name=tripID Страны required=false  widget=lMany2Many_chosen counter=false',
+			'Mails'=>'lMany2One mailhistory:Tour local_field_name=tourID required=false counter=false',
+
 		),$init_opts);
 	}
 	function record_as_string($rec) {
