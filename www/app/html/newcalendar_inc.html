@@ -72,6 +72,17 @@
 
                 {foreach from=$Tours item=t}
                 {assign var=diff value=$t.tourDifficulty}{assign var=comf value=$t.tourComfort}
+
+                {if $t.ownerLogoURL}
+                <tr>
+                  <td class="tbf" colspan=5>
+                    <a href="{$t.ownerURL}" class="nondashed">
+                      <img class="tourOwnerLogo" src="{$t.ownerLogoURL}">
+                    </a>
+                  </td>
+                </tr>
+                {/if}
+
                 <tr>
                     <td class="tbf" colspan=5>
                             <h2>

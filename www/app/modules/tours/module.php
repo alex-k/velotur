@@ -69,6 +69,8 @@ class tw_tours extends gs_recordset_short{
 			'guideName2'=>'fString',
 			'tourDescriptionURL'=>'fString',
 			'tourLogoURL'=>'fString',
+			'ownerLogoURL'=>'fString',
+			'ownerURL'=>'fString',
 			'tourDifficulty'=>'fString',
 			'tourComfort'=>'fString',
 			'tourStatus'=>'fString',

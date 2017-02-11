@@ -1,0 +1,1 @@
+alter table Tour add ownerLogoURL varchar (255), add ownerURL varchar(255);
