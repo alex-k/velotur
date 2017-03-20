@@ -21,11 +21,6 @@ www:
     - "mysql:172.17.0.1"
   links:
     - smtp:smtp
-smtp:
-  container_name: velotur_smtp
-#  build: exim4
-  image: alexk7898/velotur:exim4-master
-  restart: always
 qa:
   container_name: velotur_www_qa
   image: alexk7898/velotur:www-qa
@@ -45,5 +40,10 @@ qa:
     - /home/velotur/log/velotur:/var/log/velotur
   extra_hosts:
     - "mysql:172.17.0.1"
-  external_links:
-    - velotur_smtp:smtp
+  links:
+    - smtp:smtp
+smtp:
+  container_name: velotur_smtp
+#  build: exim4
+  image: alexk7898/velotur:exim4-master
+  restart: always
