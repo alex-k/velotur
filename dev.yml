@@ -1,11 +1,12 @@
 www:
-  build: www
+  #build: www
+  image: alexk7898/velotur:www-master
   ports:
-    - "8084:80"
+    - "80:80"
   volumes:
     - ./www/app:/app
   external_links:
-    - mysql_dev:mysql
+    - dev_mysql:mysql
   links:
     - smtp:smtp
   environment:

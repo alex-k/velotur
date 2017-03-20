@@ -118,7 +118,7 @@ a {
 	padding-top:3px;
 }
 
-.r2 .auth input[type="submit"] {
+.auth input[type="submit"] {
 	display: block;
 	float: right;
 	width: 50px;
@@ -727,6 +727,10 @@ a {
 	 border-bottom: 0px;
 }
 
+.tblist img.tourLogo {
+	max-width: 504px;
+	max-height: 183px;
+}
 .tblist tbody td span {
 	font-size:11px;
 	font-weight:bold;

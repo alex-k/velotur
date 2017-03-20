@@ -36,21 +36,21 @@
 	</font></p>
 	{/if}
 
-<form id="formLogin" method=post>
+<form id="formLogin" class="auth" method=post>
 <table>
 <th colspan=2  class=ttitle>Авторизация/регистрация пользователя</th>
 <tr class=tbody>
-<td align=right width=150> Email</td><td><input type=input class=input name=userEmail value="{$userEmail}" id="formLoginEmail">{validate field=userEmail criteria=isEmail message="<span class=error>*</span>"}</td>
+<td align=right width=150>Email</td><td><input type=input class=input name=userEmail value="{$userEmail}" id="formLoginEmail">{validate field=userEmail criteria=isEmail message="<span class=error>*</span>"}</td>
 </tr>
 <tr class=tbody>
-<td align=right> Пароль</td><td><input type=password  class=input name=userPassword value="{$userPassword}" id="formLoginPassword">{validate field=userPassword criteria=notEmpty message="<span class=error>*</span>"}</td>
+<td align=right>Пароль</td><td><input type=password  class=input name=userPassword value="{$userPassword}" id="formLoginPassword">{validate field=userPassword criteria=notEmpty message="<span class=error>*</span>"}</td>
 </tr>
 <tr class=tbody>
-<td align=right>новая регистрация</td><td><input type=checkbox class=input name=newUser value="1" {if $newUser}checked="checked"{/if} id="formLoginNewUser"></td>
+<td align=right></td><td><label><input type=checkbox class=input name=newUser value="1" {if $newUser}checked="checked"{/if} id="formLoginNewUser">Новая регистрация</label></td>
 </tr>
 <tr class=tbody>
-<td align=right><a href="password.php">напомнить пароль</a></td>
-<td  align=right><input type=submit class=input name=formLoginSubmit id="formLoginSubmit" value="Вход"></td>
+<td align=right><a href="password.php">Напомнить пароль</a></td>
+<td  align=right><input type=submit name=formLoginSubmit id="formLoginSubmit" value="Вход"></td>
 </tr>
 
 </table>

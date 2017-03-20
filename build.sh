@@ -22,7 +22,11 @@ if [ -z ${GIT_BRANCH} ]; then
   fi
 fi
 
-tag_www="$r/$p:www-$b"
+tag_www="$r/$p:www-$c"
+if [ "${1}" ]
+then
+    tag_www=${1}
+fi
 
 
 cd www

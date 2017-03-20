@@ -82,6 +82,9 @@ onChange="$('#tourEndDate').each(function(){
 *}
 
 <tr class=tbody> <td>URL описания</td><td><input class=input name=tourDescriptionURL size=100  value="{$tourDescriptionURL}"></td> </tr>
+<tr class=tbody> <td>Logo маршрута</td><td><input class=input name=tourLogoURL size=100  value="{$tourLogoURL}"></td> </tr>
+<tr class=tbody> <td>Страница производителя маршрута</td><td><input class=input name=ownerURL size=100  value="{$ownerURL}"></td> </tr>
+<tr class=tbody> <td>Logo производителя маршрута</td><td><input class=input name=ownerLogoURL size=100  value="{$ownerLogoURL}"></td> </tr>
 <tr class=tbody> <td>Нитка маршрута</td><td><textarea cols=80 rows=4 class=input name=tourRoute>{$tourRoute}</textarea> {validate field=tourRoute criteria=notEmpty message="*"}</td> </tr>
 <tr class=tbody> <td>Описание</td><td><textarea cols=80 rows=4 class=input name=tourDescription>{$tourDescription}</textarea></td> </tr>
 <tr class=tbody> <td>Примечания</td><td><textarea cols=80 rows=4 class=input name=tourNote>{$tourNote}</textarea></td> </tr>
