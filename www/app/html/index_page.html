@@ -85,7 +85,8 @@
 				<li><a {if $tplname=='guides'}class="on"{/if} href="/guides/">Наши гиды</a></li>
 				<li><a {if $tplname=='trips'}class="on"{/if} href="/trips/">Все маршруты</a></li>
 				<li><a {if $tplname=='reports'}class="on"{/if} href="/reports/">Галереи и отчеты</a></li>
-			</ul>
+				<li><a href="/content/veloprobeg.htm">Организация велопробегов</a></li>
+							</ul>
 			{controller _class=tw_news hot=1 _assign=hot_news _orderby="id desc"}
 			{if $hot_news->count()}
 			<div class="hot_news">
