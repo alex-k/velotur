@@ -1,23 +1,30 @@
+mysql_data:
+  container_name: velotur_mysql_data
+  image: mysql:latest
+  entrypoint: /bin/bash
+  volumes:
+    - ./mysql:/mysql
+
+mysql:
+  container_name: velotur_mysql
+  restart: always
+  image: mysql:latest
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  volumes_from:
+    - mysql_data
+
 www:
   container_name: velotur_www
-#  build: www
   image: alexk7898/velotur:www-master
   ports:
     - "127.0.0.1:8088:80"
   restart: always
   volumes:
-    - /home/velotur/log/apache2:/var/log/apache2
-    - /home/velotur/log/velotur:/var/log/velotur
-    - /home/velotur/www/app:/app
-    - /home/activeinfo/velotur.ru/public_html/files:/app/public/files
-#    - /home/activeinfo/velotur.ru/public_html/content:/app/public/content
-#    - /home/activeinfo/velotur.ru/public_html/i:/app/public/i
-#    - /home/activeinfo/velotur.ru/public_html/r2_banners:/app/public/r2_banners
-##    - /home/activeinfo/velotur.ru/public_html/content:/app/public/content
-#    - /home/activeinfo/velotur.ru/FUDforum:/app/FUDforum
-#    - /home/activeinfo/velotur.ru/FUDforum:/home/activeinfo/velotur.ru/FUDforum
-#    - /home/activeinfo/velotur.ru/public_html/forum:/app/public/forum
-#    - /home/activeinfo/velotur.ru/public_html/forum:/home/activeinfo/velotur.ru/public_html/forum
+    - ./log/apache2:/var/log/apache2
+    - ./log/velotur:/var/log/velotur
+    - ./www/app:/app
+    - /mnt/velotur/files:/app/public/files
   extra_hosts:
     - "mysql:172.17.0.1"
   links:
@@ -45,6 +52,24 @@ www:
 #    - smtp:smtp
 smtp:
   container_name: velotur_smtp
-#  build: exim4
   image: alexk7898/velotur:exim4-master
   restart: always
+
+ftp_data:
+  image: stilliard/pure-ftpd
+  entrypoint: /bin/bash
+
+ftp:
+  # pure-pw useradd kplaksinvt -f /etc/pure-ftpd/passwd/pureftpd.passwd -m -u ftpuser -d /home/velotur/www/app
+  container_name: velotur_ftp
+  image: stilliard/pure-ftpd
+  restart: always
+  ports:
+    - "20:20"
+    - "21:21"
+  volumes_from:
+    - ftp_data
+  volumes:
+    - ./www/app:/home/velotur/www/app
+  environment:
+    PUBLICHOST: 'velotur.ru'
