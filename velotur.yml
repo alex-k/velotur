@@ -1,19 +1,18 @@
-#mysql_data:
-#  container_name: velotur_mysql_data
-#  image: mysql:latest
-#  entrypoint: /bin/bash
-#  volumes:
-#    - ./mysql:/mysql
-#
+mysql_data:
+  container_name: velotur_mysql_data
+  image: mysql:latest
+  entrypoint: /bin/bash
+  volumes:
+    - ./mysql:/mysql
+
 mysql:
   container_name: velotur_mysql
   restart: always
   image: mysql:latest
   environment:
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-  volumes:
-    - ./mysql:/mysql
-    - /mnt/velotur/mysql:/var/lib/mysql
+  volumes_from:
+    - mysql_data
 
 www:
   container_name: velotur_www
