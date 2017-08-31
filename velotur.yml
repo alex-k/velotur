@@ -19,7 +19,7 @@ www:
   container_name: velotur_www
   image: alexk7898/velotur:www-master
   ports:
-    - "127.0.0.1:8088:80"
+    - "80:80"
   restart: always
   volumes:
     - ./log/apache2:/var/log/apache2
