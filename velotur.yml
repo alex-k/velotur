@@ -1,6 +1,6 @@
 mysql_data:
   container_name: velotur_mysql_data
-  image: mysql:latest
+  image: mysql:5.6
   entrypoint: /bin/bash
   volumes:
     - ./mysql:/mysql
@@ -8,7 +8,7 @@ mysql_data:
 mysql:
   container_name: velotur_mysql
   restart: always
-  image: mysql:latest
+  image: mysql:5.6
   environment:
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
   volumes_from:
@@ -25,9 +25,8 @@ www:
     - ./log/velotur:/var/log/velotur
     - ./www/app:/app
     - /mnt/velotur/files:/app/public/files
-  extra_hosts:
-    - "mysql:172.17.0.1"
   links:
+    - mysql:mysql
     - smtp:smtp
 #qa:
 #  container_name: velotur_www_qa
