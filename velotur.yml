@@ -54,21 +54,36 @@ smtp:
   image: alexk7898/velotur:exim4-master
   restart: always
 
-ftp_data:
-  image: stilliard/pure-ftpd
-  entrypoint: /bin/bash
+#ftp_data:
+#  image: stilliard/pure-ftpd
+#  entrypoint: /bin/bash
+#
+#ftp:
+#  # pure-pw useradd kplaksinvt -f /etc/pure-ftpd/passwd/pureftpd.passwd -m -u ftpuser -d /home/velotur/www/app
+#  container_name: velotur_ftp
+#  image: stilliard/pure-ftpd
+#  restart: always
+#  ports:
+#    - "20:20"
+#    - "21:21"
+#    - "30000-30009:30000-30009" 
+#  volumes_from:
+#    - ftp_data
+#  volumes:
+#    - ./www/app:/home/velotur/www/app
+#  environment:
+#    PUBLICHOST: 'localhost'
+
 
 ftp:
-  # pure-pw useradd kplaksinvt -f /etc/pure-ftpd/passwd/pureftpd.passwd -m -u ftpuser -d /home/velotur/www/app
-  container_name: velotur_ftp
-  image: stilliard/pure-ftpd
+  # useradd --shell /bin/sh --create-home --password $PASSWORD $USERNAME
+  # chown -R $USERNAME:$USERNAME /ftp
+  build: proftpd
   restart: always
   ports:
     - "20:20"
-    - "21:21"
-  volumes_from:
-    - ftp_data
+    - "21:21" 
+  command: proftpd --nodaemon
   volumes:
-    - ./www/app:/home/velotur/www/app
-  environment:
-    PUBLICHOST: 'velotur.ru'
+    - ./www/app:/ftp
+    
