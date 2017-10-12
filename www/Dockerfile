@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd
 
 ADD ./configs/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
-ADD ./configs/etc/php5/apache2/php.ini /etc/php5/apache2/php.ini
+ADD ./configs/php.ini /usr/local/etc/php/conf.d/velotur.ini
 
 
 
