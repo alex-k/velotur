@@ -18,7 +18,7 @@ ADD ./configs/etc/php5/apache2/php.ini /etc/php5/apache2/php.ini
 
 
 RUN apt-get update && apt-get -y install telnet dnsutils
-RUN apt-get update && apt-get -y install git vim curl mysql-client zio unzip
+RUN apt-get update && apt-get -y install git vim curl mysql-client zip unzip
 RUN a2enmod rewrite
 
 RUN apt-get install locales
