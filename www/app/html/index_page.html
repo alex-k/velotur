@@ -139,10 +139,11 @@
 					<li {if $tplname=='us.shtml'}class="on"{/if} ><a href="/content/us.shtml">О нас</a></li>
 					{if $User}<li><a href="/usertours.php">Ваши заявки</a></li>{/if}
 					<li {if $tplname=='velotours.shtml'}class="on"{/if} ><a href="/content/velotours.shtml">О велотурах</a></li>
-					<li><a {if $tplname=='trips'}class="on"{/if} href="/trips/">Маршруты</a></li>
+					<!--<li><a {if $tplname=='trips'}class="on"{/if} href="/trips/">Маршруты</a></li>-->
 					{for $y=$cal_date_start to $cal_date_end}
 					<li {if $tplname=="calendar.php?year=$y" || $_gsdata.year==$y}class="on"{/if}><a href="/calendar.php?year={$y}">Календарь {$y}</a></li>
 					{/for}
+					<li><a  href="/content/cycling_in_russia.html" >Cycling in Russia</a></li>
 					<li {if $tplname=='reports'}class="on"{/if} ><a href="/reports">Отчеты и фото</a></li>
 					<li {if $tplname=='groups.shtml'}class="on"{/if} ><a href="/content/groups.shtml">Велотуры для групп</a></li>
 					<li {if $tplname=='development.shtml'}class="on"{/if} ><a href="/content/development.shtml">Турфирмам</a></li>
