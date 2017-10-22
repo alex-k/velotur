@@ -13,6 +13,7 @@ mysql:
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
   volumes_from:
     - mysql_data
+  command: mysqld --explicit_defaults_for_timestamp=On
 
 www:
   container_name: velotur_www
