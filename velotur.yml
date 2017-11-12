@@ -29,7 +29,7 @@ www:
   links:
     - "smtp:smtp"
   extra_hosts:
-    - "mysql:127.0.0.1"
+    - "mysql:207.154.197.229"
 
 smtp:
   container_name: velotur_smtp
