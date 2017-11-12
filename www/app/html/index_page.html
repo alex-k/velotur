@@ -12,9 +12,6 @@
 <div class="center">
 	<div class="right">
 		<div class="r2">
-			<div class="r2-ua">
-			<a href="/content/ukraine.html"><img src="/i/Ukraine.png"></a>
-			</div>
 			{if $User}
 			<div class="profile">
 				Пользователь: {$User.userEmail}<br>
@@ -42,13 +39,6 @@
 				<div class="clear"></div>
 			</form>
 			{/if}
-            {*
-            <form method="POST" class="find">
-                <label for="login">Поиск</label><input type="text" name="login">
-                <input type="submit" value="Искать">
-            </form>
-            *}
-
             {literal}
             <div class="ya-site-form ya-site-form_inited_no"
                  onclick="return {'action':'https://yandex.ru/search/site/','arrow':false,'bg':'transparent','fontsize':12,'fg':'#000000','language':'ru','logo':'rb','publicname':'Поиск по velotur.ru','suggest':true,'target':'_self','tld':'ru','type':2,'usebigdictionary':true,'searchid':2287859,'input_fg':'#000000','input_bg':'#ffffff','input_fontStyle':'normal','input_fontWeight':'normal','input_placeholder':'Поиск по сайту','input_placeholderColor':'#000000','input_borderColor':'#ffffff'}">
@@ -139,7 +129,6 @@
 					<li {if $tplname=='us.shtml'}class="on"{/if} ><a href="/content/us.shtml">О нас</a></li>
 					{if $User}<li><a href="/usertours.php">Ваши заявки</a></li>{/if}
 					<li {if $tplname=='velotours.shtml'}class="on"{/if} ><a href="/content/velotours.shtml">О велотурах</a></li>
-					<!--<li><a {if $tplname=='trips'}class="on"{/if} href="/trips/">Маршруты</a></li>-->
 					{for $y=$cal_date_start to $cal_date_end}
 					<li {if $tplname=="calendar.php?year=$y" || $_gsdata.year==$y}class="on"{/if}><a href="/calendar.php?year={$y}">Календарь {$y}</a></li>
 					{/for}
