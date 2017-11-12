@@ -23,18 +23,12 @@ RUN a2enmod rewrite
 RUN apt-get install locales
 RUN locale-gen ru_RU && locale-gen ru_RU.UTF-8 && update-locale
 
-ADD build.sh /build.sh
-ADD run.sh /run.sh
-RUN chmod 755 /*.sh
-
-RUN mkdir -m 0777 /var/log/velotur/
 
 RUN date > build.log
 
 ADD app /app
 
-RUN /build.sh $VT_BRANCH
+RUN mkdir -m 0777 /var/log/velotur/
 
-#EXPOSE 80
-
-#CMD ["/run.sh"]
+ADD build.sh /build.sh
+RUN sh /build.sh $VT_BRANCH
