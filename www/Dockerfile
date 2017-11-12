@@ -1,4 +1,3 @@
-#FROM tutum/apache-php
 FROM php:5.6-apache
 
 MAINTAINER Alex Kochetov <alex@kochetov.com>
@@ -24,22 +23,18 @@ RUN a2enmod rewrite
 RUN apt-get install locales
 RUN locale-gen ru_RU && locale-gen ru_RU.UTF-8 && update-locale
 
-#RUN apt-get -y install mysql-server
-#RUN mysql_install_db
-
 ADD build.sh /build.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
 RUN mkdir -m 0777 /var/log/velotur/
 
-#ADD mysql.sql /mysql_data.sql
 RUN date > build.log
 
 ADD app /app
 
 RUN /build.sh $VT_BRANCH
 
-EXPOSE 80
+#EXPOSE 80
 
-CMD ["/run.sh"]
+#CMD ["/run.sh"]

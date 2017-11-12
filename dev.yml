@@ -5,10 +5,10 @@ www:
     - "80:80"
   volumes:
     - ./www/app:/app
-  external_links:
-    - dev_mysql:mysql
   links:
     - smtp:smtp
+  extra_hosts:
+    - "mysql:127.0.0.1"
   environment:
       PHPBEE_DEBUG: 1
 smtp:
