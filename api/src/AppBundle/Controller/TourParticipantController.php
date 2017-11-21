@@ -12,13 +12,14 @@ class TourParticipantController extends Controller
 {
 
     /**
-     * @Route("/tourParticipantSubmit", name="tourParticipantSubmit")
+     * @Route("/submitParticipant", name="submit_participant")
      * @Method("POST")
      */
     public function submitAction(Request $request)
     {
         $tourParticipant = new TourParticipant();
 
+        $participantId = $_POST['participantId'];
         $creatorUserId = $_POST['creatorUserId'];
         $tourId = $_POST['tourId'];
         $participantEmail = $_POST['participantEmail'];
@@ -46,6 +47,7 @@ class TourParticipantController extends Controller
         $participantCompletedTours = $_POST['participantCompletedTours'];
         $participantSubscribeNews = $_POST['participantSubscribeNews'];
 
+        $tourParticipant->setParticipantId($participantId);
         $tourParticipant->setCreatorUserId($creatorUserId);
         $tourParticipant->setParticipantEmail($participantEmail);
         $tourParticipant->setParticipantRussianName($participantRussianName);

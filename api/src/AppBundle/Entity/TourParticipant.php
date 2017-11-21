@@ -107,7 +107,6 @@ class TourParticipant
 
   /**
    * @ORM\Column(type="string")
-   * FIXME: "Throw" should be through
    */  
   private $participantPassportValidThrow;
 
