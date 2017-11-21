@@ -25,7 +25,7 @@ class TourParticipantController extends Controller
         $participantEmail = $_POST['participantEmail'];
         $participantRussianName = $_POST['participantRussianName'];
         $participantLatinName = $_POST['participantLatinName'];
-        $participantBirthDay = $_POST['participantBirthDay'];
+        $participantBirthday = $_POST['participantBirthday'];
         $participantCitizenship = $_POST['participantCitizenship'];
         $participantSex = $_POST['participantSex']; 
         $participantCountry = $_POST['participantCountry'];
@@ -36,7 +36,7 @@ class TourParticipantController extends Controller
         $participantPassport = $_POST['participantPassport'];
         $participantPassportIssuedBy = $_POST['participantPassportIssuedBy'];
         $participantPassportIssuedDate = $_POST['participantPassportIssuedDate']; 
-        $participantPassportValidThrow = $_POST['participantPassportValidThrow'];
+        $participantPassportValidThrough = $_POST['participantPassportValidThrough'];
         $participantPhone = $_POST['participantPhone'];
         $participantVPNumber = $_POST['participantVPNumber'];
         $participantType = $_POST['participantType'];

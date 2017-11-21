@@ -52,7 +52,7 @@ class TourParticipant
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantBirthDay;
+  private $participantBirthday;
 
   /**
    * @ORM\Column(type="string")
@@ -108,7 +108,7 @@ class TourParticipant
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantPassportValidThrow;
+  private $participantPassportValidThrough;
 
   /**
    * @ORM\Column(type="string")
