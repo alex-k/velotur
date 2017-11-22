@@ -10,3 +10,4 @@ php_errors.log
 build.log
 www/app/public/libs/widgets/MultiPowUpload
 log
+node_modules

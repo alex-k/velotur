@@ -1,0 +1,19 @@
+{
+  "name": "velotur",
+  "version": "0.1.0",
+  "description": "velotur",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-k/velotur.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-k/velotur/issues"
+  },
+  "homepage": "https://github.com/alex-k/velotur#readme"
+}
