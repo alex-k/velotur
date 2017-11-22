@@ -31,5 +31,10 @@ module.exports = {
     new UglifyJSPlugin({
       exclude: [/\/vendor/]
     }),
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+    compress: true,
+    port: 9000
+  }
 }
