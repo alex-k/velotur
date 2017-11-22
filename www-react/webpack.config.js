@@ -1,18 +1,19 @@
+const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin'); 
 
 module.exports = {
   context: __dirname,
   entry: "src/js/index.js",
   output: {
-    path: __dirname + "/public",
+    path: path.join(__dirname, "public"),
     filename: "index.js"
   },
   resolve: {
     alias: {
-      src: __dirname + "/src",
-      components: __dirname + "/src/js/react-components",
-      redux: __dirname + "/src/js/redux",
-      services: __dirname + "/src/js/services"
+      src: path.join(__dirname, "src"),
+      components: path.join(__dirname, "src/js/react-components"),
+      redux: path.join(__dirname, "src/js/redux"),
+      services: path.join(__dirname, "src/js/services")
     }
   },
   module: {
