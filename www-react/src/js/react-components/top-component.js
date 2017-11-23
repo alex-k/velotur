@@ -1,13 +1,10 @@
 import React from 'react';
+import {Route} from 'react-router-dom';
+import TourParticipantForm from 'components/tour-participant-form';
 
-class TopComponent extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return <h1> Velotur </h1>
-  }
-}
+const TopComponent = (props) => 
+  <div id="top-component">
+    <Route path="/" render={ () => <TourParticipantForm {...props}/> } />
+  </div>
 
 export default TopComponent

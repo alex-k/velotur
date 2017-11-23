@@ -2,9 +2,9 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import TopComponent from 'components/top-component';
 
-let Router = () =>
+let Router = (props) =>
     <BrowserRouter>
-      <Route path='/' component={TopComponent} />
+      <Route path="/" render={ () => <TopComponent {...props} /> } />
     </BrowserRouter>
 
 export default Router
