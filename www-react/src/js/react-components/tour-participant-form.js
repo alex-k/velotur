@@ -1,6 +1,22 @@
 import React from 'react';
+import axios from 'axios';
+import config from 'config';
 
 class TourParticipantForm extends React.Component {
+
+  validate() {
+
+  }
+
+  submit() {
+    axios({
+      method: 'post',
+      url: '',
+      data: {
+        russianLastName: russianLastName
+      }
+    })
+  }
 
   render() {
     return (

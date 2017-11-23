@@ -5,16 +5,18 @@ module.exports = {
   context: __dirname,
   entry: "src/js/index.js",
   output: {
-    path: path.join(__dirname, "public"),
+    path: path.resolve(__dirname, "public"),
     filename: "index.js"
   },
   resolve: {
     alias: {
-      src: path.join(__dirname, "src"),
-      components: path.join(__dirname, "src/js/react-components"),
-      redux: path.join(__dirname, "src/js/redux"),
-      services: path.join(__dirname, "src/js/services")
-    }
+      src: path.resolve(__dirname, "src"),
+      config: path.resolve(__dirname, "config/config.js"),
+      components: path.resolve(__dirname, "src", "js", "react-components"),
+      redux: path.resolve(__dirname, "src","js","redux"),
+      services: path.resolve(__dirname, "src","js","services")
+    },
+    modules: ["node_modules"]
   },
   module: {
     loaders: [
