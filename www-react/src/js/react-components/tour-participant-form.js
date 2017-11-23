@@ -12,44 +12,44 @@ class TourParticipantForm extends React.Component {
 
           <label>Фамилия:
             <input name="russianLastName" type="text" />
-            <span class="form-input-hint"> Русскими буквами: Петров </span>
+            <span className="form-input-hint"> Русскими буквами: Петров </span>
           </label>
 
           <label>Имя:
             <input name="russianFirstName" type="text" />
-            <span class="form-input-hint"> русскими буквами: Иван </span>
+            <span className="form-input-hint"> русскими буквами: Иван </span>
           </label>
 
           <label>Отчество:
             <input name="russianMiddleName" type="text" />
-            <span class="form-input-hint"> русскими буквами: Абрамович </span>
+            <span className="form-input-hint"> русскими буквами: Абрамович </span>
           </label>
           
           <label>Имя латиницей:
             <input name="latinFirstName" type="text" />
-            <span class="form-input-hint"> как в загранпаспорте 
-БОЛЬШИМИ БУКВАМИ : PETROV </span>
+            <span className="form-input-hint"> как в загранпаспорте </span>
+            <span className="form-input-hint">БОЛЬШИМИ БУКВАМИ : PETROV </span>
           </label>
 
           <label>Фамилия латиницей:
             <input name="latinLastName" type="text" />
-            <span class="form-input-hint"> как в загранпаспорте 
-БОЛЬШИМИ БУКВАМИ : IVAN </span>
+            <span className="form-input-hint"> как в загранпаспорте </span>
+            <span className="form-input-hint">БОЛЬШИМИ БУКВАМИ : IVAN </span>
           </label>
 
           <label>Дата рождения:
-            <input name="birthday" type="date" />
-            <span class="form-input-hint"> День-Месяц-Год c дефисами : 31-12-1981 </span>
+            <input name="birthday" type="text" />
+            <span className="form-input-hint"> День-Месяц-Год c дефисами : 31-12-1981 </span>
           </label>
 
           <label>Гражданство:
             <input name="citizenship" type="text" />
-            <span class="form-input-hint"> Россия </span>
+            <span className="form-input-hint"> Россия </span>
           </label>
 
           <label>Пол:
-            <select name="sex">
-              <option value="null" selected>-</option>
+            <select name="sex" defaultValue="null">
+              <option value="null">--</option>
               <option value="male">Мужской</option>
               <option value="femail">Женский</option>
             </select>
@@ -57,7 +57,7 @@ class TourParticipantForm extends React.Component {
 
           <label>Город:
             <input name="city" type="text" />
-            <span class="form-input-hint"> Москва </span>
+            <span className="form-input-hint"> Москва </span>
           </label>
 
         </fieldset>
@@ -68,7 +68,7 @@ class TourParticipantForm extends React.Component {
 
           <label>Номер загранпаспорта:
             <input name="passportNumber" type="text" />
-            <span class="form-input-hint"> значок "№" не ставится : 70 1234567 </span>
+            <span className="form-input-hint"> значок "№" не ставится : 70 1234567 </span>
           </label>
 
           <label>
@@ -78,17 +78,17 @@ class TourParticipantForm extends React.Component {
 
           <label>Кем выдан:
             <input name="passportIssuedBy" type="text" />
-            <span class="form-input-hint"> все буквы БОЛЬШИЕ: РУВД 257 </span>	
+            <span className="form-input-hint"> все буквы БОЛЬШИЕ: РУВД 257 </span>	
           </label>
 
           <label>Когда выдан:
             <input name="passportIssuedDate" type="text" />
-            <span class="form-input-hint"> День-Месяц-Год c дефисами : 31-12-1981 </span>	
+            <span className="form-input-hint"> День-Месяц-Год c дефисами : 31-12-1981 </span>	
           </label>
 
           <label>Действителен до:
             <input name="passportValidThrough" type="text" />
-            <span class="form-input-hint"> День-Месяц-Год c дефисами : 31-12-1981 </span>	
+            <span className="form-input-hint"> День-Месяц-Год c дефисами : 31-12-1981 </span>	
           </label>
 
         </fieldset>
@@ -99,7 +99,7 @@ class TourParticipantForm extends React.Component {
 
           <label>Контактный телефон:
             <input name="phone" type="text" />
-            <span class="form-input-hint"> полностью с кодами : +7 901 313 59 66 </span>
+            <span className="form-input-hint"> полностью с кодами : +7 901 313 59 66 </span>
           </label>
 
           <label>Номер карты ВелоПитера (если имеется):	
@@ -107,8 +107,8 @@ class TourParticipantForm extends React.Component {
           </label>
 
           <label>Как вы нас нашли:
-            <select name="howFound">
-              <option value="null" selected>--</option>
+            <select name="howFound" defaultValue="null">
+              <option value="null">--</option>
               <option value="Давно уже знаю">Давно уже знаю</option>
               <option value="Нашел поиском в интернете">Нашел поиском в интернете</option>
               <option value="Друзья рассказали">Друзья рассказали</option>
