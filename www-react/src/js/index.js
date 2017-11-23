@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TopComponent from 'components/top-component';
+import Router from './router';
 
-ReactDOM.render(<TopComponent />, document.getElementById('react-root'));
+ReactDOM.render(<Router />, document.getElementById('react-root'));
