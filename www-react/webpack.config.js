@@ -31,9 +31,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new UglifyJSPlugin({
-      exclude: [/\/vendor/]
-    }),
+    // new UglifyJSPlugin({
+    //   exclude: [/\/vendor/]
+    // }),
   ],
   devServer: {
     contentBase: path.join(__dirname, "public"),

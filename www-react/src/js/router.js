@@ -1,12 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import TopComponent from 'components/top-component';
-import TourParticipantForm from 'components/tour-participant-form';
+import TourParticipantFormContainer from 'containers/tour-participant-form';
 
 let Router = (props) =>
     <BrowserRouter>
       <Switch>
-        <Route path="/" render={ () => <TourParticipantForm {...props} /> } />
+        <Route path="/" render={ () => <TourParticipantFormContainer {...props} /> } />
       </Switch>
     </BrowserRouter>
 
