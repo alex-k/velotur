@@ -11,12 +11,13 @@ module.exports = {
   resolve: {
     alias: {
       src: path.resolve(__dirname, "src"),
-      config: path.resolve(__dirname, "config/config.js"),
-      components: path.resolve(__dirname, "src", "js", "react-components"),
-      redux: path.resolve(__dirname, "src","js","redux"),
-      services: path.resolve(__dirname, "src","js","services")
-    },
-    modules: ["node_modules"]
+      config$: path.resolve(__dirname, "config/config.js"),
+      components: path.resolve(__dirname, "src", "js", "react", "components"),
+      containers: path.resolve(__dirname, "src", "js", "react", "containers"),
+      reducers: path.resolve(__dirname, "src", "js", "redux", "reducers"),
+      actions: path.resolve(__dirname, "src", "js", "redux", "actions"),
+      services: path.resolve(__dirname, "src", "js","services")
+    }
   },
   module: {
     loaders: [
