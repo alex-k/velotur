@@ -258,76 +258,73 @@ class TourParticipant
   public function setParticipantEmail($participantEmail) {
     $this->participantEmail = $participantEmail;
   }
-  public function getParticipantEmail($participantEmail) {
-    $this->participantEmail = $participantEmail;
-  }
-  public function getParticipantRussianName($participantRussianName) {
+  public function setParticipantRussianName($participantRussianName) {
     $this->participantRussianName = $participantRussianName;
   }
-  public function getParticipantLatinName($participantLatinName) {
+  public function setParticipantLatinName($participantLatinName) {
     $this->participantLatinName = $participantLatinName;
   }
-  public function getParticipantBirthday($participantBirthday) {
+  public function setParticipantBirthday($participantBirthday) {
     $this->participantBirthday = $participantBirthday;
   }
-  public function getParticipantCitizenship($participantCitizenship) {
+  public function setParticipantCitizenship($participantCitizenship) {
     $this->participantCitizenship = $participantCitizenship;
   }
-  public function getParticipantSex($participantSex) {
+  public function setParticipantSex($participantSex) {
     $this->participantSex = $participantSex;
   }
-  public function getParticipantCountry($participantCountry) {
+  public function setParticipantCountry($participantCountry) {
     $this->participantCountry = $participantCountry;
   }
-  public function getParticipantCity($participantCity) {
+  public function setParticipantCity($participantCity) {
     $this->participantCity = $participantCity;
   }
-  public function getParticipantAddress($participantAddress) {
+  public function setParticipantAddress($participantAddress) {
     $this->participantAddress = $participantAddress;
   }
-  public function getParticipantJob($participantJob) {
+  public function setParticipantJob($participantJob) {
     $this->participantJob = $participantJob;
   }
-  public function getParticipantPassportType($participantPassportType) {
+  public function setParticipantPassportType($participantPassportType) {
     $this->participantPassportType = $participantPassportType;
   }
-  public function getParticipantPassport($participantPassport) {
+  public function setParticipantPassport($participantPassport) {
     $this->participantPassport = $participantPassport;
   }
-  public function getParticipantPassportIssuedBy($participantIssuedBy) {
+  public function setParticipantPassportIssuedBy($participantIssuedBy) {
     $this->participantIssuedBy = $participantIssuedBy;
   }
-  public function getParticipantPassportIssuedDate($participantIssuedDate) {
+  public function setParticipantPassportIssuedDate($participantIssuedDate) {
     $this->participantIssuedDate = $participantIssuedDate;
   }
-  public function getParticipantPassportValidThrough($participantValidThrough) {
+  public function setParticipantPassportValidThrough($participantValidThrough) {
     $this->participantValidThrough = $participantValidThrough;
   }
-  public function getParticipantPhone($participantPhone) {
+  public function setParticipantPhone($participantPhone) {
     $this->participantPhone = $participantPhone;
   }
-  public function getParticipantVPNumber($participantVPNumber) {
+  public function setParticipantVPNumber($participantVPNumber) {
     $this->participantVPNumber = $participantVPNumber;
   }
-  public function getParticipantType($participantType) {
+  public function setParticipantType($participantType) {
     $this->participantType = $participantType;
   }
-  public function getParticipantReferalID($participantReferalID) {
+  public function setParticipantReferalID($participantReferalID) {
     $this->participantReferalID = $participantReferalID;
   }
-  public function getParticipantRegistrationDate($participantRegistrationDate) {
+  public function setParticipantRegistrationDate($participantRegistrationDate) {
     $this->participantRegistrationDate = $participantRegistrationDate;
   }
-  public function getParticipantInfoHowFound($participantInfoHowFound) {
+  public function setParticipantInfoHowFound($participantInfoHowFound) {
     $this->participantInfoHowFound = $participantInfoHowFound;
   }
-  public function getParticipantPartnerID($participantPartnerID) {
+  public function setParticipantPartnerID($participantPartnerID) {
     $this->participantPartnerID = $participantPartnerID;
   }
-  public function getParticipantCompletedTours($participantCompletedTours) {
+  public function setParticipantCompletedTours($participantCompletedTours) {
     $this->participantCompletedTours = $participantCompletedTours;
   }
-  public function getParticipantSubscribeNews($participantSubscribeNews) {
+  public function setParticipantSubscribeNews($participantSubscribeNews) {
     $this->participantSubscribeNews = $participantSubscribeNews;
   }
 }
