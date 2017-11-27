@@ -12,8 +12,11 @@ class TourParticipantFormContainer extends React.Component {
     console.log("Submitting data: ", data);
 
     axios({
-      method: 'post',
-      url: config.api.url,
+      method: 'GET',
+      url: config.api.url + '/submitParticipant',
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
       data: data
     })
     .catch(error => {
