@@ -20,7 +20,7 @@ class TourParticipant
    * @ORM\Column(type="integer")
    * @ORM\GeneratedValue(strategy="AUTO")
    */
-  private $participantId;
+  private $id;
 
   /**
    * Id of the user who added the participant.
@@ -35,133 +35,102 @@ class TourParticipant
   private $tourId;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text")
    */  
-  private $participantEmail;
+  private $russianFirstName;
 
   /**
    * @ORM\Column(type="text")
    */  
-  private $participantRussianName;
+  private $russianMiddleName;
+
+  /**
+   * @ORM\Column(type="text")
+   */  
+  private $russianLastName;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantLatinName;
+  private $latinFirstName;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantBirthday;
+  private $latinLastName;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantCitizenship;
+  private $birthday;
+
+  /**
+   * @ORM\Column(type="string")
+   */  
+  private $citizenship;
 
   /**
    * @ORM\Column(type="string")
    * note: maps to mysql enum('Male', 'Female')
    */  
-  private $participantSex;
+  private $sex;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantCountry;
+  private $city;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantCity;
-
-  /**
-   * @ORM\Column(type="text")
-   */  
-  private $participantAddress;
-
-  /**
-   * @ORM\Column(type="text")
-   */  
-  private $participantJob;
-
-  /**
-   * @ORM\Column(type="string")
-   */  
-  private $participantPassportType;
-
-  /**
-   * @ORM\Column(type="string")
-   */  
-  private $participantPassport;
+  private $passportNumber;
 
   /**
    * @ORM\Column(type="text")
    */
-  private $participantPassportIssuedBy;
+  private $passportIssuedBy;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantPassportIssuedDate;
+  private $passportIssuedDate;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantPassportValidThrough;
+  private $passportValidThrough;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantPhone;
+  private $phone;
 
   /**
    * @ORM\Column(type="string")
    */
-  private $participantVPNumber;
+  private $vpNumber;
 
   /**
    * @ORM\Column(type="string")
-   * note: maps to mysql enum('regular', 'guard', 'block')
-   */
-  private $participantType;
-
-  /**
-   * @ORM\Column(type="integer")
    */ 
-  private $participantReferalID;
-
-  /**
-   * @ORM\Column(type="datetime")
-   */ 
-  private $participantRegistrationDate;
+  private $registrationDate;
 
   /**
    * @ORM\Column(type="string")
    */  
-  private $participantInfoHowFound;
-  
-  /**
-   * @ORM\Column(type="integer")
-   */ 
-  private $participantPartnerID;
+  private $howFound;
  
   /**
    * @ORM\Column(type="integer")
    */ 
-  private $participantCompletedTours;
- 
-  /**
-   * @ORM\Column(type="integer")
-   */ 
-  private $participantSubscribeNews;
+  private $comments;
 
   /* ==============================================================================================
   *  GETTERS
   *  ============================================================================================*/
   
-  public function getParticipantId() {
-    return $this->participantId;
+  public function getId() {
+    return $this->id;
   }
   public function getCreatorUserId() {
     return $this->addedByUserId();
@@ -169,85 +138,67 @@ class TourParticipant
   public function getTourId() {
     return $this->tourId;
   }
-  public function getParticipantEmail() {
-    return $this->participantEmail;
+  public function getRussianFirstName() {
+    return $this->russianFirstName;
   }
-  public function getParticipantRussianName() {
-    return $this->participantRussianName;
+  public function getRussianMiddleName() {
+    return $this->russianMiddleName;
   }
-  public function getParticipantLatinName() {
-    return $this->participantLatinName;
+  public function getRussianLastName() {
+    return $this->russianLastName;
   }
-  public function getParticipantBirthday() {
-    return $this->participantBirthday;
+  public function getLatinFirstName() {
+    return $this->latinFirstName;
   }
-  public function getParticipantCitizenship() {
-    return $this->participantCitizenship;
+  public function getLatinLastName() {
+    return $this->latinLastName;
   }
-  public function getParticipantSex() {
-    return $this->participantSex;
+  public function getBirthday() {
+    return $this->birthday;
   }
-  public function getParticipantCountry() {
-    return $this->participantCountry;
+  public function getCitizenship() {
+    return $this->citizenship;
   }
-  public function getParticipantCity() {
-    return $this->participantCity;
+  public function getSex() {
+    return $this->sex;
   }
-  public function getParticipantAddress() {
-    return $this->participantAddress;
+  public function getCity() {
+    return $this->city;
   }
-  public function getParticipantJob() {
-    return $this->participantJob;
+  public function getPassportNumber() {
+    return $this->passportNumber;
   }
-  public function getParticipantPassportType() {
-    return $this->participantPassportType;
+  public function getPassportIssuedBy() {
+    return $this->passportIssuedBy;
   }
-  public function getParticipantPassport() {
-    return $this->participantPassport;
+  public function getPassportIssuedDate() {
+    return $this->passportIssuedDate;
   }
-  public function getParticipantPassportIssuedBy() {
-    return $this->participantIssuedBy;
+  public function getPassportValidThrough() {
+    return $this->passportValidThrough;
   }
-  public function getParticipantPassportIssuedDate() {
-    return $this->participantIssuedDate;
+  public function getPhone() {
+    return $this->phone;
   }
-  public function getParticipantPassportValidThrough() {
-    return $this->participantValidThrough;
+  public function getVpNumber() {
+    return $this->vpNumber;
   }
-  public function getParticipantPhone() {
-    return $this->participantPhone;
+  public function getRegistrationDate() {
+    return $this->registrationDate;
   }
-  public function getParticipantVPNumber() {
-    return $this->participantVPNumber;
+  public function getHowFound() {
+    return $this->howFound;
   }
-  public function getParticipantType() {
-    return $this->participantType;
-  }
-  public function getParticipantReferalID() {
-    return $this->participantReferalID;
-  }
-  public function getParticipantRegistrationDate() {
-    return $this->participantRegistrationDate;
-  }
-  public function getParticipantInfoHowFound() {
-    return $this->participantInfoHowFound;
-  }
-  public function getParticipantPartnerID() {
-    return $this->participantPartnerID;
-  }
-  public function getParticipantCompletedTours() {
-    return $this->participantCompletedTours;
-  }
-  public function getParticipantSubscribeNews() {
-    return $this->participantSubscribeNews;
+  public function getComments() {
+    return $this->comments;
   }
 
   /* ==============================================================================================
   *  SETTERS
   *  ============================================================================================*/
   
-  public function setParticipantId($participantId) {
-    $this->participantId = $participantId;
+  public function setId($id) {
+    $this->id = $id;
   }
   public function setCreatorUserId($creatorUserId) {
     $this->creatorUserId = $creatorUserId;
@@ -255,76 +206,61 @@ class TourParticipant
   public function setTourId($tourId) {
     $this->tourId = $tourId;
   }
-  public function setParticipantEmail($participantEmail) {
-    $this->participantEmail = $participantEmail;
+  public function setRussianFirstName($russianFirstName) {
+    $this->russianFirstName = $russianFirstName;
   }
-  public function setParticipantRussianName($participantRussianName) {
-    $this->participantRussianName = $participantRussianName;
+  public function setRussianMiddleName($russianMiddleName) {
+    $this->russianMiddleName = $russianMiddleName;
+  }
+  public function setRussianLastName($russianLastName) {
+    $this->russianLastName = $russianLastName;
+  }
+  public function setLatinFirstName($latinFirstName) {
+    $this->latinFirstName = $latinFirstName;
+  }
+  public function setLatinLastName($latinLastName) {
+    $this->latinLastName = $latinLastName;
   }
   public function setParticipantLatinName($participantLatinName) {
     $this->participantLatinName = $participantLatinName;
   }
-  public function setParticipantBirthday($participantBirthday) {
-    $this->participantBirthday = $participantBirthday;
+  public function setBirthday($birthday) {
+    $this->birthday = $birthday;
   }
-  public function setParticipantCitizenship($participantCitizenship) {
-    $this->participantCitizenship = $participantCitizenship;
+  public function setCitizenship($citizenship) {
+    $this->citizenship = $citizenship;
   }
-  public function setParticipantSex($participantSex) {
-    $this->participantSex = $participantSex;
+  public function setSex($sex) {
+    $this->sex = $sex;
   }
-  public function setParticipantCountry($participantCountry) {
-    $this->participantCountry = $participantCountry;
+  public function setCity($city) {
+    $this->city = $city;
   }
-  public function setParticipantCity($participantCity) {
-    $this->participantCity = $participantCity;
+  public function setPassportNumber($passportNumber) {
+    $this->passportNumber = $passportNumber;
   }
-  public function setParticipantAddress($participantAddress) {
-    $this->participantAddress = $participantAddress;
+  public function setPassportIssuedBy($passportIssuedBy) {
+    $this->passportIssuedBy = $passportIssuedBy;
   }
-  public function setParticipantJob($participantJob) {
-    $this->participantJob = $participantJob;
+  public function setPassportIssuedDate($passportIssuedDate) {
+    $this->passportIssuedDate = $passportIssuedDate;
   }
-  public function setParticipantPassportType($participantPassportType) {
-    $this->participantPassportType = $participantPassportType;
+  public function setPassportValidThrough($passportValidThrough) {
+    $this->passportValidThrough = $passportValidThrough;
   }
-  public function setParticipantPassport($participantPassport) {
-    $this->participantPassport = $participantPassport;
+  public function setPhone($phone) {
+    $this->phone = $phone;
   }
-  public function setParticipantPassportIssuedBy($participantIssuedBy) {
-    $this->participantIssuedBy = $participantIssuedBy;
+  public function setVpNumber($vpNumber) {
+    $this->vpNumber = $vpNumber;
   }
-  public function setParticipantPassportIssuedDate($participantIssuedDate) {
-    $this->participantIssuedDate = $participantIssuedDate;
+  public function setRegistrationDate($registrationDate) {
+    $this->registrationDate = $registrationDate;
   }
-  public function setParticipantPassportValidThrough($participantValidThrough) {
-    $this->participantValidThrough = $participantValidThrough;
+  public function setHowFound($howFound) {
+    $this->howFound = $howFound;
   }
-  public function setParticipantPhone($participantPhone) {
-    $this->participantPhone = $participantPhone;
-  }
-  public function setParticipantVPNumber($participantVPNumber) {
-    $this->participantVPNumber = $participantVPNumber;
-  }
-  public function setParticipantType($participantType) {
-    $this->participantType = $participantType;
-  }
-  public function setParticipantReferalID($participantReferalID) {
-    $this->participantReferalID = $participantReferalID;
-  }
-  public function setParticipantRegistrationDate($participantRegistrationDate) {
-    $this->participantRegistrationDate = $participantRegistrationDate;
-  }
-  public function setParticipantInfoHowFound($participantInfoHowFound) {
-    $this->participantInfoHowFound = $participantInfoHowFound;
-  }
-  public function setParticipantPartnerID($participantPartnerID) {
-    $this->participantPartnerID = $participantPartnerID;
-  }
-  public function setParticipantCompletedTours($participantCompletedTours) {
-    $this->participantCompletedTours = $participantCompletedTours;
-  }
-  public function setParticipantSubscribeNews($participantSubscribeNews) {
-    $this->participantSubscribeNews = $participantSubscribeNews;
+  public function setComments($comments) {
+    $this->comments = $comments;
   }
 }
