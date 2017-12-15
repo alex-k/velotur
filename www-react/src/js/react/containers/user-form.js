@@ -3,7 +3,7 @@ import TourParticipantForm from 'components/tour-participant-form';
 import axios from 'axios';
 import config from 'config';
 
-class TourParticipantFormContainer extends React.Component {
+class UserFormContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -13,7 +13,7 @@ class TourParticipantFormContainer extends React.Component {
 
     axios({
       method: 'POST',
-      url: config.api.url + '/submitParticipant',
+      url: config.api.url + '/submitUser',
       headers: {
         'Content-Type': 'multipart/form-data'
       },
@@ -29,9 +29,9 @@ class TourParticipantFormContainer extends React.Component {
 
   render() {
     return (
-      <TourParticipantForm onSubmit={this.submit} />
+      <UserForm onSubmit={this.submit} />
     );
   }
 }
 
-export default TourParticipantFormContainer
+export default UserFormContainer

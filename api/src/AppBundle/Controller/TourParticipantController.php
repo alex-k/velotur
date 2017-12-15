@@ -46,6 +46,7 @@ class TourParticipantController extends Controller
 
         $tourParticipant->setId($id);
         $tourParticipant->setCreatorUserId($creatorUserId);
+        $tourParticipant->setTourId($tourId);
         $tourParticipant->setRussianFirstName($russianFirstName);
         $tourParticipant->setRussianMiddleName($russianMiddleName);
         $tourParticipant->setRussianLastName($russianLastName);
@@ -72,7 +73,7 @@ class TourParticipantController extends Controller
         $response = new Response();
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Content-Type', 'text/html');
-        $response->setContent('Added new TourParticipant');
+        $response->setContent('Added new TourParticipant' . $_POST['russianLastName']);
 
         return $response;           
     }

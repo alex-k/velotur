@@ -121,7 +121,7 @@ class TourParticipant
   private $howFound;
  
   /**
-   * @ORM\Column(type="integer")
+   * @ORM\Column(type="string")
    */ 
   private $comments;
 
