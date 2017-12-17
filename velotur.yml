@@ -1,51 +1,50 @@
-#mysql_data:
-#  container_name: velotur_mysql_data
-#  image: mysql:5.6
-#  entrypoint: /bin/bash
-#  volumes:
-#    - ./mysql:/mysql
-#
-#mysql:
-#  container_name: velotur_mysql
-#  restart: always
-#  image: mysql:5.6
-#  environment:
-#    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-#  volumes_from:
-#    - mysql_data
-#  command: mysqld --explicit_defaults_for_timestamp=On
+version: '3'
+volumes:
+  data-volume:
+services:
+  mysql:
+    container_name: velotur_mysql
+    restart: always
+    image: mysql:5.6
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - ./mysql:/mysql
+      - data-volume:/var/lib/mysql
+    command: mysqld --explicit_defaults_for_timestamp=On
 
-www:
-  container_name: velotur_www
-  image: alexk7898/velotur:www-master
-  ports:
-    - "80:80"
-  restart: always
-  volumes:
-    - ./log/apache2:/var/log/apache2
-    - ./log/velotur:/var/log/velotur
-    - ./www/app:/app
-    - /mnt/velotur/files:/app/public/files
-  links:
-    - "smtp:smtp"
-  extra_hosts:
-    - "mysql:207.154.197.229"
+  www:
+    container_name: velotur_www
+    image: alexk7898/velotur:www-master
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - ./log/apache2:/var/log/apache2
+      - ./log/velotur:/var/log/velotur
+      - ./www/app:/app
+      - /mnt/velotur/files:/app/public/files
+    links:
+      - "smtp:smtp"
+      - "mysql:mysql"
+  #  extra_hosts:
+  #    - "mysql:207.154.197.229"
 
-smtp:
-  container_name: velotur_smtp
-  image: alexk7898/velotur:exim4-master
-  restart: always
+  smtp:
+    container_name: velotur_smtp
+    image: alexk7898/velotur:exim4-master
+    restart: always
 
 
-ftp:
-  # useradd --shell /bin/sh --create-home --password $PASSWORD $USERNAME
-  # chown -R $USERNAME:$USERNAME /ftp
-  build: proftpd
-  restart: always
-  ports:
-    - "20:20"
-    - "21:21"
-  command: proftpd --nodaemon
-  volumes:
-    - ./www/app:/ftp
+  ftp:
+    # useradd --shell /bin/sh --create-home --password $PASSWORD $USERNAME
+    # chown -R $USERNAME:$USERNAME /ftp
+    build: proftpd
+    restart: always
+    ports:
+      - "20:20"
+      - "21:21"
+    command: proftpd --nodaemon
+    volumes:
+      - ./www/app:/ftp
 
