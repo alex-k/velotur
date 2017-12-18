@@ -64,8 +64,6 @@ class UserRegistrationController extends Controller
 
         $response = new Response();
         $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Content-Type', 'text/html');
-        $response->setContent('Added new User' . $_POST['russianLastName']);
 
         return $response;           
     }

@@ -72,8 +72,6 @@ class TourParticipantController extends Controller
 
         $response = new Response();
         $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Content-Type', 'text/html');
-        $response->setContent('Added new TourParticipant' . $_POST['russianLastName']);
 
         return $response;           
     }
