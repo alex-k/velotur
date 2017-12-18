@@ -118,6 +118,8 @@ let UserForm = (props) => (
 
     </fieldset>
     
+    <input type="submit" />
+    
   </form>
 );
 

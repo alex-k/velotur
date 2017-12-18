@@ -1,12 +1,14 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, HashRouter, Route, Switch} from 'react-router-dom';
 import TourParticipantFormContainer from 'containers/tour-participant-form';
+import UserFormContainer from 'containers/user-form';
 
 let Router = (props) =>
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" render={ () => <TourParticipantFormContainer {...props} /> } />
+    <HashRouter>
+      <Switch> 
+        <Route path="/tourParticipantForm" render={ () => <TourParticipantFormContainer {...props} /> } />
+        <Route path="/userRegistrationForm" render={ () => <UserFormContainer {...props} /> } />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
 
 export default Router
