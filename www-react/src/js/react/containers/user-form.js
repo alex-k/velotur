@@ -1,5 +1,5 @@
 import React from 'react';
-import TourParticipantForm from 'components/tour-participant-form';
+import UserForm from 'components/user-form';
 import axios from 'axios';
 import config from 'config';
 
