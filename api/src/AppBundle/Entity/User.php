@@ -12,169 +12,169 @@ use Doctrine\ORM\Mapping as ORM;
 class User {
   
   /**
-   * ORM\Id
-   * ORM\Column(type="integer")
-   * ORM\GeneratedValue(strategy="AUTO")
+   * @ORM\Id
+   * @ORM\Column(type="integer")
+   * @ORM\GeneratedValue(strategy="AUTO")
    */
   private $userID;
 
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userEmail;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userName;
 
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userPassword;
 
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userRussianName;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userRussianName1;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userRussianName2;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userRussianName3;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userLatinName;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userLatinName1;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userLatinName2;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userLatinName3;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userBirthDay;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userCitizenship;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userSex;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userCountry;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userCity;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userAddress;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userJob;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userPassportType;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userPassport;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userPassportIssuedBy;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userPassportIssuedDate;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userPassportValidThrow;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userPhone;
 
   /**
-   * ORM\Column(type="integer")
+   * @ORM\Column(type="integer")
    */
   private $userVPNumber;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userType;
 
   /**
-   * ORM\Column(type="integer")
+   * @ORM\Column(type="integer")
    */
   private $userReferalID;
 
   /**
-   * ORM\Column(type="date")
+   * @ORM\Column(type="date")
    */
   private $userRegistrationDate;
   
   /**
-   * ORM\Column(type="text")
+   * @ORM\Column(type="text")
    */
   private $userInfoHowFound;
 
   /**
-   * ORM\Column(type="integer")
+   * @ORM\Column(type="integer")
    */
   private $userPartnerID;
 
   /**
-   * ORM\Column(type="integer")
+   * @ORM\Column(type="integer")
    */
   private $userCompletedTours;
 
   /**
-   * ORM\Column(type="integer")
+   * @ORM\Column(type="integer")
    */
   private $userSubscribeNews;
   
