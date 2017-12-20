@@ -26,13 +26,13 @@ let UserForm = (props) => (
       <label>Имя латиницей:
         <Field name="latinFirstName" component="input" type="text" placeholder="Имя латиницей" />
         <span className="form-input-hint"> как в загранпаспорте </span>
-        <span className="form-input-hint">БОЛЬШИМИ БУКВАМИ : PETROV </span>
+        <span className="form-input-hint">БОЛЬШИМИ БУКВАМИ : IVAN </span>
       </label>
 
       <label>Фамилия латиницей:
         <Field name="latinLastName" component="input" type="text" placeholder="Фамилия латиницей" />
         <span className="form-input-hint"> как в загранпаспорте </span>
-        <span className="form-input-hint">БОЛЬШИМИ БУКВАМИ : IVAN </span>
+        <span className="form-input-hint">БОЛЬШИМИ БУКВАМИ : PETROV </span>
       </label>
 
       <label>Дата рождения:
