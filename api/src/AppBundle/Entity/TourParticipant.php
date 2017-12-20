@@ -25,103 +25,103 @@ class TourParticipant
   /**
    * Id of the user who added the participant.
    * Id пользователя который добавил участника.
-   * @ORM\Column(type="integer")
+   * @ORM\Column(type="integer", nullable=true)
    */
   private $creatorUserId;
 
   /**
-   * @ORM\Column(type="integer")
+   * @ORM\Column(type="integer", nullable=true)
    */
   private $tourId;
 
   /**
-   * @ORM\Column(type="text")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $russianFirstName;
 
   /**
-   * @ORM\Column(type="text")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $russianMiddleName;
 
   /**
-   * @ORM\Column(type="text")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $russianLastName;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $latinFirstName;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $latinLastName;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $birthday;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $citizenship;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    * note: maps to mysql enum('Male', 'Female')
    */  
   private $sex;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $city;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $passportNumber;
 
   /**
-   * @ORM\Column(type="text")
+   * @ORM\Column(type="text", nullable=true)
    */
   private $passportIssuedBy;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $passportIssuedDate;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $passportValidThrough;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $phone;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */
   private $vpNumber;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */ 
   private $registrationDate;
 
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */  
   private $howFound;
  
   /**
-   * @ORM\Column(type="string")
+   * @ORM\Column(type="text", nullable=true)
    */ 
   private $comments;
 

@@ -8,36 +8,38 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\User;
+use Psr\Log\LoggerInterface;
 
 class UserRegistrationController extends Controller
 {
 
     /**
-     * @Route("/submitUserRegistration", name="submit_user_registration")
+     * @Route("/submitUserRegistration", name="submit_user_registration", methods={"POST"})
      */
-    public function submitAction(Request $request)
+    public function submitAction(Request $request, LoggerInterface $logger)
     {
         $user = new User();
+        $formData = json_decode($request->getContent(), true);
 
-        $russianFirstName = $_POST['russianFirstName'] ?? '';
-        $russianLastName = $_POST['russianLastName'] ?? '';
-        $russianMiddleName = $_POST['russianMiddleName'] ?? '';
-        $latinFirstName = $_POST['latinFirstName'] ?? '';
-        $latinLastName = $_POST['latinLastName'] ?? '';
-        $birthday = $_POST['birthday'] ?? '';
-        $citizenship = $_POST['citizenship'] ?? '';
-        $sex = $_POST['sex'] ?? '';
-        $city = $_POST['city'] ?? '';
-        $passportNumber = $_POST['passportNumber'] ?? '';
-        $passportIssuedBy = $_POST['passportIssuedBy'] ?? '';
-        $passportIssuedDate = $_POST['passportIssuedDate'] ?? ''; 
-        $passportValidThrough = $_POST['passportValidThrough'] ?? '';
-        $phone = $_POST['phone'] ?? '';
-        $vpNumber = $_POST['vpNumber'] ?? '';
-        $registrationDate = date('Y-m-d') ?? '';
-        $howFound = $_POST['howFound'] ?? '';
-        if ($howFound == "") {
-            $howFound = $_POST['howFoundText'] ?? '';
+        $russianFirstName = $formData['russianFirstName'] ?? null;
+        $russianLastName = $formData['russianLastName'] ?? null;
+        $russianMiddleName = $formData['russianMiddleName'] ?? null;
+        $latinFirstName = $formData['latinFirstName'] ?? null;
+        $latinLastName = $formData['latinLastName'] ?? null;
+        $birthday = $formData['birthday'] ?? null;
+        $citizenship = $formData['citizenship'] ?? null;
+        $sex = $formData['sex'] ?? null;
+        $city = $formData['city'] ?? null; 
+        $passportNumber = $formData['passportNumber'] ?? null;
+        $passportIssuedBy = $formData['passportIssuedBy'] ?? null; 
+        $passportIssuedDate = $formData['passportIssuedDate'] ?? null;
+        $passportValidThrough = $formData['passportValidThrough'] ?? null;
+        $phone = $formData['phone'] ?? null;
+        $vpNumber = $formData['vpNumber'] ?? null;
+        $registrationDate = date_create();
+        $howFound = $formData['howFound'] ?? null;
+        if ($howFound == null) {
+            $howFound = $formData['howFoundText'] ?? null;
         }
 
         $user->setUserRussianName1($russianFirstName);
@@ -52,7 +54,7 @@ class UserRegistrationController extends Controller
         $user->setUserPassport($passportNumber);
         $user->setUserPassportIssuedBy($passportIssuedBy);
         $user->setUserPassportIssuedDate($passportIssuedDate);
-        $user->setUserPassportValidThrouw($passportValidThrough);
+        $user->setUserPassportValidThrow($passportValidThrough);
         $user->setUserPhone($phone);
         $user->setUserVPNumber($vpNumber);
         $user->setUserRegistrationDate($registrationDate);
@@ -62,9 +64,11 @@ class UserRegistrationController extends Controller
         $em->persist($user);
         $em->flush();
 
+        $logger->info(count($formData));
+
         $response = new Response();
         $response->headers->set('Access-Control-Allow-Origin', '*');
-
+        
         return $response;           
     }
 }

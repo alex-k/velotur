@@ -8,16 +8,18 @@ class TourParticipantFormContainer extends React.Component {
     super(props);
   }
 
-  submit(data) {
-    console.log("Submitting data: ", data);
+  submit(formData) {
+    console.log("Submitting data: ", formData);
+
+    const URL = config.api.url + '/submitParticipant';
 
     axios({
       method: 'POST',
-      url: config.api.url + '/submitParticipant',
+      url: URL,
+      data: formData,
       headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      data: data
+        'Content-Type': 'text/plain'
+      }
     })
     .catch(error => {
       console.log("Caught server error: ", error);
@@ -25,7 +27,7 @@ class TourParticipantFormContainer extends React.Component {
     .then(response => {
       console.log("Received server response: ", response);
     });
-  }
+  } 
 
   render() {
     return (

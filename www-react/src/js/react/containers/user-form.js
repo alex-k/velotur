@@ -8,16 +8,18 @@ class UserFormContainer extends React.Component {
     super(props);
   }
 
-  submit(data) {
-    console.log("Submitting data: ", data);
+  submit(formData) {
+    console.log("Submitting data: ", formData);
+
+    const URL = config.api.url + '/submitUserRegistration';
 
     axios({
       method: 'POST',
-      url: config.api.url + '/submitUser',
+      url: URL,
+      data: formData,
       headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      data: data
+        'Content-Type': 'text/plain'
+      }
     })
     .catch(error => {
       console.log("Caught server error: ", error);
