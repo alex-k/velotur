@@ -3,9 +3,24 @@ import {Field, reduxForm} from 'redux-form';
 
 let UserForm = (props) => (
   <form className="user-form" onSubmit={props.handleSubmit}>
+    {/* --- EMAIL, ПАРОЛЬ --- */}
+    <fieldset>
+
+      <legend>Email и Пароль</legend>
+
+      <label> email: 
+        <Field name="email" component="input" type="email" />
+      </label>
+
+      <label> Пароль: 
+        <Field name="password" component="input" type="password" />
+      </label>
+
+    </fieldset>
 
     {/* --- ДАННЫЕ УЧАСТНИКА --- */}
     <fieldset>
+
       <legend>Данные участника</legend>
 
       <label>Фамилия:

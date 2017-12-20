@@ -21,6 +21,8 @@ class UserRegistrationController extends Controller
         $user = new User();
         $formData = json_decode($request->getContent(), true);
 
+        $email = $formData['email'] ?? null;
+        $password = $formData['password'] ?? null;
         $russianFirstName = $formData['russianFirstName'] ?? null;
         $russianLastName = $formData['russianLastName'] ?? null;
         $russianMiddleName = $formData['russianMiddleName'] ?? null;
@@ -42,6 +44,10 @@ class UserRegistrationController extends Controller
             $howFound = $formData['howFoundText'] ?? null;
         }
 
+        $user->setUserEmail($email);
+        $user->setUserPassword($password);
+        $user->setUserName($russianFirstName . ' ' . $russianMiddleName . ' ' . $russianLastName);
+        $user->setUserRussianName($russianFirstName . ' ' . $russianMiddleName . ' ' . $russianLastName);
         $user->setUserRussianName1($russianFirstName);
         $user->setUserRussianName2($russianMiddleName);
         $user->setUserRussianName3($russianLastName);
