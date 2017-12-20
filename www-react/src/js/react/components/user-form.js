@@ -105,14 +105,14 @@ let UserForm = (props) => (
       </label>
 
       <label>Как вы нас нашли:
-        <select name="howFound">
+        <Field component="select" name="howFound">
           <option value="null">--</option>
           <option value="Давно уже знаю">Давно уже знаю</option>
           <option value="Нашел поиском в интернете">Нашел поиском в интернете</option>
           <option value="Друзья рассказали">Друзья рассказали</option>
           <option value="Пришел по линкам с других сайтов">Пришел по линкам с других сайтов</option>
           <option value="">Иное (написать что)</option>
-        </select>
+        </Field>
         <Field component="input" name="howFoundText" type="text" />
       </label>
 
