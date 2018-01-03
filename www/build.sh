@@ -14,3 +14,6 @@ cd /app && date > build.log
 echo "=> Runing composer install ..."
 cd /app && php composer.phar install --no-dev
 
+echo "=> Runing API composer install ..."
+cd /api && mkdir -m0777 var && php composer.phar install --no-dev
+

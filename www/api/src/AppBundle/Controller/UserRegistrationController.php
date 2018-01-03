@@ -21,27 +21,27 @@ class UserRegistrationController extends Controller
         $user = new User();
         $formData = json_decode($request->getContent(), true);
 
-        $email = $formData['email'] ?? null;
-        $password = $formData['password'] ?? null;
-        $russianFirstName = $formData['russianFirstName'] ?? null;
-        $russianLastName = $formData['russianLastName'] ?? null;
-        $russianMiddleName = $formData['russianMiddleName'] ?? null;
-        $latinFirstName = $formData['latinFirstName'] ?? null;
-        $latinLastName = $formData['latinLastName'] ?? null;
-        $birthday = $formData['birthday'] ?? null;
-        $citizenship = $formData['citizenship'] ?? null;
-        $sex = $formData['sex'] ?? null;
-        $city = $formData['city'] ?? null; 
-        $passportNumber = $formData['passportNumber'] ?? null;
-        $passportIssuedBy = $formData['passportIssuedBy'] ?? null; 
-        $passportIssuedDate = $formData['passportIssuedDate'] ?? null;
-        $passportValidThrough = $formData['passportValidThrough'] ?? null;
-        $phone = $formData['phone'] ?? null;
-        $vpNumber = $formData['vpNumber'] ?? null;
+        $email = $formData['email'] ?: null;
+        $password = $formData['password'] ?: null;
+        $russianFirstName = $formData['russianFirstName'] ?: null;
+        $russianLastName = $formData['russianLastName'] ?: null;
+        $russianMiddleName = $formData['russianMiddleName'] ?: null;
+        $latinFirstName = $formData['latinFirstName'] ?: null;
+        $latinLastName = $formData['latinLastName'] ?: null;
+        $birthday = $formData['birthday'] ?: null;
+        $citizenship = $formData['citizenship'] ?: null;
+        $sex = $formData['sex'] ?: null;
+        $city = $formData['city'] ?: null; 
+        $passportNumber = $formData['passportNumber'] ?: null;
+        $passportIssuedBy = $formData['passportIssuedBy'] ?: null; 
+        $passportIssuedDate = $formData['passportIssuedDate'] ?: null;
+        $passportValidThrough = $formData['passportValidThrough'] ?: null;
+        $phone = $formData['phone'] ?: null;
+        $vpNumber = $formData['vpNumber'] ?: null;
         $registrationDate = date_create();
-        $howFound = $formData['howFound'] ?? null;
+        $howFound = $formData['howFound'] ?: null;
         if ($howFound == null) {
-            $howFound = $formData['howFoundText'] ?? null;
+            $howFound = $formData['howFoundText'] ?: null;
         }
 
         $user->setUserEmail($email);
@@ -53,6 +53,7 @@ class UserRegistrationController extends Controller
         $user->setUserRussianName3($russianLastName);
         $user->setUserLatinName1($latinFirstName);
         $user->setUserLatinName2($latinLastName);
+        $user->setUserLatinName(trim(implode(' ', [$user->getUserLatinName1(), $user->getUserLatinName2(), $user->getUserLatinName3()]));
         $user->setUserBirthDay($birthday);
         $user->setUserCitizenship($citizenship);
         $user->setUserSex($sex);

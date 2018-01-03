@@ -20,30 +20,30 @@ class TourParticipantController extends Controller
         $tourParticipant = new TourParticipant();
         $formData = json_decode($request->getContent(), true);
         
-        $id = $formData['participantId'] ?? 0;
-        $creatorUserId = $formData['creatorUserId'] ?? 0;
-        $tourId = $formData['tourId'] ?? 0;
-        $russianFirstName = $formData['russianFirstName'] ?? '';
-        $russianLastName = $formData['russianLastName'] ?? '';
-        $russianMiddleName = $formData['russianMiddleName'] ?? '';
-        $latinFirstName = $formData['latinFirstName'] ?? '';
-        $latinLastName = $formData['latinLastName'] ?? '';
-        $birthday = $formData['birthday'] ?? '';
-        $citizenship = $formData['citizenship'] ?? '';
-        $sex = $formData['sex'] ?? '';
-        $city = $formData['city'] ?? '';
-        $passportNumber = $formData['passportNumber'] ?? '';
-        $passportIssuedBy = $formData['passportIssuedBy'] ?? '';
-        $passportIssuedDate = $formData['passportIssuedDate'] ?? ''; 
-        $passportValidThrough = $formData['passportValidThrough'] ?? '';
-        $phone = $formData['phone'] ?? '';
-        $vpNumber = $formData['vpNumber'] ?? '';
-        $registrationDate = date('Y-m-d') ?? '';
-        $howFound = $formData['howFound'] ?? '';
+        $id = $formData['participantId'] ?: 0;
+        $creatorUserId = $formData['creatorUserId'] ?: 0;
+        $tourId = $formData['tourId'] ?: 0;
+        $russianFirstName = $formData['russianFirstName'] ?: '';
+        $russianLastName = $formData['russianLastName'] ?: '';
+        $russianMiddleName = $formData['russianMiddleName'] ?: '';
+        $latinFirstName = $formData['latinFirstName'] ?: '';
+        $latinLastName = $formData['latinLastName'] ?: '';
+        $birthday = $formData['birthday'] ?: '';
+        $citizenship = $formData['citizenship'] ?: '';
+        $sex = $formData['sex'] ?: '';
+        $city = $formData['city'] ?: '';
+        $passportNumber = $formData['passportNumber'] ?: '';
+        $passportIssuedBy = $formData['passportIssuedBy'] ?: '';
+        $passportIssuedDate = $formData['passportIssuedDate'] ?: ''; 
+        $passportValidThrough = $formData['passportValidThrough'] ?: '';
+        $phone = $formData['phone'] ?: '';
+        $vpNumber = $formData['vpNumber'] ?: '';
+        $registrationDate = date('Y-m-d') ?: '';
+        $howFound = $formData['howFound'] ?: '';
         if ($howFound == '') {
-            $howFound = $formData['howFoundText'] ?? '';
+            $howFound = $formData['howFoundText'] ?: '';
         }
-        $comments = $formData['comments'] ?? '';
+        $comments = $formData['comments'] ?: '';
 
         $tourParticipant->setId($id);
         $tourParticipant->setCreatorUserId($creatorUserId);

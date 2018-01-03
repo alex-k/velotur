@@ -19,7 +19,7 @@ class User {
   private $userID;
 
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=true, name="userEmail")
    */
   private $userEmail;
   
@@ -309,7 +309,7 @@ class User {
   public function setUserRussianName3($userRussianName3) {
     $this->userRussianName3 = $userRussianName3; 
   }
-  public function userLatinName($userLatinName) {
+  public function setUserLatinName($userLatinName) {
    $this->userLatinName = $userLatinName;
   }
   public function setUserLatinName1($userLatinName1) {

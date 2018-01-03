@@ -1,10 +1,11 @@
 www:
-  #build: www
-  image: alexk7898/velotur:www-master
+  build: www
+  #image: alexk7898/velotur:www-master
   ports:
     - "80:80"
   volumes:
     - ./www/app:/app
+    - ./www/api:/api
   links:
     - smtp:smtp
     - "mysql:mysql"
@@ -18,4 +19,6 @@ mysql:
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
   volumes:
     - ./mysql:/mysql
+  ports:
+    - "3306:3306"
   command: mysqld --explicit_defaults_for_timestamp=On
