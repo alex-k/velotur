@@ -53,7 +53,8 @@ class UserRegistrationController extends Controller
         $user->setUserRussianName3($russianLastName);
         $user->setUserLatinName1($latinFirstName);
         $user->setUserLatinName2($latinLastName);
-        $user->setUserLatinName(trim(implode(' ', [$user->getUserLatinName1(), $user->getUserLatinName2(), $user->getUserLatinName3()]));
+        $userLatinName = trim(implode(' ', [$latinFirstName, $latinLastName]));
+        $user->setUserLatinName($userLatinName);
         $user->setUserBirthDay($birthday);
         $user->setUserCitizenship($citizenship);
         $user->setUserSex($sex);
