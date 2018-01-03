@@ -11,3 +11,4 @@ build.log
 www/app/public/libs/widgets/MultiPowUpload
 log
 node_modules
+mysql/velotur.20171217_3.sql
