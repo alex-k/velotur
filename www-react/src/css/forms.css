@@ -19,6 +19,10 @@ form input {
   width: 100%;
 }
 
+form input::placeholder {
+  color: #444;
+}
+
 form input[type="checkbox"] {
   display: inline-block;
   width: auto;
