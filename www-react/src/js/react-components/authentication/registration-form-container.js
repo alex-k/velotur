@@ -1,17 +1,11 @@
-import React from 'react';
-import TourParticipantForm from 'components/tour-participant-form';
-import axios from 'axios';
-import config from 'config';
+import React from "react";
+import RegistrationForm from "./registration-form";
 
-class TourParticipantFormContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class RegistrationFormContainer extends React.Component {
   submit(formData) {
     console.log("Submitting data: ", formData);
 
-    const URL = config.api.url + '/submitParticipant';
+    const URL = config.api.url + '/register';
 
     axios({
       method: 'POST',
@@ -27,13 +21,13 @@ class TourParticipantFormContainer extends React.Component {
     .then(response => {
       console.log("Received server response: ", response);
     });
-  } 
+  }
 
   render() {
     return (
-      <TourParticipantForm onSubmit={this.submit} />
+      <RegistrationForm onSubmit={ this.submit }/>
     );
   }
 }
 
-export default TourParticipantFormContainer
+export default RegistrationFormContainer;

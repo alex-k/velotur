@@ -1,7 +1,7 @@
-import React from 'react';
-import UserForm from 'components/user-form';
-import axios from 'axios';
-import config from 'config';
+import React from "react";
+import UserForm from "components/user-form";
+import axios from "axios";
+import config from "config";
 
 class UserFormContainer extends React.Component {
   constructor(props) {

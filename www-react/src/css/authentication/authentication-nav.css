@@ -1,0 +1,46 @@
+.authentication-component .main-nav {
+  display: block;
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+
+.authentication-component .main-nav ul {
+  display: block;
+  list-style-type: none;
+}
+
+.authentication-component .main-nav li {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.authentication-component .main-nav .tab {
+  color: #333;
+  text-decoration: none;
+}
+
+.authentication-component .main-nav .tab:hover {
+  color: #29f;
+}
+
+.authentication-component .main-nav .tab.selected {
+  color: #29f;
+}
+
+.authentication-component .main-nav .tab.selected::after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid #29f;
+  width: 100%;
+  animation: width-expand 0.2s;
+}
+
+@keyframes width-expand {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

@@ -12,23 +12,30 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, "src"),
       config$: path.resolve(__dirname, "config/config.js"),
-      components: path.resolve(__dirname, "src", "js", "react", "components"),
-      containers: path.resolve(__dirname, "src", "js", "react", "containers"),
+      components: path.resolve(__dirname, "src", "js", "react-components"),
       reducers: path.resolve(__dirname, "src", "js", "redux", "reducers"),
       actions: path.resolve(__dirname, "src", "js", "redux", "actions"),
-      services: path.resolve(__dirname, "src", "js","services")
+      services: path.resolve(__dirname, "src", "js","services"),
+      css: path.resolve(__dirname, "src", "css")
     }
   },
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
+    rules: [{
+      test: /\.css$/,
+      use: [{
+        loader: "style-loader"
+      }, {
+        loader: "css-loader"
+      }]
+    }, {
+      test: /\.js$/,
+      use : {
         loader: "babel-loader",
         options: {
           presets: ["babel-preset-env", "babel-preset-react"]
         }
       }
-    ]
+    }]
   },
   plugins: [
     // new UglifyJSPlugin({

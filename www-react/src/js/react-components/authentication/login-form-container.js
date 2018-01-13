@@ -13,7 +13,7 @@ class LoginFormContainer extends React.Component {
       data: formData,
       headers: {
         'Content-Type': 'text/plain'
-      }
+      }   
     })
     .catch(error => {
       console.log("Caught server error: ", error);
@@ -25,7 +25,9 @@ class LoginFormContainer extends React.Component {
 
   render() {
     return (
-      <LoginForm onSubmit={ this.submit }/>
+      <LoginForm onSubmit={ this.submit } />
     );
   }
 }
+
+export default LoginFormContainer;
