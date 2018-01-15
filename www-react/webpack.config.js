@@ -17,7 +17,7 @@ module.exports = {
       actions: path.resolve(__dirname, "src", "js", "redux", "actions"),
       services: path.resolve(__dirname, "src", "js","services"),
       css: path.resolve(__dirname, "src", "css"),
-      uilt: path.resolve(__dirname, "src", "js", "util")
+      util: path.resolve(__dirname, "src", "js", "util")
     }
   },
   module: {
