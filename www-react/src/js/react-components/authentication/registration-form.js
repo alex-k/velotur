@@ -6,15 +6,33 @@ let RegistrationForm = (props) => (
     <ul>
 
       <li>
-        <Field name="email" component="input" type="email" placeholder="Email" />
+        <Field 
+          name="email" 
+          component="input" 
+          type="email" 
+          placeholder="Email"
+          className={" " + ((props.isEmailValid) ? "" : "invalid")}
+        />
       </li>
 
       <li>
-        <Field name="password" component="input" type="password" placeholder="Выберите пароль" />
+        <Field 
+          name="password" 
+          component="input" 
+          type="password" 
+          placeholder="Выберите пароль" 
+          className={" " + ((props.isPasswordValid) ? "" : "invalid")}
+        />
       </li>
 
       <li>
-        <Field name="confirm-password" component="input" type="password" placeholder="Подтвердите пароль" />
+        <Field 
+          name="confirmPassword" 
+          component="input" 
+          type="password" 
+          placeholder="Подтвердите пароль" 
+          className={" " + ((props.isPasswordValid) ? "" : "invalid")}
+        />
       </li>
   
       <button type="submit"> Зарегистрироватся </button>
