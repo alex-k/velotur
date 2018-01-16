@@ -19,22 +19,22 @@ class User {
   private $userID;
 
   /**
-   * @ORM\Column(type="text", nullable=true, name="userEmail")
+   * @ORM\Column(type="text", nullable=false, name="userEmail")
    */
   private $userEmail;
   
   /**
+   * @ORM\Column(type="text", nullable=false)
+   */
+  private $userPassword;
+
+    /**
    * @ORM\Column(type="text", nullable=true)
    */
   private $userName;
 
   /**
-   * @ORM\Column(type="text", nullable=true)
-   */
-  private $userPassword;
-
-  /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userRussianName;
   
@@ -54,7 +54,7 @@ class User {
   private $userRussianName3;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userLatinName;
   
@@ -79,7 +79,7 @@ class User {
   private $userBirthDay;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userCitizenship;
   
@@ -89,22 +89,22 @@ class User {
   private $userSex;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userCountry;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userCity;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userAddress;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userJob;
   
@@ -134,7 +134,7 @@ class User {
   private $userPassportValidThrow;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userPhone;
 
@@ -144,22 +144,22 @@ class User {
   private $userVPNumber;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userType;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
+   * @ORM\Column(type="integer", nullable=false)
    */
   private $userReferalID;
 
   /**
-   * @ORM\Column(type="date", nullable=true)
+   * @ORM\Column(type="datetime", nullable=false)
    */
   private $userRegistrationDate;
   
   /**
-   * @ORM\Column(type="text", nullable=true)
+   * @ORM\Column(type="text", nullable=false)
    */
   private $userInfoHowFound;
 
@@ -169,12 +169,12 @@ class User {
   private $userPartnerID;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
+   * @ORM\Column(type="integer", nullable=false)
    */
   private $userCompletedTours;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
+   * @ORM\Column(type="integer", nullable=false)
    */
   private $userSubscribeNews;
   
